@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="588.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SalaryController">
+   <children>
+      <ToolBar layoutX="-1.0" prefHeight="45.0" prefWidth="654.0">
+        <items>
+            <Button mnemonicParsing="false" onAction="#goBack" text="GO BACK" />
+        </items>
+      </ToolBar>
+      <Label layoutX="91.0" layoutY="55.0" prefHeight="21.0" prefWidth="139.0" text="SALARY" />
+      <Label layoutX="21.0" layoutY="95.0" prefHeight="21.0" prefWidth="139.0" text="JAN" />
+      <Label layoutX="21.0" layoutY="176.0" prefHeight="21.0" prefWidth="139.0" text="MAR" />
+      <Label layoutX="21.0" layoutY="536.0" prefHeight="21.0" prefWidth="139.0" text="DEC" />
+      <Label layoutX="21.0" layoutY="134.0" prefHeight="21.0" prefWidth="139.0" text="FEB" />
+      <Label layoutX="21.0" layoutY="219.0" prefHeight="21.0" prefWidth="139.0" text="APR" />
+      <Label layoutX="21.0" layoutY="419.0" prefHeight="21.0" prefWidth="139.0" text="SEP" />
+      <Label layoutX="21.0" layoutY="456.0" prefHeight="21.0" prefWidth="139.0" text="OCT" />
+      <Label layoutX="21.0" layoutY="302.0" prefHeight="21.0" prefWidth="139.0" text="JUN" />
+      <Label layoutX="21.0" layoutY="263.0" prefHeight="21.0" prefWidth="139.0" text="MAY" />
+      <Label layoutX="21.0" layoutY="340.0" prefHeight="21.0" prefWidth="139.0" text="JULY" />
+      <Label layoutX="21.0" layoutY="379.0" prefHeight="21.0" prefWidth="139.0" text="AUG" />
+      <Label layoutX="21.0" layoutY="497.0" prefHeight="21.0" prefWidth="139.0" text="NOV" />
+      <TextField layoutX="67.0" layoutY="90.0" />
+      <TextField layoutX="67.0" layoutY="129.0" />
+      <TextField layoutX="67.0" layoutY="171.0" />
+      <TextField layoutX="67.0" layoutY="214.0" />
+      <TextField layoutX="67.0" layoutY="258.0" />
+      <TextField layoutX="67.0" layoutY="297.0" />
+      <TextField layoutX="67.0" layoutY="335.0" />
+      <TextField layoutX="67.0" layoutY="374.0" />
+      <TextField layoutX="67.0" layoutY="414.0" />
+      <TextField layoutX="67.0" layoutY="451.0" />
+      <TextField layoutX="67.0" layoutY="492.0" />
+      <TextField layoutX="67.0" layoutY="531.0" />
+      <Label layoutX="396.0" layoutY="55.0" prefHeight="21.0" prefWidth="232.0" text="RESIDUAL HOLIDAYS/PAR" />
+      <TextField layoutX="366.0" layoutY="90.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="90.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="129.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="129.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="171.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="171.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="258.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="214.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="214.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="258.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="297.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="297.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="335.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="335.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="374.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="374.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="414.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="414.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="451.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="451.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="492.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="492.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="366.0" layoutY="531.0" prefHeight="31.0" prefWidth="104.0" />
+      <TextField layoutX="505.0" layoutY="531.0" prefHeight="31.0" prefWidth="104.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="645.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Label layoutX="56.0" layoutY="71.0" prefHeight="21.0" prefWidth="181.0" text="ENTRY" />
+      <Label layoutX="320.0" layoutY="71.0" prefHeight="21.0" prefWidth="181.0" text="EXIT" />
+      <Button fx:id="parBtn" layoutX="761.0" layoutY="116.0" mnemonicParsing="false" onAction="#chooseSpecialDayHours" text="PAR" />
+      <Button fx:id="malattiaBtn" layoutX="761.0" layoutY="170.0" mnemonicParsing="false" onAction="#chooseSpecialDayHours" text="SICKNESS" />
+      <Button fx:id="ferieBtn" layoutX="761.0" layoutY="66.0" mnemonicParsing="false" onAction="#chooseSpecialDayHours" text="FREE DAY" />
+      <ToolBar prefHeight="45.0" prefWidth="944.0">
+        <items>
+          <Button mnemonicParsing="false" text="HOME" />
+            <Button mnemonicParsing="false" text="SETTINGS" />
+            <Button mnemonicParsing="false" onAction="#goToSalary" text="SALARY" />
+        </items>
+      </ToolBar>
+      <Separator layoutX="55.0" layoutY="219.0" prefHeight="13.0" prefWidth="835.0" />
+      <Label layoutX="547.0" layoutY="71.0" prefHeight="21.0" prefWidth="149.0" text="ORE LAVORATE" />
+      <Button fx:id="previousBtn" layoutX="12.0" layoutY="267.0" mnemonicParsing="false" onAction="#goPrevious" prefHeight="45.0" prefWidth="40.0" text="&lt;" />
+      <Button fx:id="nextBtn" layoutX="886.0" layoutY="267.0" mnemonicParsing="false" onAction="#goNext" prefHeight="45.0" prefWidth="40.0" text="&gt;" />
+      <TextField fx:id="workedHoursTF" editable="false" layoutX="547.0" layoutY="108.0" prefHeight="31.0" prefWidth="149.0" />
+      <Button layoutX="828.0" layoutY="573.0" mnemonicParsing="false" onAction="#countWorkedHours" text="SAVE" />
+      <ComboBox fx:id="hh_entryCB" layoutX="52.0" layoutY="108.0" prefHeight="31.0" prefWidth="93.0" promptText="hh" />
+      <ComboBox fx:id="mm_entryCB" layoutX="175.0" layoutY="108.0" prefHeight="31.0" prefWidth="93.0" promptText="mm" />
+      <ComboBox fx:id="hh_exitCB" layoutX="317.0" layoutY="108.0" prefHeight="31.0" prefWidth="93.0" promptText="hh" />
+      <ComboBox fx:id="mm_exitCB" layoutX="426.0" layoutY="108.0" onMouseReleased="#countWorkedHours" prefHeight="31.0" prefWidth="93.0" promptText="mm" />
+      <Label layoutX="403.0" layoutY="232.0" prefHeight="21.0" prefWidth="85.0" text="GO TO" />
+      <JFXDatePicker fx:id="calendar" layoutX="342.0" layoutY="267.0" />
+   </children>
+</AnchorPane>
