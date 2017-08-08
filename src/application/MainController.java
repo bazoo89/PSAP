@@ -178,14 +178,26 @@ public class MainController implements Initializable {
 	public void chooseParHours(){
 		parDialog.show(parDialogLayout);
 		parResultTF.setText("0");
+		if(sickDialog.isVisible())
+			sickDialog.close();
+		if(freeDialog.isVisible())
+			freeDialog.close();
 	}
 	public void chooseFreeHours(){
 		freeDialog.show(freeDialogLayout);
 		freeResultTF.setText("0");
+		if(sickDialog.isVisible())
+			sickDialog.close();
+		if(parDialog.isVisible())
+			parDialog.close();
 	}
 	public void chooseSickHours(){
 		sickDialog.show(sickDialogLayout);
 		sickResultTF.setText("0");
+		if(parDialog.isVisible())
+			parDialog.close();
+		if(freeDialog.isVisible())
+			freeDialog.close();
 	}
 	public void countSpecialHours(){
 		int specialHours=0;
@@ -273,6 +285,28 @@ public class MainController implements Initializable {
 		hours=Math.max(hours, 0);
 		tf.setText(Integer.toString(hours));
 	}
+	public void reset(){
+		hh_entryCB.setValue(null);
+		hh_exitCB.setValue(null);
+		mm_entryCB.setValue(null);
+		mm_exitCB.setValue(null);
+		parCircle.setVisible(false);
+		freeCircle.setVisible(false);
+		sickCircle.setVisible(false);
+		parHoursLabel.setText(null);
+		parHoursLabel.setVisible(false);
+		freeHoursLabel.setText(null);
+		freeHoursLabel.setVisible(false);
+		sickHoursLabel.setText(null);
+		sickHoursLabel.setVisible(false);
+		if(parDialog.isVisible())
+			parDialog.close();
+		if(sickDialog.isVisible())
+			sickDialog.close();
+		if(freeDialog.isVisible())
+			freeDialog.close();
+		workedHoursLabel.setText("press save to calculate");
+	}
 	//******* goToMethods *******//
 	public void goToSalary(){
 		try {
@@ -285,12 +319,14 @@ public class MainController implements Initializable {
 		}		
 	}
 	public void goNext(){
+		reset();
 		calendar.setValue(calendar.getValue().plusDays(1));
 //			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 //			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
 //			Main.primaryStage.setScene(initScene);
 	}
 	public void goPrevious(){
+		reset();
 		calendar.setValue(calendar.getValue().minusDays(1));
 //			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 //			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
