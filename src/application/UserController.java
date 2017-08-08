@@ -24,8 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import utils.Person;
-import utils.Persons;
+import users.Person;
+import users.Persons;
 
 public class UserController implements Initializable {
 

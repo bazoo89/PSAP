@@ -1,20 +1,20 @@
-package utils;
+package hours;
 
 import javax.xml.bind.annotation.XmlElement;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Person {
+public class Month {
 	private StringProperty firstName;
 	private StringProperty lastName;
 	private StringProperty dataFile;
 
-	public Person() {
+	public Month() {
 		this(null, null, null);
 	}
 
-	public Person(String firstName, String lastName, String dataFile) {
+	public Month(String firstName, String lastName, String dataFile) {
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 		this.dataFile = new SimpleStringProperty(dataFile);

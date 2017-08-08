@@ -17,8 +17,8 @@ import javax.xml.bind.Unmarshaller;
 
 import application.Main;
 import javafx.collections.ObservableList;
-import utils.Person;
-import utils.Persons;
+import users.Person;
+import users.Persons;
 
 public class ToolsForManagedFile {
 
