@@ -22,12 +22,12 @@ public class Person {
 
 	@XmlElement(name = "name")
 	public String getFirstName() {
-		return firstName.get();
+		return firstName.get().toUpperCase();
 	}
 
 	@XmlElement(name = "lastname")
 	public String getLastName() {
-		return lastName.get();
+		return lastName.get().toUpperCase();
 	}
 
 	@XmlElement(name = "dataFile")

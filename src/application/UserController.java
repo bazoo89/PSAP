@@ -5,13 +5,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.prefs.Preferences;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import file.MarshallAndUnmarshall;
+import file.ToolsForManagedFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -57,29 +56,32 @@ public class UserController implements Initializable {
 		personObservableList = FXCollections.observableArrayList();
 	}
 
-	public void login() {
-		name = name_textField.getText();
-		lastname = lastname_textField.getText();
+	public void loginOrRegister() {
+		name = name_textField.getText().toUpperCase();
+		lastname = lastname_textField.getText().toUpperCase();
 		searchUser(name, lastname);
 		// REGISTER
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
+				loggedUser = name + ":" + lastname;
 				String firstLetterName = name.substring(0, 1);
 				String fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
 				userFile = new File("XMLFile/" + fileName + ".xml");
 				userFile.createNewFile();
 				Person person = new Person(name, lastname, fileName);
 
-				// Append user
+				// First user
 				if (loggedUser.equals(first_user)) {
-					MarshallAndUnmarshall.getInstance().writePersonToFile(person, personObservableList, personFile);
-				} else {
-					MarshallAndUnmarshall.getInstance().saveActualPersonsIntoFile(person, personObservableList, personFile);
-					MarshallAndUnmarshall.getInstance().writePersonToFile(person, personObservableList, personFile);
+					ToolsForManagedFile.getInstance().writePersonToFile(person, personObservableList, personFile);
+				}
+				// Append User
+				else {
+					ToolsForManagedFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
+					ToolsForManagedFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
 				// Save the file path to the registry.
 				//				setPersonFilePath(personFile);
-			} catch (Exception e) { // catches ANY exception
+			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
 				alert.setHeaderText("Could not save data");
@@ -107,8 +109,7 @@ public class UserController implements Initializable {
 		}
 		for (Person person : personsList) {
 			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
-				System.out.println("TROVATO");
-				loggedUser = "Andrea Quaresima";
+				loggedUser = name + ":" + surname;
 				return;
 			}
 		}
@@ -117,17 +118,7 @@ public class UserController implements Initializable {
 	}
 
 	public void goToSAP() {
-		login();
-		Preferences prefs = Preferences.userNodeForPackage(Main.class);
-		if (userFile != null) {
-			prefs.put("filePath", personFile.getPath());
-			// Update the stage title.
-			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
-		} else {
-			prefs.remove("filePath");
-			// Update the stage title.
-			Main.primaryStage.setTitle(TITLE);
-		}
+		loginOrRegister();
 		try {
 			Stage stage = (Stage) okButton.getScene().getWindow();
 			stage.close();
@@ -137,27 +128,16 @@ public class UserController implements Initializable {
 			Main.primaryStage.setResizable(false);
 			Main.primaryStage.show();
 			Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
-
+			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
+			Main.isLogged.createNewFile();
+			ToolsForManagedFile.getInstance().writeUserLoggedInformation(loggedUser);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	//	public boolean setPersonFilePath(File file) {
-	//		Preferences prefs = Preferences.userNodeForPackage(Main.class);
-	//		if (file != null) {
-	//			prefs.put("filePath", file.getPath());
-	//			// Update the stage title.
-	//			Main.primaryStage.setTitle(TITLE + " - " + name + " " + surname);
-	//		} else {
-	//			prefs.remove("filePath");
-	//			// Update the stage title.
-	//			Main.primaryStage.setTitle(TITLE);
-	//		}
-	//		return false;
-	//	}
-
 	public void setFile(File file) {
 		this.personFile = file;
 	}
+
 }
