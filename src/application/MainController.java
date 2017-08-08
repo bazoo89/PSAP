@@ -98,7 +98,7 @@ public class MainController implements Initializable {
 				workedHoursTF.setText(result);
 				}
 			else
-				workedHoursTF.setText("Warning!");
+				workedHoursTF.setText("Warning!!!!!!");
 		}
 	}
 	public void chooseSpecialDayHours(){
