@@ -14,9 +14,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		File personsFile = new File("file:XMLFile/Persons.xml");
+		File personsFile = new File("XMLFile/Persons.xml");
 		SelectUser selectUser = new SelectUser(personsFile);
-
+		selectUser.showLoginInterface();
 	}
 
 	public static void main(String[] args) {
