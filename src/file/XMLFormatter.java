@@ -11,5 +11,4 @@ public class XMLFormatter {
 		return instance;
 	}
 
-	public void
 }
