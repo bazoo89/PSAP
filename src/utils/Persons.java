@@ -3,6 +3,7 @@ package utils;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -15,7 +16,7 @@ public class Persons {
 
 	List<Person> persons;
 
-	@XmlElement(name = "person")
+	@XmlElements({ @XmlElement(name = "person", type = Person.class) })
 	public List<Person> getPersons() {
 		return persons;
 	}

@@ -9,9 +9,9 @@ import java.util.prefs.Preferences;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import file.MarshallAndUnmarshall;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public class UserController implements Initializable {
 	@FXML
 	private TextField name_textField;
 	@FXML
-	private TextField surname_textField;
+	private TextField lastname_textField;
 	@FXML
 	private Button okButton;
 	@FXML
@@ -46,9 +46,10 @@ public class UserController implements Initializable {
 	private File userFile = null;
 	private String loggedUser = null;
 	private final String new_user = "New User";
+	private final String first_user = "First User";
 	private final String default_file_name = "_day_and_month";
 	private String name = null;
-	private String surname = null;
+	private String lastname = null;
 	ObservableList<Person> personObservableList = null;
 
 	@Override
@@ -58,32 +59,24 @@ public class UserController implements Initializable {
 
 	public void login() {
 		name = name_textField.getText();
-		surname = surname_textField.getText();
-		searchAndGetUser(name, surname);
-		if (loggedUser == new_user) {
+		lastname = lastname_textField.getText();
+		searchUser(name, lastname);
+		// REGISTER
+		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
 				String firstLetterName = name.substring(0, 1);
-				String firstLetterSurname = surname.substring(0, 1);
-				String fileName = firstLetterName + firstLetterSurname + default_file_name;
+				String fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
 				userFile = new File("XMLFile/" + fileName + ".xml");
-				Person person = new Person(name, surname, fileName);
-				JAXBContext context = JAXBContext.newInstance(Persons.class);
-				Marshaller m = context.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				// Wrapping our person data.
-				Persons wrapper = new Persons();
-				if (wrapper.getPersons() != null) {
-					List<Person> tempList = wrapper.getPersons();
-					personObservableList.addAll(tempList);
-					personObservableList.add(person);
+				userFile.createNewFile();
+				Person person = new Person(name, lastname, fileName);
+
+				// Append user
+				if (loggedUser.equals(first_user)) {
+					MarshallAndUnmarshall.getInstance().writePersonToFile(person, personObservableList, personFile);
 				} else {
-					personObservableList.add(person);
-					wrapper.setPersons(personObservableList);
+					MarshallAndUnmarshall.getInstance().saveActualPersonsIntoFile(person, personObservableList, personFile);
+					MarshallAndUnmarshall.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
-
-				// Marshalling and saving XML to the file.
-				m.marshal(wrapper, personFile);
-
 				// Save the file path to the registry.
 				//				setPersonFilePath(personFile);
 			} catch (Exception e) { // catches ANY exception
@@ -93,16 +86,15 @@ public class UserController implements Initializable {
 				alert.setContentText("Could not save data to file:\n" + personFile.getPath());
 				alert.showAndWait();
 			}
-
-		} else
-
-		{
-			//			userFile = new File("file:XMLFile/" + fileName + ".xml");
+		}
+		// LOGIN
+		else {
+			// TODO
 		}
 
 	}
 
-	public String searchAndGetUser(String name, String surname) {
+	public void searchUser(String name, String surname) {
 		List<Person> personsList = new ArrayList<Person>();
 		try {
 			JAXBContext context = JAXBContext.newInstance(Persons.class);
@@ -110,12 +102,18 @@ public class UserController implements Initializable {
 			Persons wrapper = (Persons) um.unmarshal(personFile);
 			personsList.addAll(wrapper.getPersons());
 		} catch (JAXBException e) {
-			loggedUser = new_user;
+			loggedUser = first_user;
+			return;
 		}
 		for (Person person : personsList) {
-			// TODO
+			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
+				System.out.println("TROVATO");
+				loggedUser = "Andrea Quaresima";
+				return;
+			}
 		}
-		return "";
+		loggedUser = new_user;
+		return;
 	}
 
 	public void goToSAP() {
@@ -124,7 +122,7 @@ public class UserController implements Initializable {
 		if (userFile != null) {
 			prefs.put("filePath", personFile.getPath());
 			// Update the stage title.
-			Main.primaryStage.setTitle(TITLE + " - " + name);
+			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 		} else {
 			prefs.remove("filePath");
 			// Update the stage title.
@@ -145,19 +143,19 @@ public class UserController implements Initializable {
 		}
 	}
 
-	public boolean setPersonFilePath(File file) {
-		Preferences prefs = Preferences.userNodeForPackage(Main.class);
-		if (file != null) {
-			prefs.put("filePath", file.getPath());
-			// Update the stage title.
-			Main.primaryStage.setTitle(TITLE + " - " + name);
-		} else {
-			prefs.remove("filePath");
-			// Update the stage title.
-			Main.primaryStage.setTitle(TITLE);
-		}
-		return false;
-	}
+	//	public boolean setPersonFilePath(File file) {
+	//		Preferences prefs = Preferences.userNodeForPackage(Main.class);
+	//		if (file != null) {
+	//			prefs.put("filePath", file.getPath());
+	//			// Update the stage title.
+	//			Main.primaryStage.setTitle(TITLE + " - " + name + " " + surname);
+	//		} else {
+	//			prefs.remove("filePath");
+	//			// Update the stage title.
+	//			Main.primaryStage.setTitle(TITLE);
+	//		}
+	//		return false;
+	//	}
 
 	public void setFile(File file) {
 		this.personFile = file;

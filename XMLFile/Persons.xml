@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person>
+        <dataFile>giodice_day_and_month</dataFile>
+        <name>giovanni</name>
+        <lastname>iodice</lastname>
+    </person>
+    <person>
+        <dataFile>aquaresima_day_and_month</dataFile>
+        <name>andrea</name>
+        <lastname>quaresima</lastname>
+    </person>
+    <person>
+        <dataFile>rmacauda_day_and_month</dataFile>
+        <name>rosario</name>
+        <lastname>macauda</lastname>
+    </person>
+</persons>
