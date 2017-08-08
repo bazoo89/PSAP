@@ -2,13 +2,11 @@
     <person>
         <firstName>Andrea</firstName>
         <lastName>Quaresima</lastName>
-        <dayFile>aq_day_file</dayFile>
-        <monthFile>aq_month_salary_file</monthFile>
+        <dataFile>aq_day_and_month_file</dataFile>
     </person>
     <person>
         <firstName>Giovanni</firstName>
         <lastName>Iodice</lastName>
-        <dayFile>gi_day_file</dayFile>
-        <monthFile>gi_month_salary_file</monthFile>
+        <dataFile>gi_day_and_month_file</dataFile>
     </person>
 </persons>
