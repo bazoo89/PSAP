@@ -25,12 +25,12 @@ public class Main extends Application {
 			this.primaryStage.setResizable(false);
 			this.primaryStage.show();
 			this.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
