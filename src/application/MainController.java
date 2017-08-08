@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +36,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 
@@ -48,7 +51,7 @@ public class MainController implements Initializable {
 	@FXML
 	private ComboBox<String> mm_exitCB;
 	@FXML
-	private TextField workedHoursTF;
+	private Label workedHoursLabel;
 	@FXML
 	private Button freeDaysBtn;
 	@FXML
@@ -86,15 +89,15 @@ public class MainController implements Initializable {
 	@FXML
 	private CheckBox parIsHalfHour;
 	@FXML
-	private CheckBox freesHalfHour;
+	private CheckBox freeIsHalfHour;
 	@FXML
 	private CheckBox sickIsHalfHour;
 	@FXML
-	private BorderPane parBorderPane; 
+	private AnchorPane parBorderPane; 
 	@FXML
-	private BorderPane freeBorderPane; 
+	private AnchorPane freeBorderPane; 
 	@FXML
-	private BorderPane sickBorderPane; 
+	private AnchorPane sickBorderPane; 
 	@FXML
 	private Label freeHoursLabel;
 	@FXML
@@ -109,13 +112,25 @@ public class MainController implements Initializable {
 	public Circle sickCircle;
 	@FXML
 	public Circle parCircle;
+	@FXML
+	public JFXDialog parDialog;
+	@FXML
+	public JFXDialog freeDialog;
+	@FXML
+	public JFXDialog sickDialog;
+	@FXML
+	public JFXDialogLayout parDialogLayout;
+	@FXML
+	public JFXDialogLayout freeDialogLayout;
+	@FXML
+	public JFXDialogLayout sickDialogLayout;
 	
 	public static int sceneLength=650;
 	public static int sceneWidth=650;
 	public int dayTotalHour=0;
 	
 	ObservableList<String> hours=(ObservableList<String>) FXCollections.observableArrayList("08","09","10","11","12","13"
-			,"14","15","16","17","18","19","20","21");
+			,"14","15","16","17","18","19","20");
 	ObservableList<String> minutes=(ObservableList<String>) FXCollections.observableArrayList("00","05","10","15","20","25","30"
 			,"35","40","45","50","55");
 	
@@ -140,59 +155,68 @@ public class MainController implements Initializable {
 					result="0"+Integer.toString(hh);
 				else
 					result=Integer.toString(hh);
-				if(Integer.toString(mm).equals("0"))
+				if(Integer.toString(mm).length()==1 && mm>=0)
 					result=result+":0"+Integer.toString(mm);
 				else{
-					if(mm<0)
-					result=result+":"+Integer.toString(mm);	
+					if(mm<0){
+						mm=mm+60;
+						hh=hh-1;
+						if(Integer.toString(mm).length()==1)
+							result=Integer.toString(hh)+":0"+Integer.toString(mm);	
+						else
+							result=Integer.toString(hh)+":"+Integer.toString(mm);
+					}
+					else
+						result=result+":"+Integer.toString(mm);
 				}
-				workedHoursTF.setText(result);
+				workedHoursLabel.setText(result);
 				}
 			else
-				workedHoursTF.setText("Warning!!!!!!");
+				workedHoursLabel.setText("Warning!!!!!!");
 		}
 	}
-	public void chooseSpecialDayHours(){
-		if(parBtn.isFocused()){
-			parBorderPane.setVisible(true);
-			parResultTF.setText("0");
-			freeBorderPane.setVisible(false);
-			sickBorderPane.setVisible(false);
-		}
-		else if(freeDaysBtn.isFocused()){
-			parBorderPane.setVisible(false);
-			freeBorderPane.setVisible(true);
-			freeResultTF.setText("0");
-			sickBorderPane.setVisible(false);
-		}
-		else if(sicknessBtn.isFocused()){
-			parBorderPane.setVisible(false);
-			freeBorderPane.setVisible(false);
-			sickBorderPane.setVisible(true);
-			sickResultTF.setText("0");
-		}
-		else{}
+	public void chooseParHours(){
+		parDialog.show(parDialogLayout);
+		parResultTF.setText("0");
+	}
+	public void chooseFreeHours(){
+		freeDialog.show(freeDialogLayout);
+		freeResultTF.setText("0");
+	}
+	public void chooseSickHours(){
+		sickDialog.show(sickDialogLayout);
+		sickResultTF.setText("0");
 	}
 	public void countSpecialHours(){
-		if(parBorderPane.isVisible()){
-			parBorderPane.setVisible(false);
+		int specialHours=0;
+		if(parDialog.isVisible()){
+			parDialog.setVisible(false);
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
-			parHoursLabel.setText(parResultTF.getText());
+			if(parIsHalfHour.isSelected())
+				parHoursLabel.setText(parResultTF.getText()+",5");
+			else
+				parHoursLabel.setText(parResultTF.getText());
 			countTotalHours(parHoursLabel);			
 		}
-		else if(freeBorderPane.isVisible()){
-			freeBorderPane.setVisible(false);
+		else if(freeDialog.isVisible()){
+			freeDialog.setVisible(false);
 			freeCircle.setVisible(true);
 			freeHoursLabel.setVisible(true);
-			freeHoursLabel.setText(freeResultTF.getText());
+			if(freeIsHalfHour.isSelected())
+				freeHoursLabel.setText(freeResultTF.getText()+",5");
+			else
+				freeHoursLabel.setText(freeResultTF.getText());
 			countTotalHours(freeHoursLabel);
 		}
-		else if(sickBorderPane.isVisible()){
-			sickBorderPane.setVisible(false);
+		else if(sickDialog.isVisible()){
+			sickDialog.setVisible(false);
 			sickCircle.setVisible(true);
 			sickHoursLabel.setVisible(true);
-			sickHoursLabel.setText(sickResultTF.getText());
+			if(sickIsHalfHour.isSelected())
+				sickHoursLabel.setText(sickResultTF.getText()+",5");
+			else
+				sickHoursLabel.setText(sickResultTF.getText());
 			countTotalHours(sickHoursLabel);
 		}
 		else{}
@@ -213,26 +237,26 @@ public class MainController implements Initializable {
 //		}
 	}
 	public void augment(){
-		if(parBorderPane.isVisible()){
+		if(parDialog.isVisible()){
 			manageAugment(parResultTF);
 		}
-		else if(freeBorderPane.isVisible()){
+		else if(freeDialog.isVisible()){
 			manageAugment(freeResultTF);
 		}
-		else if(sickBorderPane.isVisible()){
+		else if(sickDialog.isVisible()){
 			manageAugment(sickResultTF);
 		}
 		else{}
 		
 	}
 	public void reduce(){
-		if(parBorderPane.isVisible()){
+		if(parDialog.isVisible()){
 			manageReduce(parResultTF);
 		}
-		else if(freeBorderPane.isVisible()){
+		else if(freeDialog.isVisible()){
 			manageReduce(freeResultTF);
 		}
-		else if(sickBorderPane.isVisible()){
+		else if(sickDialog.isVisible()){
 			manageReduce(sickResultTF);
 		}
 		else{}
@@ -261,24 +285,17 @@ public class MainController implements Initializable {
 		}		
 	}
 	public void goNext(){
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
-			Main.primaryStage.setScene(initScene);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		calendar.setValue(calendar.getValue().plusDays(1));
+//			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+//			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
+//			Main.primaryStage.setScene(initScene);
 	}
 	public void goPrevious(){
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
-			Main.primaryStage.setScene(initScene);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			}
+		calendar.setValue(calendar.getValue().minusDays(1));
+//			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+//			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
+//			Main.primaryStage.setScene(initScene);
+
 	}
 	///////////////////////////////////////
 }
