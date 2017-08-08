@@ -46,7 +46,7 @@ public class SalaryController implements Initializable {
 	public void goBack(){
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
+			Scene initScene=new Scene(root,UserController.sceneLength,UserController.sceneWidth);
 			Main.primaryStage.setScene(initScene);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

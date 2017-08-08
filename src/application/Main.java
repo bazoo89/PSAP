@@ -8,8 +8,6 @@ import utils.SelectUser;
 
 public class Main extends Application {
 	public static Stage primaryStage;
-	public static int sceneLength = 930;
-	public static int sceneWidth = 700;
 
 	@Override
 	public void start(Stage primaryStage) {

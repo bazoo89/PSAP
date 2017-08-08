@@ -25,7 +25,7 @@ public class UserController implements Initializable {
 	private Button cancelButton;
 
 	public static int sceneLength = 930;
-	public static int sceneWidth = 700;
+	public static int sceneWidth = 780;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
