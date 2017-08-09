@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -10,7 +11,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import file.ToolsForManagedFile;
+import file.ToolsForManageFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,22 +64,23 @@ public class UserController implements Initializable {
 		// REGISTER
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
-				loggedUser = name + ":" + lastname;
 				String firstLetterName = name.substring(0, 1);
 				String fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
 				userFile = new File("XMLFile/" + fileName + ".xml");
 				userFile.createNewFile();
+				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
 				Person person = new Person(name, lastname, fileName);
 
 				// First user
 				if (loggedUser.equals(first_user)) {
-					ToolsForManagedFile.getInstance().writePersonToFile(person, personObservableList, personFile);
+					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
 				// Append User
 				else {
-					ToolsForManagedFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
-					ToolsForManagedFile.getInstance().writePersonToFile(person, personObservableList, personFile);
+					ToolsForManageFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
+					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
+				loggedUser = name + ":" + lastname;
 				// Save the file path to the registry.
 				//				setPersonFilePath(personFile);
 			} catch (Exception e) {
@@ -130,7 +132,7 @@ public class UserController implements Initializable {
 			Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
 			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 			Main.isLogged.createNewFile();
-			ToolsForManagedFile.getInstance().writeUserLoggedInformation(loggedUser);
+			ToolsForManageFile.getInstance().writeUserLoggedInformation(loggedUser);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -6,56 +6,56 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Hour {
-	private StringProperty firstName;
-	private StringProperty lastName;
-	private StringProperty dataFile;
+	private StringProperty id;
+	private StringProperty h_entry;
+	private StringProperty h_exit;
 
 	public Hour() {
 		this(null, null, null);
 	}
 
-	public Hour(String firstName, String lastName, String dataFile) {
-		this.firstName = new SimpleStringProperty(firstName);
-		this.lastName = new SimpleStringProperty(lastName);
-		this.dataFile = new SimpleStringProperty(dataFile);
+	public Hour(String id, String hEntry, String hExit) {
+		this.id = new SimpleStringProperty(id);
+		this.h_entry = new SimpleStringProperty(hEntry);
+		this.h_exit = new SimpleStringProperty(hExit);
 	}
 
-	@XmlElement(name = "name")
-	public String getFirstName() {
-		return firstName.get().toUpperCase();
+	@XmlElement(name = "id")
+	public String getId() {
+		return id.get().toUpperCase();
 	}
 
-	@XmlElement(name = "lastname")
-	public String getLastName() {
-		return lastName.get().toUpperCase();
+	@XmlElement(name = "h_entry")
+	public String getHEntry() {
+		return h_entry.get().toUpperCase();
 	}
 
-	@XmlElement(name = "dataFile")
+	@XmlElement(name = "h_exit")
 	public String getDataFile() {
-		return dataFile.get();
+		return h_exit.get();
 	}
 
-	public StringProperty firstNameProperty() {
-		return firstName;
+	public StringProperty idProperty() {
+		return id;
 	}
 
-	public StringProperty lastNameProperty() {
-		return lastName;
+	public StringProperty hEntryProperty() {
+		return h_entry;
 	}
 
-	public StringProperty dataFileProperty() {
-		return dataFile;
+	public StringProperty hExitProperty() {
+		return h_exit;
 	}
 
-	public void setDataFile(String dataFile) {
-		this.dataFile = new SimpleStringProperty(dataFile);
+	public void setId(String id) {
+		this.id = new SimpleStringProperty(id);
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = new SimpleStringProperty(firstName);
+	public void setHEntry(String hEntry) {
+		this.h_entry = new SimpleStringProperty(hEntry);
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = new SimpleStringProperty(lastName);
+	public void setHExit(String hExit) {
+		this.h_exit = new SimpleStringProperty(hExit);
 	}
 }
