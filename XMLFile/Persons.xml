@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
     <person>
-        <dataFile>giodice_day_and_month</dataFile>
-        <name>GIOVANNI</name>
-        <lastname>IODICE</lastname>
-    </person>
-    <person>
-        <dataFile>aquaresima_day_and_month</dataFile>
-        <name>ANDREA</name>
-        <lastname>QUARESIMA</lastname>
+        <dataFile>aasds_day_and_month</dataFile>
+        <name>ASD</name>
+        <lastname>ASDS</lastname>
     </person>
 </persons>

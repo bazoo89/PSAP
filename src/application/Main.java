@@ -19,12 +19,16 @@ public class Main extends Application {
 	public static int sceneWidth = 780;
 	public static File isLogged = null;
 	private final String TITLE = "SAP&GO";
+	public static String name = null;
+	public static String lastname = null;
+	public static String pathFile = null;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		this.primaryStage = primaryStage;
-		String name = "";
-		String lastname = "";
+		Main.primaryStage = primaryStage;
+		name = "";
+		lastname = "";
+		pathFile = "";
 		isLogged = new File("XMLFile/userLogged.info");
 		if (isLogged.exists() && !isLogged.isDirectory()) {
 			String loggedUser = ToolsForManageFile.getInstance().readAndGetUserLoggedInformation();
@@ -32,6 +36,7 @@ public class Main extends Application {
 				String[] loggedNameLastname = loggedUser.split(":");
 				name = loggedNameLastname[0];
 				lastname = loggedNameLastname[1];
+				pathFile = loggedNameLastname[2];
 			}
 			try {
 				Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
@@ -52,6 +57,18 @@ public class Main extends Application {
 			SelectUser selectUser = new SelectUser(personsFile);
 			selectUser.showLoginInterface();
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getLastName() {
+		return lastname;
+	}
+
+	public String getFilename() {
+		return pathFile;
 	}
 
 	public static void main(String[] args) {

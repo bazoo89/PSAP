@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -86,19 +87,15 @@ public class ToolsForManageFile {
 	public void initDataFile(File dataFile, int year) {
 		ObservableList<Hour> hoursList = createAndGetHourTemplateXML(year);
 		ObservableList<Month> monthsList = createAndGetMonthTemplateXML();
-		Months months = new Months();
-		months.setMonths(monthsList);
 
-		Hours hours = new Hours();
-		hours.setHours(hoursList);
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			// Wrapping our person data.
 			DataFile wrapper = new DataFile();
-			wrapper.setHours(hours);
-			wrapper.setMonths(months);
+			wrapper.setHour(hoursList);
+			wrapper.setMonth(monthsList);
 			// Marshalling and saving XML to the file.
 			m.marshal(wrapper, dataFile);
 		} catch (Exception ex) {
@@ -107,8 +104,21 @@ public class ToolsForManageFile {
 
 	}
 
-	public void updateHoursTabToDataFile() {
-		//TODO
+	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Hour> hoursList = wrapper.getHour();
+			for (Hour hour : hoursList) {
+				if (hour.getId().equals(date)) {
+					hour.setHEntry(hEntry);
+					hour.setHExit(hExit);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public void updateSalaryTabToDataFile() {

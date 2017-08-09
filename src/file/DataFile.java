@@ -1,7 +1,9 @@
 package file;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -12,24 +14,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "datafile")
 public class DataFile {
 
-	Hours hours;
-	Months months;
+	List<Hour> hours;
+	List<Month> months;
 
-	@XmlElements({ @XmlElement(name = "hours", type = Hours.class) })
-	public Hours getHours() {
+	//	@XmlElement(name = "hours", type = Hours.class)
+	@XmlElementWrapper(name = "hours")
+	@XmlElement(name = "hour", type = Hour.class)
+	public List<Hour> getHour() {
 		return hours;
 	}
 
-	public void setHours(Hours hours) {
+	public void setHour(List<Hour> hours) {
 		this.hours = hours;
 	}
 
-	@XmlElements({ @XmlElement(name = "month", type = Months.class) })
-	public Months getMonths() {
+	@XmlElementWrapper(name = "months")
+	@XmlElement(name = "month", type = Month.class)
+	public List<Month> getMonth() {
 		return months;
 	}
 
-	public void setMonths(Months months) {
+	public void setMonth(List<Month> months) {
 		this.months = months;
 	}
 }

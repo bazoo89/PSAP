@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class Month {
-	private IntegerProperty id;
+	private IntegerProperty idMonth;
 	private DoubleProperty salary;
 	private DoubleProperty holidaysRes;
 	private DoubleProperty parRes;
@@ -23,7 +23,7 @@ public class Month {
 	}
 
 	public Month(Integer id, Double salary, Double holidays_res, Double par_res, Double worked_days, Double worked_hours, Double sickness_used_temp, Double holidays_used_temp, Double par_used_temp) {
-		this.id = new SimpleIntegerProperty(id);
+		this.idMonth = new SimpleIntegerProperty(id);
 		this.salary = new SimpleDoubleProperty(salary);
 		this.holidaysRes = new SimpleDoubleProperty(holidays_res);
 		this.parRes = new SimpleDoubleProperty(par_res);
@@ -34,9 +34,9 @@ public class Month {
 		this.parUsedTemp = new SimpleDoubleProperty(par_used_temp);
 	}
 
-	@XmlElement(name = "id")
+	@XmlElement(name = "id_month")
 	public Integer getId() {
-		return id.get();
+		return idMonth.get();
 	}
 
 	@XmlElement(name = "salary")
@@ -75,12 +75,12 @@ public class Month {
 	}
 
 	@XmlElement(name = "par_used_temp")
-	public Double getPar() {
+	public Double getParUsedTemp() {
 		return parUsedTemp.get();
 	}
 
 	public IntegerProperty idProperty() {
-		return id;
+		return idMonth;
 	}
 
 	public DoubleProperty salaryProperty() {
@@ -116,10 +116,14 @@ public class Month {
 	}
 
 	public void setId(Integer id) {
-		this.id = new SimpleIntegerProperty(id);
+		this.idMonth = new SimpleIntegerProperty(id);
 	}
 
-	public void setSalary(Double holidaysRes) {
+	public void setSalary(Double salary) {
+		this.salary = new SimpleDoubleProperty(salary);
+	}
+
+	public void setHolidayRes(Double holidaysRes) {
 		this.holidaysRes = new SimpleDoubleProperty(holidaysRes);
 	}
 
@@ -136,7 +140,7 @@ public class Month {
 	}
 
 	public void setSicknessUsedTemp(Double sicknessUsedTemp) {
-		this.salary = new SimpleDoubleProperty(sicknessUsedTemp);
+		this.sicknessUsedTemp = new SimpleDoubleProperty(sicknessUsedTemp);
 	}
 
 	public void setHolidaysUsedTemp(Double holidaysUsedTemp) {

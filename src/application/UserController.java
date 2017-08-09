@@ -50,6 +50,7 @@ public class UserController implements Initializable {
 	private final String default_file_name = "_day_and_month";
 	private String name = null;
 	private String lastname = null;
+	private String fileName = null;
 	ObservableList<Person> personObservableList = null;
 
 	@Override
@@ -65,9 +66,10 @@ public class UserController implements Initializable {
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
 				String firstLetterName = name.substring(0, 1);
-				String fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
+				fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
 				userFile = new File("XMLFile/" + fileName + ".xml");
 				userFile.createNewFile();
+				Main.pathFile = userFile.getAbsolutePath();
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
 				Person person = new Person(name, lastname, fileName);
 
@@ -80,7 +82,7 @@ public class UserController implements Initializable {
 					ToolsForManageFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
 					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
-				loggedUser = name + ":" + lastname;
+				loggedUser = name + ":" + lastname + ":" + userFile.getPath();
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
@@ -109,7 +111,7 @@ public class UserController implements Initializable {
 		}
 		for (Person person : personsList) {
 			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
-				loggedUser = name + ":" + surname;
+				loggedUser = name + ":" + surname + ":" + userFile.getPath();
 				return;
 			}
 		}
@@ -130,6 +132,9 @@ public class UserController implements Initializable {
 			Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
 			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 			Main.isLogged.createNewFile();
+			Main.name = name;
+			Main.lastname = lastname;
+			Main.pathFile = userFile.getPath();
 			ToolsForManageFile.getInstance().writeUserLoggedInformation(loggedUser);
 		} catch (Exception e) {
 			e.printStackTrace();
