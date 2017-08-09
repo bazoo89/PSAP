@@ -5,8 +5,8 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +14,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
@@ -30,7 +29,7 @@
         </items>
       </ToolBar>
       <Separator layoutX="55.0" layoutY="133.0" prefHeight="13.0" prefWidth="835.0" />
-      <Label layoutX="680.0" layoutY="52.0" prefHeight="21.0" prefWidth="149.0" text="ORE LAVORATE" />
+      <Label layoutX="680.0" layoutY="52.0" prefHeight="21.0" prefWidth="149.0" text="WORK HOURS" />
       <Button fx:id="previousBtn" layoutX="17.0" layoutY="140.0" mnemonicParsing="false" onAction="#goPrevious" prefHeight="45.0" prefWidth="40.0" text="&lt;" />
       <Button fx:id="nextBtn" layoutX="890.0" layoutY="140.0" mnemonicParsing="false" onAction="#goNext" prefHeight="45.0" prefWidth="40.0" text="&gt;" />
       <Label layoutX="620.0" layoutY="188.0" prefHeight="21.0" prefWidth="85.0" text="GO TO" />
@@ -44,7 +43,7 @@
             <Font name="System Italic" size="15.0" />
          </font></Label>
       <Separator layoutX="533.0" layoutY="140.0" orientation="VERTICAL" prefHeight="626.0" prefWidth="10.0" />
-      <JFXButton layoutX="869.0" layoutY="719.0" onAction="#countWorkedHours" text="SAVE" />
+      <JFXButton fx:id="saveBtn" layoutX="869.0" layoutY="719.0" onAction="#countWorkedHours" text="SAVE" />
       <JFXButton fx:id="parBtn" layoutX="37.0" layoutY="248.0" onAction="#chooseParHours" text="PAR" />
       <JFXButton fx:id="freeDaysBtn" layoutX="37.0" layoutY="419.0" onAction="#chooseFreeHours" text="FREE DAY" />
       <JFXButton fx:id="sicknessBtn" layoutX="37.0" layoutY="598.0" onAction="#chooseSickHours" text="SICKNESS" />
@@ -54,29 +53,10 @@
                <children>
                   <AnchorPane prefHeight="107.0" prefWidth="293.0">
                      <children>
-                        <JFXButton fx:id="parOKBtn" layoutX="210.0" layoutY="14.0" onAction="#countSpecialHours" text="OK" />
-                        <CheckBox fx:id="parIsHalfHour" layoutX="57.0" layoutY="54.0" mnemonicParsing="false" text="Half hour" />
-                        <TextField fx:id="parResultTF" alignment="CENTER" layoutX="78.0" layoutY="12.0" prefHeight="31.0" prefWidth="48.0" />
-                        <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="46.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@meno.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="126.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@piu.png" />
-                           </image>
-                        </ImageView>
-                        <JFXButton fx:id="parAugmentBtn" layoutX="121.0" layoutY="9.0" onAction="#augment" prefHeight="38.0" prefWidth="41.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="parReduceBtn" layoutX="41.0" layoutY="9.0" onAction="#reduce" prefHeight="38.0" prefWidth="41.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
+                        <JFXButton fx:id="parOKBtn" layoutX="208.0" layoutY="54.0" onAction="#countSpecialHours" text="OK" />
+                        <TextField fx:id="parResultTF" alignment="CENTER" layoutX="52.0" layoutY="54.0" prefHeight="31.0" prefWidth="48.0" />
+                        <JFXSlider fx:id="parSlider" blockIncrement="0.5" layoutX="12.0" layoutY="14.0" majorTickUnit="0.5" max="8.0" minorTickCount="0" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
+                        <JFXButton fx:id="parClearBtn" layoutX="121.0" layoutY="54.0" onAction="#clear" text="CLEAR" />
                      </children>
                   </AnchorPane>
                </children>
@@ -89,33 +69,13 @@
                <children>
                   <AnchorPane prefHeight="107.0" prefWidth="293.0">
                      <children>
-                        <JFXButton fx:id="freeOKBtn" layoutX="182.0" layoutY="28.0" onAction="#countSpecialHours" prefHeight="31.0" prefWidth="55.0" text="OK" />
-                        <CheckBox fx:id="freeIsHalfHour" layoutX="74.0" layoutY="69.0" mnemonicParsing="false" text="Half hour" />
-                        <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="45.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@meno.png" />
-                           </image>
-                        </ImageView>
-                        <TextField fx:id="freeResultTF" alignment="CENTER" layoutX="74.0" layoutY="28.0" prefHeight="31.0" prefWidth="55.0" />
-                        <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="129.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@piu.png" />
-                           </image>
-                        </ImageView>
-                        <JFXButton fx:id="freeAugmentBtn" layoutX="129.0" layoutY="28.0" onAction="#augment" prefHeight="31.0" prefWidth="30.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="freeReduceBtn" layoutX="44.0" layoutY="28.0" onAction="#reduce" prefHeight="31.0" prefWidth="33.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
+                        <JFXButton fx:id="freeOKBtn" layoutX="212.0" layoutY="54.0" onAction="#countSpecialHours" text="OK" />
+                        <TextField fx:id="freeResultTF" alignment="CENTER" layoutX="47.0" layoutY="54.0" prefHeight="31.0" prefWidth="48.0" />
+                        <JFXSlider fx:id="freeSlider" blockIncrement="0.5" layoutX="12.0" layoutY="14.0" majorTickUnit="0.5" max="8.0" minorTickCount="0" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
+                        <JFXButton fx:id="freeClearBtn" layoutX="132.0" layoutY="54.0" onAction="#clear" text="CLEAR" />
                      </children>
                   </AnchorPane>
-               </children>
-            </JFXDialog>
+               </children></JFXDialog>
          </children>
       </JFXDialogLayout>
       <JFXDialogLayout fx:id="sickDialogLayout" layoutX="177.0" layoutY="549.0" prefHeight="130.0" prefWidth="352.0">
@@ -124,53 +84,39 @@
                <children>
                   <AnchorPane prefHeight="107.0" prefWidth="293.0">
                      <children>
-                        <JFXButton fx:id="sickOKBtn" layoutX="222.0" layoutY="29.0" onAction="#countSpecialHours" text="OK" />
-                        <CheckBox fx:id="sickIsHalfHour" layoutX="52.0" layoutY="72.0" mnemonicParsing="false" text="Half hour" />
-                        <TextField fx:id="sickResultTF" alignment="CENTER" layoutX="67.0" layoutY="31.0" prefHeight="31.0" prefWidth="60.0" />
-                        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="38.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@meno.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="125.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@piu.png" />
-                           </image>
-                        </ImageView>
-                        <JFXButton fx:id="sickAugmentBtn" layoutX="123.0" layoutY="29.0" onAction="#augment" prefHeight="31.0" prefWidth="33.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="sickReduceBtn" layoutX="36.0" layoutY="31.0" onAction="#reduce" prefHeight="31.0" prefWidth="34.0">
-                           <graphic>
-                              <Pane />
-                           </graphic>
-                        </JFXButton>
+                        <JFXButton fx:id="sickOKBtn" layoutX="204.0" layoutY="61.0" onAction="#countSpecialHours" text="OK" />
+                        <TextField fx:id="sickResultTF" alignment="CENTER" layoutX="53.0" layoutY="61.0" prefHeight="31.0" prefWidth="48.0" />
+                        <JFXSlider fx:id="sickSlider" blockIncrement="0.5" layoutX="12.0" layoutY="9.0" majorTickUnit="0.5" max="8.0" minorTickCount="0" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
+                        <JFXButton fx:id="sickClearBtn" layoutX="126.0" layoutY="61.0" onAction="#clear" text="CLEAR" />
                      </children>
                   </AnchorPane>
-               </children>
-            </JFXDialog>
+               </children></JFXDialog>
          </children>
       </JFXDialogLayout>
-      <Circle fx:id="parCircle" fill="#ffff2c" layoutX="142.0" layoutY="263.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="parCircle" fill="#20c90d" layoutX="142.0" layoutY="263.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
       <Label fx:id="parHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="241.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Circle fx:id="freeCircle" fill="#67d043" layoutX="142.0" layoutY="435.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="freeCircle" fill="#eeff2e" layoutX="142.0" layoutY="435.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
       <Label fx:id="freeHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="412.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <Circle fx:id="sickCircle" fill="#fc3e3e" layoutX="142.0" layoutY="614.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
       <Label fx:id="sickHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="592.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <JFXButton layoutX="806.0" layoutY="719.0" onAction="#reset" text="RESET" />
+      <ImageView fx:id="penImageView" fitHeight="33.0" fitWidth="37.0" layoutX="69.0" layoutY="78.0" onMouseClicked="#ciao" pickOnBounds="true" preserveRatio="true" style="-fx-border-width: 2; -fx-border-color: red;">
+         <image>
+            <Image url="@pen.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="25.0" layoutY="47.0" />
    </children>
 </AnchorPane>
