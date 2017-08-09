@@ -16,9 +16,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import application.Main;
-import hours.DataFile;
-import hours.Hour;
-import hours.Month;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import users.Person;
@@ -87,8 +84,13 @@ public class ToolsForManageFile {
 	}
 
 	public void initDataFile(File dataFile, int year) {
-		ObservableList<Hour> hours = createAndGetHourTemplateXML(year);
-		ObservableList<Month> months = createAndGetMonthTemplateXML();
+		ObservableList<Hour> hoursList = createAndGetHourTemplateXML(year);
+		ObservableList<Month> monthsList = createAndGetMonthTemplateXML();
+		Months months = new Months();
+		months.setMonths(monthsList);
+
+		Hours hours = new Hours();
+		hours.setHours(hoursList);
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Marshaller m = context.createMarshaller();

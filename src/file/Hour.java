@@ -1,4 +1,4 @@
-package hours;
+package file;
 
 import javax.xml.bind.annotation.XmlElement;
 
