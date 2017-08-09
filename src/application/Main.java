@@ -3,7 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 
-import file.ToolsForManagedFile;
+import file.ToolsForManageFile;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +27,7 @@ public class Main extends Application {
 		String lastname = "";
 		isLogged = new File("XMLFile/userLogged.info");
 		if (isLogged.exists() && !isLogged.isDirectory()) {
-			String loggedUser = ToolsForManagedFile.getInstance().readAndGetUserLoggedInformation();
+			String loggedUser = ToolsForManageFile.getInstance().readAndGetUserLoggedInformation();
 			if (loggedUser.contains(":")) {
 				String[] loggedNameLastname = loggedUser.split(":");
 				name = loggedNameLastname[0];
@@ -46,6 +46,9 @@ public class Main extends Application {
 			}
 		} else {
 			File personsFile = new File("XMLFile/Persons.xml");
+			if (!personsFile.exists()) {
+				personsFile.createNewFile();
+			}
 			SelectUser selectUser = new SelectUser(personsFile);
 			selectUser.showLoginInterface();
 		}
