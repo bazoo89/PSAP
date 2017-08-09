@@ -2,152 +2,150 @@ package file;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Month {
-	private IntegerProperty idMonth;
-	private DoubleProperty salary;
-	private DoubleProperty holidaysRes;
-	private DoubleProperty parRes;
-	private DoubleProperty workedDays;
-	private DoubleProperty workedHours;
-	private DoubleProperty sicknessUsedTemp;
-	private DoubleProperty holidaysUsedTemp;
-	private DoubleProperty parUsedTemp;
+	private StringProperty idMonth;
+	private StringProperty salary;
+	private StringProperty holidaysRes;
+	private StringProperty parRes;
+	private StringProperty workedDays;
+	private StringProperty workedHours;
+	private StringProperty sicknessUsedTemp;
+	private StringProperty holidaysUsedTemp;
+	private StringProperty parUsedTemp;
 
 	public Month() {
 		this(null, null, null, null, null, null, null, null, null);
 	}
 
-	public Month(Integer id, Double salary, Double holidays_res, Double par_res, Double worked_days, Double worked_hours, Double sickness_used_temp, Double holidays_used_temp, Double par_used_temp) {
-		this.idMonth = new SimpleIntegerProperty(id);
-		this.salary = new SimpleDoubleProperty(salary);
-		this.holidaysRes = new SimpleDoubleProperty(holidays_res);
-		this.parRes = new SimpleDoubleProperty(par_res);
-		this.workedDays = new SimpleDoubleProperty(worked_days);
-		this.workedHours = new SimpleDoubleProperty(worked_hours);
-		this.sicknessUsedTemp = new SimpleDoubleProperty(sickness_used_temp);
-		this.holidaysUsedTemp = new SimpleDoubleProperty(holidays_used_temp);
-		this.parUsedTemp = new SimpleDoubleProperty(par_used_temp);
+	public Month(String id, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp, String par_used_temp) {
+		this.idMonth = new SimpleStringProperty(id);
+		this.salary = new SimpleStringProperty(salary);
+		this.holidaysRes = new SimpleStringProperty(holidays_res);
+		this.parRes = new SimpleStringProperty(par_res);
+		this.workedDays = new SimpleStringProperty(worked_days);
+		this.workedHours = new SimpleStringProperty(worked_hours);
+		this.sicknessUsedTemp = new SimpleStringProperty(sickness_used_temp);
+		this.holidaysUsedTemp = new SimpleStringProperty(holidays_used_temp);
+		this.parUsedTemp = new SimpleStringProperty(par_used_temp);
 	}
 
 	@XmlElement(name = "id_month")
-	public Integer getId() {
+	public String getId() {
 		return idMonth.get();
 	}
 
 	@XmlElement(name = "salary")
-	public Double getSalary() {
+	public String getSalary() {
 		return salary.get();
 	}
 
 	@XmlElement(name = "holidays_res")
-	public Double getHolidaysRes() {
+	public String getHolidaysRes() {
 		return holidaysRes.get();
 	}
 
 	@XmlElement(name = "par_res")
-	public Double getParRes() {
+	public String getParRes() {
 		return parRes.get();
 	}
 
 	@XmlElement(name = "worked_days")
-	public Double getWorkedDays() {
+	public String getWorkedDays() {
 		return workedDays.get();
 	}
 
 	@XmlElement(name = "worked_hours")
-	public Double getWorkedHours() {
+	public String getWorkedHours() {
 		return workedHours.get();
 	}
 
 	@XmlElement(name = "sickness_used_temp")
-	public Double getSicknessUsedTemp() {
+	public String getSicknessUsedTemp() {
 		return sicknessUsedTemp.get();
 	}
 
 	@XmlElement(name = "holidays_used_temp")
-	public Double getHolidaysUsedTemp() {
+	public String getHolidaysUsedTemp() {
 		return holidaysUsedTemp.get();
 	}
 
 	@XmlElement(name = "par_used_temp")
-	public Double getParUsedTemp() {
+	public String getParUsedTemp() {
 		return parUsedTemp.get();
 	}
 
-	public IntegerProperty idProperty() {
+	public StringProperty idProperty() {
 		return idMonth;
 	}
 
-	public DoubleProperty salaryProperty() {
+	public StringProperty salaryProperty() {
 		return salary;
 	}
 
-	public DoubleProperty holidaysResProperty() {
+	public StringProperty holidaysResProperty() {
 		return holidaysRes;
 	}
 
-	public DoubleProperty parResProperty() {
+	public StringProperty parResProperty() {
 		return parRes;
 	}
 
-	public DoubleProperty workedDaysProperty() {
+	public StringProperty workedDaysProperty() {
 		return workedDays;
 	}
 
-	public DoubleProperty workedHoursProperty() {
+	public StringProperty workedHoursProperty() {
 		return workedHours;
 	}
 
-	public DoubleProperty sicknessUsedTempProperty() {
+	public StringProperty sicknessUsedTempProperty() {
 		return sicknessUsedTemp;
 	}
 
-	public DoubleProperty holidaysUsedTempProperty() {
+	public StringProperty holidaysUsedTempProperty() {
 		return holidaysUsedTemp;
 	}
 
-	public DoubleProperty parUsedTempProperty() {
+	public StringProperty parUsedTempProperty() {
 		return parUsedTemp;
 	}
 
-	public void setId(Integer id) {
-		this.idMonth = new SimpleIntegerProperty(id);
+	public void setId(String id) {
+		this.idMonth = new SimpleStringProperty(id);
 	}
 
-	public void setSalary(Double salary) {
-		this.salary = new SimpleDoubleProperty(salary);
+	public void setSalary(String salary) {
+		this.salary = new SimpleStringProperty(salary);
 	}
 
-	public void setHolidayRes(Double holidaysRes) {
-		this.holidaysRes = new SimpleDoubleProperty(holidaysRes);
+	public void setHolidayRes(String holidaysRes) {
+		this.holidaysRes = new SimpleStringProperty(holidaysRes);
 	}
 
-	public void setParRes(Double parRes) {
-		this.parRes = new SimpleDoubleProperty(parRes);
+	public void setParRes(String parRes) {
+		this.parRes = new SimpleStringProperty(parRes);
 	}
 
-	public void setWorkedDays(Double workedDays) {
-		this.workedDays = new SimpleDoubleProperty(workedDays);
+	public void setWorkedDays(String workedDays) {
+		this.workedDays = new SimpleStringProperty(workedDays);
 	}
 
-	public void setWorkedHours(Double workedHours) {
-		this.workedHours = new SimpleDoubleProperty(workedHours);
+	public void setWorkedHours(String workedHours) {
+		this.workedHours = new SimpleStringProperty(workedHours);
 	}
 
-	public void setSicknessUsedTemp(Double sicknessUsedTemp) {
-		this.sicknessUsedTemp = new SimpleDoubleProperty(sicknessUsedTemp);
+	public void setSicknessUsedTemp(String sicknessUsedTemp) {
+		this.sicknessUsedTemp = new SimpleStringProperty(sicknessUsedTemp);
 	}
 
-	public void setHolidaysUsedTemp(Double holidaysUsedTemp) {
-		this.holidaysUsedTemp = new SimpleDoubleProperty(holidaysUsedTemp);
+	public void setHolidaysUsedTemp(String holidaysUsedTemp) {
+		this.holidaysUsedTemp = new SimpleStringProperty(holidaysUsedTemp);
 	}
 
-	public void setParUsedTemp(Double parUsedTemp) {
-		this.parUsedTemp = new SimpleDoubleProperty(parUsedTemp);
+	public void setParUsedTemp(String parUsedTemp) {
+		this.parUsedTemp = new SimpleStringProperty(parUsedTemp);
 	}
 }

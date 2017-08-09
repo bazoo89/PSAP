@@ -262,10 +262,10 @@ public class MainController implements Initializable {
 						result = result + ":" + Integer.toString(mm);
 				}
 				workedHoursLabel.setText(result);
+				save();
 			} else
 				workedHoursLabel.setText("Warning!!!!!!");
 		}
-		save();
 	}
 
 	public void chooseParHours() {
@@ -422,11 +422,11 @@ public class MainController implements Initializable {
 	}
 
 	public void goToButtonArea() {
-		if (!customButtonDialog.isVisible()) {
-			customButtonDialog.show(customButtonDialogLayout);
-		} else {
-			customButtonDialog.setVisible(false);
-		}
+		//		if (!customButtonDialog.isVisible()) {
+		//			customButtonDialog.show(customButtonDialogLayout);
+		//		} else {
+		//			customButtonDialog.setVisible(false);
+		//		}
 	}
 	///////////////////////////////////////
 
@@ -434,8 +434,8 @@ public class MainController implements Initializable {
 
 	public void save() {
 		File userFile = new File(Main.pathFile);
-		String hEntry = hh_entryCB.getValue();
-		String hExit = hh_exitCB.getValue();
+		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
+		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
 		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit);
 

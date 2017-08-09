@@ -31,7 +31,7 @@ public class Hour {
 	}
 
 	@XmlElement(name = "h_exit")
-	public String getDataFile() {
+	public String getHExit() {
 		return h_exit.get();
 	}
 

@@ -114,6 +114,9 @@ public class ToolsForManageFile {
 				if (hour.getId().equals(date)) {
 					hour.setHEntry(hEntry);
 					hour.setHExit(hExit);
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
 				}
 			}
 		} catch (Exception ex) {
@@ -203,11 +206,12 @@ public class ToolsForManageFile {
 	}
 
 	public ObservableList<Month> createAndGetMonthTemplateXML() {
-		final double ZERO = 0.0;
+		final String ZERO = "0.0";
 		ObservableList<Month> months = FXCollections.observableArrayList();
-		int i = 0;
-		while (i < 12) {
-			Month month = new Month(i + 1, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
+		int i = 1;
+		while (i <= 12) {
+			String stringMonth = i + "";
+			Month month = new Month(stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
 			months.add(month);
 			i++;
 		}
