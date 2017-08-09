@@ -81,8 +81,6 @@ public class UserController implements Initializable {
 					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
 				loggedUser = name + ":" + lastname;
-				// Save the file path to the registry.
-				//				setPersonFilePath(personFile);
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
