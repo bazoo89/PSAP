@@ -19,12 +19,15 @@ import javax.xml.bind.Unmarshaller;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import users.Person;
 import users.Persons;
 
 public class ToolsForManageFile {
 
 	private static ToolsForManageFile instance;
+
+	final String defaultHour = "00:00";
 
 	public static ToolsForManageFile getInstance() {
 		if (instance == null) {
@@ -124,13 +127,50 @@ public class ToolsForManageFile {
 		}
 	}
 
+	public boolean loadHoursTabFromDataFile(File dataFile, String date, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
+		boolean loadedSuccessfuly = false;
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Hour> hoursList = wrapper.getHour();
+			for (Hour hour : hoursList) {
+				if (hour.getId().equals(date)) {
+					if (!hour.getHEntry().equals(defaultHour)) {
+						String[] hourArray = hour.getHEntry().split(":");
+						String hh = hourArray[0];
+						String mm = hourArray[1];
+						hh_entryCB.setValue(hh);
+						mm_entryCB.setValue(mm);
+						loadedSuccessfuly = true;
+					}
+					if (!hour.getHExit().equals(defaultHour)) {
+						String[] hourArray = hour.getHExit().split(":");
+						String hh = hourArray[0];
+						String mm = hourArray[1];
+						hh_exitCB.setValue(hh);
+						mm_exitCB.setValue(mm);
+						loadedSuccessfuly = true;
+					}
+					if (loadedSuccessfuly) {
+						Marshaller m = context.createMarshaller();
+						m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+						m.marshal(wrapper, dataFile);
+						return loadedSuccessfuly;
+					}
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return loadedSuccessfuly;
+	}
+
 	public void updateSalaryTabToDataFile() {
 		//TODO
 	}
 
 	public ObservableList<Hour> createAndGetHourTemplateXML(int year) {
-		final String defaultHEntry = "00:00";
-		final String defaultHExit = "00:00";
 		boolean isLeapYear = year % 4 == 0 ? true : false;
 		String stringYear = year + "";
 		Hour hour = null;
@@ -158,7 +198,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHEntry, defaultHExit);
+					hour = new Hour(id, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -174,7 +214,7 @@ public class ToolsForManageFile {
 						day = (Integer.parseInt(day) + 1) + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHEntry, defaultHExit);
+					hour = new Hour(id, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -194,7 +234,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHEntry, defaultHExit);
+					hour = new Hour(id, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;

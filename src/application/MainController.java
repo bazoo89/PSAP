@@ -413,20 +413,32 @@ public class MainController implements Initializable {
 
 	public void goNext() {
 		reset();
-		calendar.setValue(calendar.getValue().plusDays(1));
+		LocalDate nextDay = calendar.getValue().plusDays(1);
+		calendar.setValue(nextDay);
+		File userFile = new File(Main.pathFile);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, nextDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		if (loadedSuccessfully) {
+			countWorkedHours();
+		}
 	}
 
 	public void goPrevious() {
 		reset();
-		calendar.setValue(calendar.getValue().minusDays(1));
+		LocalDate previousDay = calendar.getValue().minusDays(1);
+		calendar.setValue(previousDay);
+		File userFile = new File(Main.pathFile);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, previousDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		if (loadedSuccessfully) {
+			countWorkedHours();
+		}
 	}
 
 	public void goToButtonArea() {
-		//		if (!customButtonDialog.isVisible()) {
-		//			customButtonDialog.show(customButtonDialogLayout);
-		//		} else {
-		//			customButtonDialog.setVisible(false);
-		//		}
+		if (!customButtonDialog.isVisible()) {
+			customButtonDialog.show(customButtonDialogLayout);
+		} else {
+			customButtonDialog.setVisible(false);
+		}
 	}
 	///////////////////////////////////////
 

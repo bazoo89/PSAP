@@ -1102,13 +1102,13 @@
             <id_hour>20170808</id_hour>
         </hour>
         <hour>
-            <h_entry>09:00</h_entry>
-            <h_exit>12:20</h_exit>
+            <h_entry>10:25</h_entry>
+            <h_exit>15:35</h_exit>
             <id_hour>20170809</id_hour>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
+            <h_entry>10:00</h_entry>
+            <h_exit>19:00</h_exit>
             <id_hour>20170810</id_hour>
         </hour>
         <hour>
