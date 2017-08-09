@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -118,6 +119,10 @@ public class MainController implements Initializable {
 	@FXML
 	public Circle parCircle;
 	@FXML
+	public JFXDialogLayout customButtonDialogLayout;
+	@FXML
+	public JFXDialog customButtonDialog;
+	@FXML
 	public JFXDialog parDialog;
 	@FXML
 	public JFXDialog freeDialog;
@@ -137,11 +142,38 @@ public class MainController implements Initializable {
 	public JFXSlider sickSlider;
 	@FXML 
 	public ImageView penImageView;
-
+	@FXML
+    public JFXButton allDayBtn;
+    @FXML
+    public JFXButton onlyMorningBtn;
+    @FXML
+    public JFXButton onlyAfternoonBtn;
+    @FXML
+    public JFXButton createCustomBtn;
+    @FXML
+    public JFXButton customBtn1;
+    @FXML
+    public JFXButton customBtn2;
+    @FXML
+    public JFXButton customBtn3;
+    @FXML
+    public Button recycleBtn1;
+    @FXML
+    public Button recycleBtn2;
+    @FXML
+    public Button recycleBtn3;
+    @FXML
+    public JFXButton okBtn;
+    @FXML
+    public TextField customTF;
     
 	public static int sceneLength=650;
 	public static int sceneWidth=430;
 	public int dayTotalHour=0;
+	public static boolean customBtn1State;
+	public static boolean customBtn2State;
+	public static boolean customBtn3State;
+	public static int createdButtons;
 	
 	ObservableList<String> hours=(ObservableList<String>) FXCollections.observableArrayList("08","09","10","11","12","13"
 			,"14","15","16","17","18","19","20");
@@ -215,9 +247,10 @@ public class MainController implements Initializable {
 	        }
 		}
 		});
-	}
-	public void ciao(){
-		System.out.println("ciao");
+		customBtn1State=false;
+		customBtn1State=false;
+		customBtn1State=false;
+		createdButtons=0;
 	}
 	//******* This method counts the worked hours and displays the result on the workedHours text field *******//
 	public void countWorkedHours(){
@@ -406,15 +439,82 @@ public class MainController implements Initializable {
 		calendar.setValue(calendar.getValue().minusDays(1));
 	}
 	public void goToButtonArea(){
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/application/CustomButton.fxml"));
-			Scene buttonArea = new Scene(root,100,100);
-			Main.primaryStage.setScene(buttonArea);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
+		if(!customButtonDialog.isVisible()){
+			customButtonDialog.show(customButtonDialogLayout);
+		}
+		else{
+			customButtonDialog.setVisible(false);
+		}
 	}
 	///////////////////////////////////////
+	public void removeBtn1(){
+		manageCustomBtn(customBtn1,recycleBtn1,false,true);
+		customBtn1State=false;
+		createdButtons--;
+	}
+	public void removeBtn2(){
+		manageCustomBtn(customBtn2,recycleBtn2,false,true);
+		customBtn2State=false;
+		createdButtons--;
+	}
+	public void removeBtn3(){
+		manageCustomBtn(customBtn3,recycleBtn3,false,true);
+		customBtn3State=false;
+		createdButtons--;
+	}
+	public void createCustom(){
+		if(!customTF.getText().equals("")){
+			if(createdButtons==0){
+				manageCustomBtn(customBtn1,recycleBtn1,true,false);
+				customBtn1State=true;
+				createdButtons++;
+			}
+			else if(createdButtons==1){
+				if(customBtn1State){
+					manageCustomBtn(customBtn2,recycleBtn2,true,false);
+					customBtn2State=true;
+					createdButtons++;
+				}
+				else if(customBtn2State){
+					manageCustomBtn(customBtn1,recycleBtn1,true,false);
+					customBtn1State=true;
+					createdButtons++;
+				}
+				else{
+					manageCustomBtn(customBtn1,recycleBtn1,true,false);
+					customBtn1State=true;
+					createdButtons++;
+				}
+			}
+			else if(createdButtons==2){
+				if(customBtn1State && customBtn2State){
+					manageCustomBtn(customBtn3,recycleBtn3,true,false);
+					customBtn3State=true;
+					createdButtons++;
+				}
+				else if(customBtn1State && customBtn3State){
+					manageCustomBtn(customBtn2,recycleBtn2,true,false);
+					customBtn2State=true;
+					createdButtons++;
+				}
+				else if(customBtn2State && customBtn3State){
+					manageCustomBtn(customBtn1,recycleBtn1,true,false);
+					customBtn1State=true;
+					createdButtons++;
+				}
+			}
+		}
+	}
 	
+	
+	public void manageCustomBtn(JFXButton btn,Button recBtn,boolean visible, boolean disabled){
+		btn.setText(customTF.getText());
+		btn.setDisable(disabled);
+		btn.setVisible(visible);
+		recBtn.setDisable(disabled);
+		recBtn.setVisible(visible);
+	}
+	public void manageCustomChoice(){
+		System.out.println("ciao");
+	}
 }
