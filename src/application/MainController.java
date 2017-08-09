@@ -34,13 +34,13 @@ import javafx.scene.shape.Circle;
 public class MainController implements Initializable {
 
 	@FXML
-	private ComboBox<String> hh_entryCB;
+	public ComboBox<String> hh_entryCB;
 	@FXML
-	private ComboBox<String> mm_entryCB;
+	public ComboBox<String> mm_entryCB;
 	@FXML
-	private ComboBox<String> hh_exitCB;
+	public ComboBox<String> hh_exitCB;
 	@FXML
-	private ComboBox<String> mm_exitCB;
+	public ComboBox<String> mm_exitCB;
 	@FXML
 	private Label workedHoursLabel;
 	@FXML

@@ -39,13 +39,21 @@ public class Main extends Application {
 				pathFile = loggedNameLastname[2];
 			}
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
+				Parent root = loader.load();
 				Scene scene = new Scene(root, sceneLength, sceneWidth);
 				Main.primaryStage.setScene(scene);
 				Main.primaryStage.setResizable(false);
 				Main.primaryStage.show();
 				Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
 				Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
+				MainController mainController = loader.getController();
+				String date = mainController.calendar.getValue().toString().replace("-", "");
+				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(new File(pathFile), date, mainController.hh_entryCB, mainController.mm_entryCB,
+						mainController.hh_exitCB, mainController.mm_exitCB);
+				if (loadedSuccessfully) {
+					mainController.countWorkedHours();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

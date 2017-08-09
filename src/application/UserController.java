@@ -124,7 +124,8 @@ public class UserController implements Initializable {
 		try {
 			Stage stage = (Stage) okButton.getScene().getWindow();
 			stage.close();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
+			Parent root = loader.load();
 			Scene scene = new Scene(root, sceneLength, sceneWidth);
 			Main.primaryStage.setScene(scene);
 			Main.primaryStage.setResizable(false);
@@ -136,6 +137,13 @@ public class UserController implements Initializable {
 			Main.lastname = lastname;
 			Main.pathFile = userFile.getPath();
 			ToolsForManageFile.getInstance().writeUserLoggedInformation(loggedUser);
+			MainController mainController = loader.getController();
+			String date = mainController.calendar.getValue().toString().replace("-", "");
+			boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(new File(userFile.getPath()), date, mainController.hh_entryCB, mainController.mm_entryCB,
+					mainController.hh_exitCB, mainController.mm_exitCB);
+			if (loadedSuccessfully) {
+				mainController.countWorkedHours();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
