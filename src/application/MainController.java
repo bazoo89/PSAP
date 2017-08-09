@@ -3,16 +3,20 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-
+import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,12 +38,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
-
+import javafx.util.Callback;
 public class MainController implements Initializable {
 	
 	@FXML
@@ -53,6 +62,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Label workedHoursLabel;
 	@FXML
+	private Button saveBtn;
+	@FXML
 	private Button freeDaysBtn;
 	@FXML
 	private Button parOKBtn;
@@ -61,6 +72,12 @@ public class MainController implements Initializable {
 	@FXML
 	private Button freeOKBtn;
 	@FXML
+	private Button parClearBtn;
+	@FXML
+	private Button freeClearBtn;
+	@FXML
+	private Button sickClearBtn;
+	@FXML
 	private Button parBtn;
 	@FXML
 	private Button sicknessBtn;
@@ -68,18 +85,6 @@ public class MainController implements Initializable {
 	private Button nextBtn;
 	@FXML
 	private Button previousBtn;
-	@FXML
-	private Button parAugmentBtn;
-	@FXML
-	private Button parReduceBtn;
-	@FXML
-	private Button freeAugmentBtn;
-	@FXML
-	private Button freeReduceBtn;
-	@FXML
-	private Button sickAugmentBtn;
-	@FXML
-	private Button sickReduceBtn;
 	@FXML
 	private TextField parResultTF;
 	@FXML
@@ -124,16 +129,25 @@ public class MainController implements Initializable {
 	public JFXDialogLayout freeDialogLayout;
 	@FXML
 	public JFXDialogLayout sickDialogLayout;
-	
+	@FXML
+	public JFXSlider parSlider;
+	@FXML
+	public JFXSlider freeSlider;
+	@FXML
+	public JFXSlider sickSlider;
+	@FXML 
+	public ImageView penImageView;
+
+    
 	public static int sceneLength=650;
-	public static int sceneWidth=650;
+	public static int sceneWidth=430;
 	public int dayTotalHour=0;
 	
 	ObservableList<String> hours=(ObservableList<String>) FXCollections.observableArrayList("08","09","10","11","12","13"
 			,"14","15","16","17","18","19","20");
 	ObservableList<String> minutes=(ObservableList<String>) FXCollections.observableArrayList("00","05","10","15","20","25","30"
 			,"35","40","45","50","55");
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		hh_entryCB.setItems(hours);
@@ -141,16 +155,84 @@ public class MainController implements Initializable {
 		hh_exitCB.setItems(hours);
 		mm_exitCB.setItems(minutes);
 		calendar.setValue(LocalDate.now());
+		parSlider.valueProperty().addListener(new ChangeListener<Number>() { 
+			@Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+	        if (newValue == null) {
+	            parResultTF.setText("");
+	            return;
+	          }
+	        float decimal=newValue.floatValue()-(int)newValue.floatValue();
+	        if((decimal>0 && decimal<0.5) || (decimal>0.5 && decimal<1)){
+	        	parResultTF.setText((int)newValue.floatValue() + "");
+	        }
+	        else {
+	        	if(decimal==0)
+	        		parResultTF.setText((int)newValue.floatValue() + "");
+	        	else if(decimal==0.5)
+	        		parResultTF.setText((int)newValue.floatValue()+ ".5");
+	        	else
+	        		parResultTF.setText(newValue.floatValue() + "");
+	        }
+		}
+		});
+		freeSlider.valueProperty().addListener(new ChangeListener<Number>() { 
+			@Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+	        if (newValue == null) {
+	            freeResultTF.setText("");
+	            return;
+	          }
+	        float decimal=newValue.floatValue()-(int)newValue.floatValue();
+	        if((decimal>0 && decimal<0.5) || (decimal>0.5 && decimal<1)){
+	        	freeResultTF.setText((int)newValue.floatValue() + "");
+	        }
+	        else {
+	        	if(decimal==0)
+	        		freeResultTF.setText((int)newValue.floatValue() + "");
+	        	else if(decimal==0.5)
+	        		freeResultTF.setText((int)newValue.floatValue()+ ".5");
+	        	else
+	        		freeResultTF.setText(newValue.floatValue() + "");
+	        }
+		}
+		});
+		sickSlider.valueProperty().addListener(new ChangeListener<Number>() { 
+			@Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+	        if (newValue == null) {
+	            sickResultTF.setText("");
+	            return;
+	          }
+	        float decimal=newValue.floatValue()-(int)newValue.floatValue();
+	        if((decimal>0 && decimal<0.5) || (decimal>0.5 && decimal<1)){
+	        	sickResultTF.setText((int)newValue.floatValue() + "");
+	        }
+	        else {
+	        	if(decimal==0)
+	        		sickResultTF.setText((int)newValue.floatValue() + "");
+	        	else if(decimal==0.5)
+	        		sickResultTF.setText((int)newValue.floatValue()+ ".5");
+	        	else
+	        		sickResultTF.setText(newValue.floatValue() + "");
+	        }
+		}
+		});
 	}
-	
+	public void ciao(){
+		System.out.println("ciao");
+	}
 	//******* This method counts the worked hours and displays the result on the workedHours text field *******//
 	public void countWorkedHours(){
 		String result="";
+		int hh,mm;
 		if(hh_exitCB.getValue()!=null && hh_entryCB.getValue()!=null  && 
 				mm_exitCB.getValue()!=null && mm_entryCB.getValue()!=null ){
 			if(Integer.parseInt(hh_entryCB.getValue())<Integer.parseInt(hh_exitCB.getValue())){
-				int hh=Integer.parseInt(hh_exitCB.getValue())-Integer.parseInt(hh_entryCB.getValue())-1;
-				int mm=Integer.parseInt(mm_exitCB.getValue())-Integer.parseInt(mm_entryCB.getValue());
+				if((Integer.parseInt(hh_entryCB.getValue())<13 && Integer.parseInt(hh_exitCB.getValue())>13)
+						|| (Integer.parseInt(hh_entryCB.getValue())<13 && Integer.parseInt(hh_exitCB.getValue())>=13
+						&& Integer.parseInt(mm_exitCB.getValue())>0))
+					hh=Integer.parseInt(hh_exitCB.getValue())-Integer.parseInt(hh_entryCB.getValue())-1;
+				else
+					hh=Integer.parseInt(hh_exitCB.getValue())-Integer.parseInt(hh_entryCB.getValue());
+				mm=Integer.parseInt(mm_exitCB.getValue())-Integer.parseInt(mm_entryCB.getValue());
 				if(Integer.toString(hh).length()==1)
 					result="0"+Integer.toString(hh);
 				else
@@ -176,28 +258,40 @@ public class MainController implements Initializable {
 		}
 	}
 	public void chooseParHours(){
-		parDialog.show(parDialogLayout);
-		parResultTF.setText("0");
-		if(sickDialog.isVisible())
-			sickDialog.close();
-		if(freeDialog.isVisible())
-			freeDialog.close();
+		if(!parDialog.isVisible()){
+			parDialog.show(parDialogLayout);
+			parSlider.setValue(0);
+			parResultTF.setText(Double.toString(parSlider.getValue()));
+			if(sickDialog.isVisible())
+				sickDialog.close();
+			if(freeDialog.isVisible())
+				freeDialog.close();
+		}
+		else{
+			parDialog.setVisible(false);
+		}
 	}
 	public void chooseFreeHours(){
-		freeDialog.show(freeDialogLayout);
-		freeResultTF.setText("0");
-		if(sickDialog.isVisible())
-			sickDialog.close();
-		if(parDialog.isVisible())
-			parDialog.close();
+		if(!freeDialog.isVisible()){
+			freeDialog.show(freeDialogLayout);
+			freeSlider.setValue(0);
+			freeResultTF.setText(Double.toString(freeSlider.getValue()));
+			if(sickDialog.isVisible())
+				sickDialog.close();
+			if(parDialog.isVisible())
+				parDialog.close();
+		}
 	}
 	public void chooseSickHours(){
-		sickDialog.show(sickDialogLayout);
-		sickResultTF.setText("0");
-		if(parDialog.isVisible())
-			parDialog.close();
-		if(freeDialog.isVisible())
-			freeDialog.close();
+		if(!sickDialog.isVisible()){
+			sickDialog.show(sickDialogLayout);
+			sickSlider.setValue(0);
+			sickResultTF.setText(Double.toString(sickSlider.getValue()));
+			if(parDialog.isVisible())
+				parDialog.close();
+			if(freeDialog.isVisible())
+				freeDialog.close();
+		}
 	}
 	public void countSpecialHours(){
 		int specialHours=0;
@@ -205,31 +299,52 @@ public class MainController implements Initializable {
 			parDialog.setVisible(false);
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
-			if(parIsHalfHour.isSelected())
-				parHoursLabel.setText(parResultTF.getText()+",5");
-			else
-				parHoursLabel.setText(parResultTF.getText());
+			parHoursLabel.setText(parResultTF.getText());
 			countTotalHours(parHoursLabel);			
 		}
 		else if(freeDialog.isVisible()){
 			freeDialog.setVisible(false);
 			freeCircle.setVisible(true);
 			freeHoursLabel.setVisible(true);
-			if(freeIsHalfHour.isSelected())
-				freeHoursLabel.setText(freeResultTF.getText()+",5");
-			else
-				freeHoursLabel.setText(freeResultTF.getText());
+			freeHoursLabel.setText(freeResultTF.getText());
 			countTotalHours(freeHoursLabel);
 		}
 		else if(sickDialog.isVisible()){
 			sickDialog.setVisible(false);
 			sickCircle.setVisible(true);
 			sickHoursLabel.setVisible(true);
-			if(sickIsHalfHour.isSelected())
-				sickHoursLabel.setText(sickResultTF.getText()+",5");
-			else
-				sickHoursLabel.setText(sickResultTF.getText());
+			sickHoursLabel.setText(sickResultTF.getText());
 			countTotalHours(sickHoursLabel);
+		}
+		else{}
+	}
+	public void clear(){
+		if(parDialog.isVisible()){
+			parSlider.setValue(0);
+			if(parCircle.isVisible())
+				parCircle.setVisible(false);
+			if(parHoursLabel.isVisible()){
+				parHoursLabel.setText(null);
+				parHoursLabel.setVisible(false);
+			}
+		}
+		else if(freeDialog.isVisible()){
+			freeSlider.setValue(0);
+			if(freeCircle.isVisible())
+				freeCircle.setVisible(false);
+			if(freeHoursLabel.isVisible()){
+				freeHoursLabel.setText(null);
+				freeHoursLabel.setVisible(false);
+			}
+		}
+		else if(sickDialog.isVisible()){
+			sickSlider.setValue(0);
+			if(sickCircle.isVisible())
+				sickCircle.setVisible(false);
+			if(sickHoursLabel.isVisible()){
+				sickHoursLabel.setText(null);
+				sickHoursLabel.setVisible(false);
+				}
 		}
 		else{}
 	}
@@ -247,43 +362,6 @@ public class MainController implements Initializable {
 //		} catch (Exception e) {
 //			System.out.println(e.getMessage());
 //		}
-	}
-	public void augment(){
-		if(parDialog.isVisible()){
-			manageAugment(parResultTF);
-		}
-		else if(freeDialog.isVisible()){
-			manageAugment(freeResultTF);
-		}
-		else if(sickDialog.isVisible()){
-			manageAugment(sickResultTF);
-		}
-		else{}
-		
-	}
-	public void reduce(){
-		if(parDialog.isVisible()){
-			manageReduce(parResultTF);
-		}
-		else if(freeDialog.isVisible()){
-			manageReduce(freeResultTF);
-		}
-		else if(sickDialog.isVisible()){
-			manageReduce(sickResultTF);
-		}
-		else{}
-	}
-	public void manageAugment(TextField tf){
-		int hours=Integer.parseInt(tf.getText());
-		hours=hours+1;
-		hours=Math.min(hours, 8);
-		tf.setText(Integer.toString(hours));
-	}
-	public void manageReduce(TextField tf){
-		int hours=Integer.parseInt(tf.getText());
-		hours=hours-1;
-		hours=Math.max(hours, 0);
-		tf.setText(Integer.toString(hours));
 	}
 	public void reset(){
 		hh_entryCB.setValue(null);
@@ -307,6 +385,7 @@ public class MainController implements Initializable {
 			freeDialog.close();
 		workedHoursLabel.setText("press save to calculate");
 	}
+	
 	//******* goToMethods *******//
 	public void goToSalary(){
 		try {
@@ -321,17 +400,21 @@ public class MainController implements Initializable {
 	public void goNext(){
 		reset();
 		calendar.setValue(calendar.getValue().plusDays(1));
-//			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-//			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
-//			Main.primaryStage.setScene(initScene);
 	}
 	public void goPrevious(){
 		reset();
 		calendar.setValue(calendar.getValue().minusDays(1));
-//			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-//			Scene initScene=new Scene(root,Main.sceneLength,Main.sceneWidth);
-//			Main.primaryStage.setScene(initScene);
-
+	}
+	public void goToButtonArea(){
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/application/CustomButton.fxml"));
+			Scene buttonArea = new Scene(root,100,100);
+			Main.primaryStage.setScene(buttonArea);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
 	}
 	///////////////////////////////////////
+	
 }
