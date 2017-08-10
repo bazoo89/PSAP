@@ -28,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -39,7 +40,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import utils.TempSavedInformation;
 
@@ -48,7 +51,7 @@ public class ButtonAreaController implements Initializable {
 	@FXML
 	public JFXButton allDayBtn;
 	@FXML
-	public GridPane gridPane;
+	public VBox buttonAreaVBox;
 	@FXML
 	public JFXButton onlyMorningBtn;
 	@FXML
@@ -77,147 +80,52 @@ public class ButtonAreaController implements Initializable {
 	public TextField customMMEntryTF;
 	@FXML
 	public TextField customMMExitTF;
-	
-	private static boolean customBtn1State;
-	private static boolean customBtn2State;
-	private static boolean customBtn3State;
-	private static int createdButtons;
+
 	public FXMLLoader loader=null;
 	public MainController mainController=null;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		customBtn1State = false;
-		customBtn1State = false;
-		customBtn1State = false;
-		createdButtons = 0;
 		loader= new FXMLLoader(getClass().getResource("/application/Main.fxml"));
 		mainController = loader.getController();
 	}
-	public void removeBtn1() {
-		manageCustomBtn(customBtn1, recycleBtn1, false, true);
-		customBtn1State = false;
-		createdButtons--;
-		customHHEntryTF.requestFocus();
-		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customBtn1.getText());
-	}
-
-	public void removeBtn2() {
-		manageCustomBtn(customBtn2, recycleBtn2, false, true);
-		customBtn2State = false;
-		createdButtons--;
-		customHHEntryTF.requestFocus();
-		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customBtn2.getText());
-	}
-
-	public void removeBtn3() {
-		manageCustomBtn(customBtn3, recycleBtn3, false, true);
-		customBtn3State = false;
-		createdButtons--;
-		customHHEntryTF.requestFocus();
-		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customBtn3.getText());
-	}
-
-	public void createCustom() {
-		//rivedere controlli
-		Button customButton=null;
-		if (!customHHEntryTF.getText().equals("") && !customMMEntryTF.getText().equals("") && 
-				!customHHExitTF.getText().equals("") &&!customMMExitTF.getText().equals("") ) {
-			if(customMMExitTF.getText().length()==1){
-				customMMExitTF.setText(customMMExitTF.getText()+"0");
-			}
-			if (createdButtons == 0) {
-					boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					if(r){
-						customButton=customBtn1;
-						customBtn1State = true;
-						createdButtons++;
-					}
-			} else if (createdButtons == 1) {
-				if (customBtn1State) {
-					if(!customBtn1.getText().equals(customHHEntryTF.getText()+":"+customMMEntryTF.getText()+"-"+customHHExitTF.getText()+":"+customMMExitTF.getText())){
-						boolean r=manageCustomBtn(customBtn2, recycleBtn2, true, false);
-						if(r){
-							customButton=customBtn2;
-							customBtn2State = true;
-							createdButtons++;
-						}
-					}
-				} else if (customBtn2State) {
-					if(!customBtn2.getText().equals(customHHEntryTF.getText()+":"+customMMEntryTF.getText()+"-"+customHHExitTF.getText()+":"+customMMExitTF.getText())){
-					boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					if(r){
-						customButton=customBtn1;
-						customBtn1State = true;
-						createdButtons++;
-					}
-				}
-				} else {
-					if(!customBtn1.getText().equals(customHHEntryTF.getText()+":"+customMMEntryTF.getText()+"-"+customHHExitTF.getText()+":"+customMMExitTF.getText())){
-						boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
-						if(r){
-							customButton=customBtn1;
-							customBtn1State = true;
-							createdButtons++;
-						}
-					}
-				}
-			} else if (createdButtons == 2) {
-				if (customBtn1State && customBtn2State) {
-					boolean r=manageCustomBtn(customBtn3, recycleBtn3, true, false);
-					if(r){
-						customButton=customBtn3;
-						customBtn3State = true;
-						createdButtons++;
-					}
-				} else if (customBtn1State && customBtn3State) {
-					boolean r=manageCustomBtn(customBtn2, recycleBtn2, true, false);
-					if(r){
-						customButton=customBtn2;
-						customBtn2State = true;
-						createdButtons++;
-					}
-				} else if (customBtn2State && customBtn3State) {
-					boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					if(r){
-						customButton=customBtn1;
-						customBtn1State = true;
-						createdButtons++;
-					}	
-				}
-			}
-			if (customButton != null){
-				ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customButton.getText());
+	public void removeCustomBtn(String customButtonText) {
+		boolean found=false;
+		JFXButton cButton=null;
+		HBox hbox=null;
+		HBox customButtonsHBox=(HBox) buttonAreaVBox.getChildren().get(1);
+		for(Node node: customButtonsHBox.getChildren()){
+			hbox=(HBox) node;
+			cButton=(JFXButton) hbox.getChildren().get(1);
+			if(cButton.getText().equals(customButtonText)){
+				found=true;
+				break;
 			}
 		}
-	}
-	public boolean manageCustomBtn(JFXButton btn, Button recBtn, boolean visible, boolean disabled) {
-		boolean result=false;
-		if(Integer.parseInt(customHHExitTF.getText())>Integer.parseInt(customHHEntryTF.getText())){
-			btn.setText(customHHEntryTF.getText()+":"+customMMEntryTF.getText()+"-"+customHHExitTF.getText()+":"+customMMExitTF.getText());
-			btn.setDisable(disabled);
-			btn.setVisible(visible);
-			recBtn.setDisable(disabled);
-			recBtn.setVisible(visible);
-			result=true;
+		if(found){
+			ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), cButton.getText());
+			if(customButtonsHBox.getChildren().size()==1){
+				buttonAreaVBox.getChildren().remove(1);
+				buttonAreaVBox.setSpacing(0);
+			}	
+			else{
+				customButtonsHBox.getChildren().remove(hbox);
+			}
+			customHHEntryTF.requestFocus();
 		}
-		else
-			customHHExitTF.setText(null);
-		return result;
 	}
+
 	public void hideWindow(){
 		 Parent root = null;
 			try {
 				root = loader.load();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			mainController.dialog.close();
 			mainController.penAlreadyClicked=false;
 			mainController.penImageView.setEffect(null);
-			
 	}
 
 	public void checkHHEntryText(){
