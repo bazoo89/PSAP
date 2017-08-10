@@ -27,8 +27,8 @@
       <Label layoutX="406.0" layoutY="52.0" prefHeight="21.0" prefWidth="181.0" text="EXIT" />
       <ToolBar prefHeight="45.0" prefWidth="944.0">
         <items>
-            <JFXButton text="HOME" />
-            <JFXButton text="SETTINGS" />
+            <JFXButton fx:id="homeButton" text="HOME" />
+            <JFXButton fx:id="settingsButton" text="SETTINGS" />
             <JFXButton onAction="#goToSalary" text="SALARY" />
         </items>
       </ToolBar>

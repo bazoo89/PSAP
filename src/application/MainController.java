@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import utils.TempSavedInformation;
 
 public class MainController implements Initializable {
 
@@ -147,6 +148,10 @@ public class MainController implements Initializable {
 	public JFXButton okBtn;
 	@FXML
 	public TextField customTF;
+	@FXML
+	public Button homeButton;
+	@FXML
+	public Button settingsButton;
 
 	public static int sceneLength = 650;
 	public static int sceneWidth = 430;
@@ -415,7 +420,7 @@ public class MainController implements Initializable {
 		reset();
 		LocalDate nextDay = calendar.getValue().plusDays(1);
 		calendar.setValue(nextDay);
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, nextDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
@@ -426,7 +431,7 @@ public class MainController implements Initializable {
 		reset();
 		LocalDate previousDay = calendar.getValue().minusDays(1);
 		calendar.setValue(previousDay);
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, previousDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
@@ -445,7 +450,7 @@ public class MainController implements Initializable {
 	//******* Utils Methods *******//
 
 	public void save() {
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
@@ -520,6 +525,16 @@ public class MainController implements Initializable {
 	public void manageCustomChoice() {
 		System.out.println("ciao");
 	}
+
+	//	public void testCreateCustomButton() {
+	//		String nameButton = "10:00-19:00";
+	//		ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
+	//	}
+	//
+	//	public void testDeleteCustomButton() {
+	//		String nameButton = "10:00-19:00";
+	//		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
+	//	}
 
 	//*****************************//
 }

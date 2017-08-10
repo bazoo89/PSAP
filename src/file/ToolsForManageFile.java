@@ -13,15 +13,19 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import application.Main;
+import file.entity.CustomButton;
+import file.entity.Hour;
+import file.entity.Month;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import users.Person;
 import users.Persons;
+import utils.TempSavedInformation;
 
 public class ToolsForManageFile {
 
@@ -64,7 +68,7 @@ public class ToolsForManageFile {
 	}
 
 	public void writeUserLoggedInformation(String loggedUser) {
-		File userLogged = Main.isLogged;
+		File userLogged = TempSavedInformation.getInstance().getIsLogged();
 		byte data[] = loggedUser.getBytes();
 		Path path = Paths.get(userLogged.getAbsolutePath());
 		try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(path, CREATE, APPEND))) {
@@ -76,7 +80,7 @@ public class ToolsForManageFile {
 
 	public String readAndGetUserLoggedInformation() {
 		String loggedUser = "anyone";
-		File userLogged = Main.isLogged;
+		File userLogged = TempSavedInformation.getInstance().getIsLogged();
 		Path path = Paths.get(userLogged.getAbsolutePath());
 		try {
 			byte data[] = Files.readAllBytes(path);
@@ -104,7 +108,6 @@ public class ToolsForManageFile {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
 	}
 
 	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit) {
@@ -164,10 +167,6 @@ public class ToolsForManageFile {
 			ex.printStackTrace();
 		}
 		return loadedSuccessfuly;
-	}
-
-	public void updateSalaryTabToDataFile() {
-		//TODO
 	}
 
 	public ObservableList<Hour> createAndGetHourTemplateXML(int year) {
@@ -256,5 +255,82 @@ public class ToolsForManageFile {
 			i++;
 		}
 		return months;
+	}
+
+	public ObservableList<CustomButton> createAndGetCustomButtonTemplateXML() {
+		final String default_value_button = "unsetted";
+		final int max_num_custom_button = 3;
+		ObservableList<CustomButton> customButtons = FXCollections.observableArrayList();
+		for (int i = 1; i <= max_num_custom_button; i++) {
+			CustomButton customButton = new CustomButton(String.valueOf(i), default_value_button);
+			customButtons.add(customButton);
+		}
+		return customButtons;
+	}
+
+	public void initCustomButtonPreferencesFile(File preferencesFile) {
+		ObservableList<CustomButton> customButtonsList = createAndGetCustomButtonTemplateXML();
+
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Marshaller m = context.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			// Wrapping our person data.
+			PreferencesFile wrapper = new PreferencesFile();
+			wrapper.setCustomButtons(customButtonsList);
+			// Marshalling and saving XML to the file.
+			m.marshal(wrapper, preferencesFile);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	public void saveCustomButtonPreferences(File dataFile, String customButtonValue) {
+		//		ObservableList<CustomButton> customButtonList = FXCollections.observableArrayList();
+		PreferencesFile wrapper = null;
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			for (CustomButton customButton : wrapper.getCustomButtons()) {
+				if (customButton.getValue().equals("unsetted")) {
+					customButton.setValue(customButtonValue);
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+					break;
+				}
+			}
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void deleteCustomButtonPreferences(File dataFile, String customButtonValue) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			PreferencesFile wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			for (CustomButton customButton : wrapper.getCustomButtons()) {
+				if (customButton.getValue().equals(customButtonValue)) {
+					customButton.setValue("unsetted");
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+					break;
+				}
+			}
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void updateSalaryTabToDataFile() {
+		//TODO
+	}
+
+	public void loadSalaryTabFromDataFile() {
+		// TODO
 	}
 }

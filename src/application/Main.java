@@ -11,32 +11,33 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import utils.SelectUser;
+import utils.TempSavedInformation;
 
 public class Main extends Application {
 	public static Stage primaryStage;
-
 	public static int sceneLength = 930;
 	public static int sceneWidth = 780;
-	public static File isLogged = null;
 	private final String TITLE = "SAP&GO";
-	public static String name = null;
-	public static String lastname = null;
-	public static String pathFile = null;
+	private String name = null;
+	private String lastname = null;
+	private File hourMonthFile = null;
+	private File preferencesFile = null;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Main.primaryStage = primaryStage;
-		name = "";
-		lastname = "";
-		pathFile = "";
-		isLogged = new File("XMLFile/userLogged.info");
+		TempSavedInformation.getInstance().setIsLogged(new File("XMLFile/userLogged.info"));
+		File isLogged = TempSavedInformation.getInstance().getIsLogged();
 		if (isLogged.exists() && !isLogged.isDirectory()) {
 			String loggedUser = ToolsForManageFile.getInstance().readAndGetUserLoggedInformation();
 			if (loggedUser.contains(":")) {
 				String[] loggedNameLastname = loggedUser.split(":");
 				name = loggedNameLastname[0];
 				lastname = loggedNameLastname[1];
-				pathFile = loggedNameLastname[2];
+				hourMonthFile = new File(loggedNameLastname[2]);
+				TempSavedInformation.getInstance().setName(name);
+				TempSavedInformation.getInstance().setLastname(lastname);
+				TempSavedInformation.getInstance().setHourMonthFile(hourMonthFile);
 			}
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
@@ -49,10 +50,15 @@ public class Main extends Application {
 				Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 				MainController mainController = loader.getController();
 				String date = mainController.calendar.getValue().toString().replace("-", "");
-				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(new File(pathFile), date, mainController.hh_entryCB, mainController.mm_entryCB,
+				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, date, mainController.hh_entryCB, mainController.mm_entryCB,
 						mainController.hh_exitCB, mainController.mm_exitCB);
 				if (loadedSuccessfully) {
 					mainController.countWorkedHours();
+				}
+				if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
+					String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
+					TempSavedInformation.getInstance().setPreferencesFile(new File("XMLFile/" + nameFile.toLowerCase()));
+					TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -73,10 +79,6 @@ public class Main extends Application {
 
 	public String getLastName() {
 		return lastname;
-	}
-
-	public String getFilename() {
-		return pathFile;
 	}
 
 	public static void main(String[] args) {
