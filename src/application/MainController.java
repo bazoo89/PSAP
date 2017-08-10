@@ -17,9 +17,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,12 +30,20 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 public class MainController implements Initializable {
-
+	@FXML
+	public StackPane mainStackPane;
+	@FXML
+	public StackPane buttonAreaStackPane;
 	@FXML
 	public ComboBox<String> hh_entryCB;
 	@FXML
@@ -123,38 +134,13 @@ public class MainController implements Initializable {
 	public JFXSlider sickSlider;
 	@FXML
 	public ImageView penImageView;
-	@FXML
-	public JFXButton allDayBtn;
-	@FXML
-	public JFXButton onlyMorningBtn;
-	@FXML
-	public JFXButton onlyAfternoonBtn;
-	@FXML
-	public JFXButton createCustomBtn;
-	@FXML
-	public JFXButton customBtn1;
-	@FXML
-	public JFXButton customBtn2;
-	@FXML
-	public JFXButton customBtn3;
-	@FXML
-	public Button recycleBtn1;
-	@FXML
-	public Button recycleBtn2;
-	@FXML
-	public Button recycleBtn3;
-	@FXML
-	public JFXButton okBtn;
-	@FXML
-	public TextField customTF;
+	
 
 	public static int sceneLength = 650;
 	public static int sceneWidth = 430;
 	public int dayTotalHour = 0;
-	public static boolean customBtn1State;
-	public static boolean customBtn2State;
-	public static boolean customBtn3State;
-	public static int createdButtons;
+	boolean penAlreadyClicked=false;
+	JFXDialog dialog=null;
 
 	ObservableList<String> hours = FXCollections.observableArrayList("08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
 	ObservableList<String> minutes = FXCollections.observableArrayList("00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55");
@@ -226,10 +212,10 @@ public class MainController implements Initializable {
 				}
 			}
 		});
-		customBtn1State = false;
-		customBtn1State = false;
-		customBtn1State = false;
-		createdButtons = 0;
+		mainStackPane.setOnMouseClicked(event->{
+			if(penAlreadyClicked)
+				penImageView.setEffect(null);
+		});
 	}
 
 	//******* This method counts the worked hours and displays the result on the workedHours text field *******//
@@ -292,6 +278,8 @@ public class MainController implements Initializable {
 			if (parDialog.isVisible())
 				parDialog.close();
 		}
+		else
+			freeDialog.setVisible(false);
 	}
 
 	public void chooseSickHours() {
@@ -304,6 +292,8 @@ public class MainController implements Initializable {
 			if (freeDialog.isVisible())
 				freeDialog.close();
 		}
+		else
+			sickDialog.setVisible(false);
 	}
 
 	public void countSpecialHours() {
@@ -432,13 +422,119 @@ public class MainController implements Initializable {
 			countWorkedHours();
 		}
 	}
-
 	public void goToButtonArea() {
-		if (!customButtonDialog.isVisible()) {
-			customButtonDialog.show(customButtonDialogLayout);
-		} else {
-			customButtonDialog.setVisible(false);
-		}
+		DropShadow ds = new DropShadow( 20, Color.RED );
+		 penImageView.setOnMouseClicked( ( MouseEvent event ) ->
+		    {
+		    	penAlreadyClicked=true;
+		    	penImageView.setEffect( ds );
+				 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton.fxml"));
+				 Parent root = null;
+					try {
+						root = loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ButtonAreaController baController=loader.getController();
+					JFXDialogLayout content=new JFXDialogLayout();
+					content.setHeading(new Text("Shortcut"));
+					content.setBody(root);
+					dialog=new JFXDialog(mainStackPane,content,JFXDialog.DialogTransition.CENTER);
+					baController.cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					dialog.show();
+					baController.allDayBtn.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue("09");
+							mm_entryCB.setValue("00");
+							hh_exitCB.setValue("18");
+							mm_exitCB.setValue("00");
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					baController.onlyAfternoonBtn.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue("14");
+							mm_entryCB.setValue("00");
+							hh_exitCB.setValue("18");
+							mm_exitCB.setValue("00");
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					baController.onlyMorningBtn.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue("09");
+							mm_entryCB.setValue("00");
+							hh_exitCB.setValue("13");
+							mm_exitCB.setValue("00");
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					baController.customBtn1.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue(baController.customHHEntryTF.getText());
+							mm_entryCB.setValue(baController.customMMEntryTF.getText());
+							hh_exitCB.setValue(baController.customHHExitTF.getText());
+							mm_exitCB.setValue(baController.customMMExitTF.getText());
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					baController.customBtn2.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue(baController.customHHEntryTF.getText());
+							mm_entryCB.setValue(baController.customMMEntryTF.getText());
+							hh_exitCB.setValue(baController.customHHExitTF.getText());
+							mm_exitCB.setValue(baController.customMMExitTF.getText());
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+					baController.customBtn3.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+							hh_entryCB.setValue(baController.customHHEntryTF.getText());
+							mm_entryCB.setValue(baController.customMMEntryTF.getText());
+							hh_exitCB.setValue(baController.customHHExitTF.getText());
+							mm_exitCB.setValue(baController.customMMExitTF.getText());
+							penAlreadyClicked=false;
+							penImageView.setEffect(null);
+						}
+					});
+		    } );
+		 penImageView.focusedProperty().addListener(( ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue ) ->
+		    {
+		        if ( newValue )
+		        {
+		        	penImageView.setEffect( ds );
+		        }
+		        else
+		        {
+		        	penImageView.setEffect( null );
+		        }
+		    });
+
 	}
 	///////////////////////////////////////
 
@@ -453,73 +549,7 @@ public class MainController implements Initializable {
 
 	}
 
-	public void removeBtn1() {
-		manageCustomBtn(customBtn1, recycleBtn1, false, true);
-		customBtn1State = false;
-		createdButtons--;
-	}
-
-	public void removeBtn2() {
-		manageCustomBtn(customBtn2, recycleBtn2, false, true);
-		customBtn2State = false;
-		createdButtons--;
-	}
-
-	public void removeBtn3() {
-		manageCustomBtn(customBtn3, recycleBtn3, false, true);
-		customBtn3State = false;
-		createdButtons--;
-	}
-
-	public void createCustom() {
-		if (!customTF.getText().equals("")) {
-			if (createdButtons == 0) {
-				manageCustomBtn(customBtn1, recycleBtn1, true, false);
-				customBtn1State = true;
-				createdButtons++;
-			} else if (createdButtons == 1) {
-				if (customBtn1State) {
-					manageCustomBtn(customBtn2, recycleBtn2, true, false);
-					customBtn2State = true;
-					createdButtons++;
-				} else if (customBtn2State) {
-					manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					customBtn1State = true;
-					createdButtons++;
-				} else {
-					manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					customBtn1State = true;
-					createdButtons++;
-				}
-			} else if (createdButtons == 2) {
-				if (customBtn1State && customBtn2State) {
-					manageCustomBtn(customBtn3, recycleBtn3, true, false);
-					customBtn3State = true;
-					createdButtons++;
-				} else if (customBtn1State && customBtn3State) {
-					manageCustomBtn(customBtn2, recycleBtn2, true, false);
-					customBtn2State = true;
-					createdButtons++;
-				} else if (customBtn2State && customBtn3State) {
-					manageCustomBtn(customBtn1, recycleBtn1, true, false);
-					customBtn1State = true;
-					createdButtons++;
-				}
-			}
-		}
-	}
-
-	public void manageCustomBtn(JFXButton btn, Button recBtn, boolean visible, boolean disabled) {
-		btn.setText(customTF.getText());
-		btn.setDisable(disabled);
-		btn.setVisible(visible);
-		recBtn.setDisable(disabled);
-		recBtn.setVisible(visible);
-	}
-
-	public void manageCustomChoice() {
-		System.out.println("ciao");
-	}
+	
 
 	//*****************************//
 }
