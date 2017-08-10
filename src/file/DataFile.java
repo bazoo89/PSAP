@@ -6,6 +6,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import file.entity.Hour;
+import file.entity.Month;
+
 /**
  * Helper class to wrap a dataFile contains one block of hours and one of months.
  *
@@ -17,7 +20,6 @@ public class DataFile {
 	List<Hour> hours;
 	List<Month> months;
 
-	//	@XmlElement(name = "hours", type = Hours.class)
 	@XmlElementWrapper(name = "hours")
 	@XmlElement(name = "hour", type = Hour.class)
 	public List<Hour> getHour() {

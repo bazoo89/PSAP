@@ -22,7 +22,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,6 +37,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import utils.TempSavedInformation;
 
 public class MainController implements Initializable {
 	@FXML
@@ -134,13 +134,40 @@ public class MainController implements Initializable {
 	public JFXSlider sickSlider;
 	@FXML
 	public ImageView penImageView;
-	
+	@FXML
+	public JFXButton allDayBtn;
+	@FXML
+	public JFXButton onlyMorningBtn;
+	@FXML
+	public JFXButton onlyAfternoonBtn;
+	@FXML
+	public JFXButton createCustomBtn;
+	@FXML
+	public JFXButton customBtn1;
+	@FXML
+	public JFXButton customBtn2;
+	@FXML
+	public JFXButton customBtn3;
+	@FXML
+	public Button recycleBtn1;
+	@FXML
+	public Button recycleBtn2;
+	@FXML
+	public Button recycleBtn3;
+	@FXML
+	public JFXButton okBtn;
+	@FXML
+	public TextField customTF;
+	@FXML
+	public Button homeButton;
+	@FXML
+	public Button settingsButton;
 
 	public static int sceneLength = 650;
 	public static int sceneWidth = 430;
 	public int dayTotalHour = 0;
-	boolean penAlreadyClicked=false;
-	JFXDialog dialog=null;
+	boolean penAlreadyClicked = false;
+	JFXDialog dialog = null;
 
 	ObservableList<String> hours = FXCollections.observableArrayList("08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
 	ObservableList<String> minutes = FXCollections.observableArrayList("00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55");
@@ -212,8 +239,8 @@ public class MainController implements Initializable {
 				}
 			}
 		});
-		mainStackPane.setOnMouseClicked(event->{
-			if(penAlreadyClicked)
+		mainStackPane.setOnMouseClicked(event -> {
+			if (penAlreadyClicked)
 				penImageView.setEffect(null);
 		});
 	}
@@ -277,8 +304,7 @@ public class MainController implements Initializable {
 				sickDialog.close();
 			if (parDialog.isVisible())
 				parDialog.close();
-		}
-		else
+		} else
 			freeDialog.setVisible(false);
 	}
 
@@ -291,8 +317,7 @@ public class MainController implements Initializable {
 				parDialog.close();
 			if (freeDialog.isVisible())
 				freeDialog.close();
-		}
-		else
+		} else
 			sickDialog.setVisible(false);
 	}
 
@@ -405,7 +430,7 @@ public class MainController implements Initializable {
 		reset();
 		LocalDate nextDay = calendar.getValue().plusDays(1);
 		calendar.setValue(nextDay);
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, nextDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
@@ -416,124 +441,120 @@ public class MainController implements Initializable {
 		reset();
 		LocalDate previousDay = calendar.getValue().minusDays(1);
 		calendar.setValue(previousDay);
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, previousDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
 		}
 	}
+
 	public void goToButtonArea() {
-		DropShadow ds = new DropShadow( 20, Color.RED );
-		 penImageView.setOnMouseClicked( ( MouseEvent event ) ->
-		    {
-		    	penAlreadyClicked=true;
-		    	penImageView.setEffect( ds );
-				 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton.fxml"));
-				 Parent root = null;
-					try {
-						root = loader.load();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					ButtonAreaController baController=loader.getController();
-					JFXDialogLayout content=new JFXDialogLayout();
-					content.setHeading(new Text("Shortcut"));
-					content.setBody(root);
-					dialog=new JFXDialog(mainStackPane,content,JFXDialog.DialogTransition.CENTER);
-					baController.cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					dialog.show();
-					baController.allDayBtn.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue("09");
-							mm_entryCB.setValue("00");
-							hh_exitCB.setValue("18");
-							mm_exitCB.setValue("00");
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					baController.onlyAfternoonBtn.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue("14");
-							mm_entryCB.setValue("00");
-							hh_exitCB.setValue("18");
-							mm_exitCB.setValue("00");
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					baController.onlyMorningBtn.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue("09");
-							mm_entryCB.setValue("00");
-							hh_exitCB.setValue("13");
-							mm_exitCB.setValue("00");
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					baController.customBtn1.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue(baController.customHHEntryTF.getText());
-							mm_entryCB.setValue(baController.customMMEntryTF.getText());
-							hh_exitCB.setValue(baController.customHHExitTF.getText());
-							mm_exitCB.setValue(baController.customMMExitTF.getText());
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					baController.customBtn2.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue(baController.customHHEntryTF.getText());
-							mm_entryCB.setValue(baController.customMMEntryTF.getText());
-							hh_exitCB.setValue(baController.customHHExitTF.getText());
-							mm_exitCB.setValue(baController.customMMExitTF.getText());
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-					baController.customBtn3.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							dialog.close();
-							hh_entryCB.setValue(baController.customHHEntryTF.getText());
-							mm_entryCB.setValue(baController.customMMEntryTF.getText());
-							hh_exitCB.setValue(baController.customHHExitTF.getText());
-							mm_exitCB.setValue(baController.customMMExitTF.getText());
-							penAlreadyClicked=false;
-							penImageView.setEffect(null);
-						}
-					});
-		    } );
-		 penImageView.focusedProperty().addListener(( ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue ) ->
-		    {
-		        if ( newValue )
-		        {
-		        	penImageView.setEffect( ds );
-		        }
-		        else
-		        {
-		        	penImageView.setEffect( null );
-		        }
-		    });
+		DropShadow ds = new DropShadow(20, Color.RED);
+		penImageView.setOnMouseClicked((MouseEvent event) -> {
+			penAlreadyClicked = true;
+			penImageView.setEffect(ds);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton.fxml"));
+			Parent root = null;
+			try {
+				root = loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ButtonAreaController baController = loader.getController();
+			JFXDialogLayout content = new JFXDialogLayout();
+			content.setHeading(new Text("Shortcut"));
+			content.setBody(root);
+			dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
+			baController.cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			dialog.show();
+			baController.allDayBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue("09");
+					mm_entryCB.setValue("00");
+					hh_exitCB.setValue("18");
+					mm_exitCB.setValue("00");
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			baController.onlyAfternoonBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue("14");
+					mm_entryCB.setValue("00");
+					hh_exitCB.setValue("18");
+					mm_exitCB.setValue("00");
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			baController.onlyMorningBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue("09");
+					mm_entryCB.setValue("00");
+					hh_exitCB.setValue("13");
+					mm_exitCB.setValue("00");
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			baController.customBtn1.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue(baController.customHHEntryTF.getText());
+					mm_entryCB.setValue(baController.customMMEntryTF.getText());
+					hh_exitCB.setValue(baController.customHHExitTF.getText());
+					mm_exitCB.setValue(baController.customMMExitTF.getText());
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			baController.customBtn2.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue(baController.customHHEntryTF.getText());
+					mm_entryCB.setValue(baController.customMMEntryTF.getText());
+					hh_exitCB.setValue(baController.customHHExitTF.getText());
+					mm_exitCB.setValue(baController.customMMExitTF.getText());
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+			baController.customBtn3.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					hh_entryCB.setValue(baController.customHHEntryTF.getText());
+					mm_entryCB.setValue(baController.customMMEntryTF.getText());
+					hh_exitCB.setValue(baController.customHHExitTF.getText());
+					mm_exitCB.setValue(baController.customMMExitTF.getText());
+					penAlreadyClicked = false;
+					penImageView.setEffect(null);
+				}
+			});
+		});
+		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+			if (newValue) {
+				penImageView.setEffect(ds);
+			} else {
+				penImageView.setEffect(null);
+			}
+		});
 
 	}
 	///////////////////////////////////////
@@ -541,7 +562,7 @@ public class MainController implements Initializable {
 	//******* Utils Methods *******//
 
 	public void save() {
-		File userFile = new File(Main.pathFile);
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
@@ -549,7 +570,15 @@ public class MainController implements Initializable {
 
 	}
 
-	
+	//	public void testCreateCustomButton() {
+	//		String nameButton = "10:00-19:00";
+	//		ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
+	//	}
+	//
+	//	public void testDeleteCustomButton() {
+	//		String nameButton = "10:00-19:00";
+	//		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
+	//	}
 
 	//*****************************//
 }

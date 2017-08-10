@@ -1,4 +1,4 @@
-package file;
+package file.entity;
 
 import javax.xml.bind.annotation.XmlElement;
 
