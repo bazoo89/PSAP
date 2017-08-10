@@ -2,50 +2,21 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import application.Salary;
-import file.ToolsForManageFile;
-
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import file.ToolsForManageFile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import utils.TempSavedInformation;
-
 
 public class ButtonAreaController implements Initializable {
 	@FXML
@@ -81,111 +52,110 @@ public class ButtonAreaController implements Initializable {
 	@FXML
 	public TextField customMMExitTF;
 
-	public FXMLLoader loader=null;
-	public MainController mainController=null;
-	
+	public FXMLLoader loader = null;
+	public MainController mainController = null;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loader= new FXMLLoader(getClass().getResource("/application/Main.fxml"));
+		loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
 		mainController = loader.getController();
 	}
+
 	public void removeCustomBtn(String customButtonText) {
-		boolean found=false;
-		JFXButton cButton=null;
-		HBox hbox=null;
-		HBox customButtonsHBox=(HBox) buttonAreaVBox.getChildren().get(1);
-		for(Node node: customButtonsHBox.getChildren()){
-			hbox=(HBox) node;
-			cButton=(JFXButton) hbox.getChildren().get(1);
-			if(cButton.getText().equals(customButtonText)){
-				found=true;
+		boolean found = false;
+		JFXButton cButton = null;
+		HBox hbox = null;
+		HBox customButtonsHBox = (HBox) buttonAreaVBox.getChildren().get(1);
+		for (Node node : customButtonsHBox.getChildren()) {
+			hbox = (HBox) node;
+			cButton = (JFXButton) hbox.getChildren().get(1);
+			if (cButton.getText().equals(customButtonText)) {
+				found = true;
 				break;
 			}
 		}
-		if(found){
+		if (found) {
 			ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), cButton.getText());
-			if(customButtonsHBox.getChildren().size()==1){
+			if (customButtonsHBox.getChildren().size() == 1) {
 				buttonAreaVBox.getChildren().remove(1);
 				buttonAreaVBox.setSpacing(0);
-			}	
-			else{
+			} else {
 				customButtonsHBox.getChildren().remove(hbox);
 			}
 			customHHEntryTF.requestFocus();
 		}
 	}
 
-	public void hideWindow(){
-		 Parent root = null;
-			try {
-				root = loader.load();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public void hideWindow() {
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-			mainController.dialog.close();
-			mainController.penAlreadyClicked=false;
-			mainController.penImageView.setEffect(null);
+		mainController.dialog.close();
+		mainController.penAlreadyClicked = false;
+		mainController.penImageView.setEffect(null);
 	}
 
-	public void checkHHEntryText(){
+	public void checkHHEntryText() {
 		try {
-			int entryhour=Integer.parseInt(customHHEntryTF.getText());
-			if((entryhour<10 && entryhour!=1)|| entryhour>=10 ){
-				if(customHHEntryTF.getText().length()==1 && entryhour!=1){
-					customHHEntryTF.setText("0"+customHHEntryTF.getText());
+			int entryhour = Integer.parseInt(customHHEntryTF.getText());
+			if ((entryhour < 10 && entryhour != 1) || entryhour >= 10) {
+				if (customHHEntryTF.getText().length() == 1 && entryhour != 1) {
+					customHHEntryTF.setText("0" + customHHEntryTF.getText());
 				}
 				customMMEntryTF.requestFocus();
-			}
-			else
+			} else
 				customHHEntryTF.requestFocus();
 		} catch (Exception e) {
 			customHHEntryTF.setText(null);
 		}
-		
+
 	}
-	public void checkHHExitText(){
+
+	public void checkHHExitText() {
 		try {
-		int exithour=Integer.parseInt(customHHExitTF.getText());
-		if((exithour<10 && exithour!=1)|| exithour>=10 ){
-			customMMExitTF.requestFocus();
-			if(customHHExitTF.getText().length()==1 && exithour!=1){
-				customHHExitTF.setText("0"+customHHExitTF.getText());
-			}
-		}
-		else
-			customHHExitTF.requestFocus();
+			int exithour = Integer.parseInt(customHHExitTF.getText());
+			if ((exithour < 10 && exithour != 1) || exithour >= 10) {
+				customMMExitTF.requestFocus();
+				if (customHHExitTF.getText().length() == 1 && exithour != 1) {
+					customHHExitTF.setText("0" + customHHExitTF.getText());
+				}
+			} else
+				customHHExitTF.requestFocus();
 		} catch (Exception e) {
 			customHHExitTF.setText(null);
 		}
 	}
-	public void checkMMEntryText(){
+
+	public void checkMMEntryText() {
 		try {
-		int entrytminute=Integer.parseInt(customMMEntryTF.getText());
-			if(customMMEntryTF.getText().length()>1){
-				if(entrytminute<0 || entrytminute>=59){
+			int entrytminute = Integer.parseInt(customMMEntryTF.getText());
+			if (customMMEntryTF.getText().length() > 1) {
+				if (entrytminute < 0 || entrytminute >= 59) {
 					customMMEntryTF.setText(null);
 					customMMEntryTF.requestFocus();
-				}
-				else
+				} else
 					customHHExitTF.requestFocus();
-				}
+			}
 		} catch (Exception e) {
 			customMMEntryTF.setText(null);
 		}
-		
+
 	}
-	public void checkMMExitText(){
+
+	public void checkMMExitText() {
 		try {
-			int exitminute=Integer.parseInt(customMMExitTF.getText());
-			if(customMMExitTF.getText().length()>1){
-				if(exitminute<0 ||exitminute>=59){
+			int exitminute = Integer.parseInt(customMMExitTF.getText());
+			if (customMMExitTF.getText().length() > 1) {
+				if (exitminute < 0 || exitminute >= 59) {
 					customMMExitTF.setText(null);
 					customMMExitTF.requestFocus();
-				}
-				else
+				} else
 					createCustomBtn.requestFocus();
-			}	
+			}
 		} catch (Exception e) {
 			customMMExitTF.setText(null);
 		}

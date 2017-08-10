@@ -3,15 +3,15 @@
     <buttons>
         <button>
             <id>1</id>
-            <value>09:00-18:15</value>
+            <value>unsetted</value>
         </button>
         <button>
             <id>2</id>
-            <value>12:00-15:00</value>
+            <value>unsetted</value>
         </button>
         <button>
             <id>3</id>
-            <value>12:00-15:00</value>
+            <value>unsetted</value>
         </button>
     </buttons>
 </preferences>

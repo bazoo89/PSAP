@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -13,12 +14,11 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXSlider;
 
 import file.ToolsForManageFile;
+import file.entity.CustomButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,11 +33,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -453,78 +451,90 @@ public class MainController implements Initializable {
 
 	public void goToButtonArea() {
 		DropShadow ds = new DropShadow(20, Color.RED);
-		penImageView.setOnMouseClicked((MouseEvent event) -> {
-			penAlreadyClicked = true;
-			penImageView.setEffect(ds);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton2.fxml"));
-			Parent root = null;
-			try {
-				root = loader.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		penAlreadyClicked = true;
+		penImageView.setEffect(ds);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton2.fxml"));
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ButtonAreaController baController = loader.getController();
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("Shortcut"));
+		content.setBody(root);
+		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
+		ArrayList<CustomButton> savedCustomButtonsList = (ArrayList<CustomButton>) ToolsForManageFile.getInstance()
+				.loadCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
+		if (savedCustomButtonsList.size() != 0) {
+			for (CustomButton customButton : savedCustomButtonsList) {
+				String[] text = customButton.getValue().split("-");
+				String hourEntry = text[0];
+				String hourExit = text[1];
+				String hh_entry = hourEntry.split(":")[0];
+				String mm_entry = hourEntry.split(":")[1];
+				String hh_exit = hourExit.split(":")[0];
+				String mm_exit = hourExit.split(":")[1];
+				createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
 			}
-			ButtonAreaController baController = loader.getController();
-			JFXDialogLayout content = new JFXDialogLayout();
-			content.setHeading(new Text("Shortcut"));
-			content.setBody(root);
-			dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
-			baController.createCustomBtn.setOnMouseClicked(mouseClick -> {
-				String customHHEntry=baController.customHHEntryTF.getText();
-				String customMMEntry=baController.customMMEntryTF.getText();
-				String customHHExit=baController.customHHExitTF.getText();
-				String customMMExit=baController.customMMExitTF.getText();
-				if (!customHHEntry.equals("") && !customMMEntry.equals("") && 
-						!customHHExit.equals("") &&!customMMExit.equals("") ) 
-					createHBox(baController,customHHEntry,customMMEntry,customHHExit,customMMExit);
-			});
-			baController.cancelBtn.setOnMouseClicked(mouseClick -> {
-					dialog.close();
-					penAlreadyClicked = false;
-					penImageView.setEffect(null);
-			});
-			dialog.show();
-			baController.allDayBtn.setOnMouseClicked(mouseClick -> {
-					dialog.close();
-					hh_entryCB.setValue("09");
-					mm_entryCB.setValue("00");
-					hh_exitCB.setValue("18");
-					mm_exitCB.setValue("00");
-					penAlreadyClicked = false;
-					penImageView.setEffect(null);
-			});
-			baController.onlyAfternoonBtn.setOnMouseClicked(mouseClick -> {
-					dialog.close();
-					hh_entryCB.setValue("14");
-					mm_entryCB.setValue("00");
-					hh_exitCB.setValue("18");
-					mm_exitCB.setValue("00");
-					penAlreadyClicked = false;
-					penImageView.setEffect(null);
-			});
-			baController.onlyMorningBtn.setOnMouseClicked(mouseClick -> {
-					dialog.close();
-					hh_entryCB.setValue("09");
-					mm_entryCB.setValue("00");
-					hh_exitCB.setValue("13");
-					mm_exitCB.setValue("00");
-					penAlreadyClicked = false;
-					penImageView.setEffect(null);
-			});
+		}
+		baController.createCustomBtn.setOnMouseClicked(mouseClick -> {
+			String customHHEntry = baController.customHHEntryTF.getText();
+			String customMMEntry = baController.customMMEntryTF.getText();
+			String customHHExit = baController.customHHExitTF.getText();
+			String customMMExit = baController.customMMExitTF.getText();
+			if (!customHHEntry.equals("") && !customMMEntry.equals("") && !customHHExit.equals("") && !customMMExit.equals(""))
+				createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
 		});
-		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-			if (newValue) {
-				penImageView.setEffect(ds);
-			} else {
-				penImageView.setEffect(null);
-			}
+		baController.cancelBtn.setOnMouseClicked(mouseClick -> {
+			dialog.close();
+			penAlreadyClicked = false;
+			penImageView.setEffect(null);
 		});
+		dialog.show();
+		baController.allDayBtn.setOnMouseClicked(mouseClick -> {
+			dialog.close();
+			hh_entryCB.setValue("09");
+			mm_entryCB.setValue("00");
+			hh_exitCB.setValue("18");
+			mm_exitCB.setValue("00");
+			penAlreadyClicked = false;
+			penImageView.setEffect(null);
+		});
+		baController.onlyAfternoonBtn.setOnMouseClicked(mouseClick -> {
+			dialog.close();
+			hh_entryCB.setValue("14");
+			mm_entryCB.setValue("00");
+			hh_exitCB.setValue("18");
+			mm_exitCB.setValue("00");
+			penAlreadyClicked = false;
+			penImageView.setEffect(null);
+		});
+		baController.onlyMorningBtn.setOnMouseClicked(mouseClick -> {
+			dialog.close();
+			hh_entryCB.setValue("09");
+			mm_entryCB.setValue("00");
+			hh_exitCB.setValue("13");
+			mm_exitCB.setValue("00");
+			penAlreadyClicked = false;
+			penImageView.setEffect(null);
+		});
+		//		});
+		//		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+		//			if (newValue) {
+		//				penImageView.setEffect(ds);
+		//			} else {
+		//				penImageView.setEffect(null);
+		//			}
+		//		});
 
 	}
+
 	private void createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
-		HBox hbox=null;
-		JFXButton customButton=new JFXButton(customHHEntry+":"+customMMEntry+"-"+customHHExit+":"+customMMExit);
-		customButton.setOnMouseClicked(click->{
+		HBox hbox = null;
+		JFXButton customButton = new JFXButton(customHHEntry + ":" + customMMEntry + "-" + customHHExit + ":" + customMMExit);
+		customButton.setOnMouseClicked(click -> {
 			hh_entryCB.setValue(customHHEntry);
 			mm_entryCB.setValue(customMMEntry);
 			hh_exitCB.setValue(customHHExit);
@@ -533,24 +543,24 @@ public class MainController implements Initializable {
 			penImageView.setEffect(null);
 			dialog.close();
 		});
-		ImageView imageView=new ImageView();
+		ImageView imageView = new ImageView();
 		imageView.setImage(new Image(Main.class.getResourceAsStream("recycleBin.png")));
 		imageView.setFitWidth(32);
 		imageView.setFitHeight(32);
-		imageView.setOnMouseClicked(click->{
+		imageView.setOnMouseClicked(click -> {
 			baController.removeCustomBtn(customButton.getText());
 		});
-		if(baController.buttonAreaVBox.getChildren().size()==2){
-			hbox=new HBox();
+		if (baController.buttonAreaVBox.getChildren().size() == 2) {
+			hbox = new HBox();
 			hbox.setPrefHeight(50);
-			baController.buttonAreaVBox.getChildren().add(1,hbox);
+			baController.buttonAreaVBox.getChildren().add(1, hbox);
 			baController.buttonAreaVBox.setSpacing(15);
 		}
-		hbox=(HBox) baController.buttonAreaVBox.getChildren().get(1);
-		if(hbox.getChildren().size()<3){
+		hbox = (HBox) baController.buttonAreaVBox.getChildren().get(1);
+		if (hbox.getChildren().size() < 3) {
 			HBox customButtonHBox = new HBox();
 			HBox.setMargin(customButtonHBox, new Insets(0, 0, 0, 5.5));
-			customButtonHBox.getChildren().addAll(imageView,customButton);
+			customButtonHBox.getChildren().addAll(imageView, customButton);
 			hbox.getChildren().add(customButtonHBox);
 			ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customButton.getText());
 		}

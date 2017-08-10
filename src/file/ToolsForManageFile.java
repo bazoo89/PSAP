@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -287,7 +288,6 @@ public class ToolsForManageFile {
 	}
 
 	public void saveCustomButtonPreferences(File dataFile, String customButtonValue) {
-		//		ObservableList<CustomButton> customButtonList = FXCollections.observableArrayList();
 		PreferencesFile wrapper = null;
 		try {
 			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
@@ -324,6 +324,23 @@ public class ToolsForManageFile {
 		} catch (JAXBException ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	public List<CustomButton> loadCustomButtonPreferences(File dataFile) {
+		List<CustomButton> customButtonList = new ArrayList<CustomButton>();
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			PreferencesFile wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			for (CustomButton customButton : wrapper.getCustomButtons()) {
+				if (!customButton.getValue().equals("unsetted")) {
+					customButtonList.add(customButton);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return customButtonList;
 	}
 
 	public void updateSalaryTabToDataFile() {
