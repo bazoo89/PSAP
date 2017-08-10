@@ -173,6 +173,7 @@ public class MainController implements Initializable {
 
 	ObservableList<String> hours = FXCollections.observableArrayList("08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
 	ObservableList<String> minutes = FXCollections.observableArrayList("00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55");
+	ArrayList<CustomButton> savedCustomButtonsList = null;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -465,8 +466,7 @@ public class MainController implements Initializable {
 		content.setHeading(new Text("Shortcut"));
 		content.setBody(root);
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
-		ArrayList<CustomButton> savedCustomButtonsList = (ArrayList<CustomButton>) ToolsForManageFile.getInstance()
-				.loadCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
+		savedCustomButtonsList = (ArrayList<CustomButton>) ToolsForManageFile.getInstance().loadCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
 		if (savedCustomButtonsList.size() != 0) {
 			for (CustomButton customButton : savedCustomButtonsList) {
 				String[] text = customButton.getValue().split("-");
@@ -476,7 +476,10 @@ public class MainController implements Initializable {
 				String mm_entry = hourEntry.split(":")[1];
 				String hh_exit = hourExit.split(":")[0];
 				String mm_exit = hourExit.split(":")[1];
-				createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
+				boolean successfullyCreation = createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
+				//				if (successfullyCreation) {
+				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
+				//				}
 			}
 		}
 		baController.createCustomBtn.setOnMouseClicked(mouseClick -> {
@@ -484,8 +487,12 @@ public class MainController implements Initializable {
 			String customMMEntry = baController.customMMEntryTF.getText();
 			String customHHExit = baController.customHHExitTF.getText();
 			String customMMExit = baController.customMMExitTF.getText();
-			if (!customHHEntry.equals("") && !customMMEntry.equals("") && !customHHExit.equals("") && !customMMExit.equals(""))
-				createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
+			if (!customHHEntry.equals("") && !customMMEntry.equals("") && !customHHExit.equals("") && !customMMExit.equals("")) {
+				boolean successfullyCreation = createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
+				//				if (successfullyCreation) {
+				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
+				//				}
+			}
 		});
 		baController.cancelBtn.setOnMouseClicked(mouseClick -> {
 			dialog.close();
@@ -531,7 +538,8 @@ public class MainController implements Initializable {
 
 	}
 
-	private void createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
+	private boolean createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
+		boolean successfullyCreation = false;
 		HBox hbox = null;
 		JFXButton customButton = new JFXButton(customHHEntry + ":" + customMMEntry + "-" + customHHExit + ":" + customMMExit);
 		customButton.setOnMouseClicked(click -> {
@@ -562,8 +570,11 @@ public class MainController implements Initializable {
 			HBox.setMargin(customButtonHBox, new Insets(0, 0, 0, 5.5));
 			customButtonHBox.getChildren().addAll(imageBtn, customButton);
 			hbox.getChildren().add(customButtonHBox);
-			ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customButton.getText());
+			if (hbox.getChildren().size() > savedCustomButtonsList.size()) {
+				ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customButton.getText());
+			}
 		}
+		return successfullyCreation;
 	}
 
 	///////////////////////////////////////
