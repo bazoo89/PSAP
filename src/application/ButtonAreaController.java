@@ -114,12 +114,13 @@ public class ButtonAreaController implements Initializable {
 	}
 
 	public void createCustom() {
-		if(customMMExitTF.getText().length()==1){
-			customMMExitTF.setText(customMMExitTF.getText()+"0");
-		}
-		//gestire salvataggio su XML
+		//rivedere controlli
+
 		if (!customHHEntryTF.getText().equals("") && !customMMEntryTF.getText().equals("") && 
 				!customHHExitTF.getText().equals("") &&!customMMExitTF.getText().equals("") ) {
+			if(customMMExitTF.getText().length()==1){
+				customMMExitTF.setText(customMMExitTF.getText()+"0");
+			}
 			if (createdButtons == 0) {
 					boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
 					if(r){
@@ -128,10 +129,12 @@ public class ButtonAreaController implements Initializable {
 					}
 			} else if (createdButtons == 1) {
 				if (customBtn1State) {
-					boolean r=manageCustomBtn(customBtn2, recycleBtn2, true, false);
-					if(r){
-						customBtn2State = true;
-						createdButtons++;
+					if(!customBtn1.getText().equals(customHHEntryTF.getText()+":"+customMMEntryTF.getText()+"-"+customHHExitTF.getText()+":"+customMMExitTF.getText())){
+						boolean r=manageCustomBtn(customBtn2, recycleBtn2, true, false);
+						if(r){
+							customBtn2State = true;
+							createdButtons++;
+						}
 					}
 				} else if (customBtn2State) {
 					boolean r=manageCustomBtn(customBtn1, recycleBtn1, true, false);
