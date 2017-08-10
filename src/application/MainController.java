@@ -453,7 +453,7 @@ public class MainController implements Initializable {
 		DropShadow ds = new DropShadow(20, Color.RED);
 		penAlreadyClicked = true;
 		penImageView.setEffect(ds);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/CustomButton2.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ShortcutArea.fxml"));
 		Parent root = null;
 		try {
 			root = loader.load();
@@ -545,9 +545,9 @@ public class MainController implements Initializable {
 		});
 		ImageView imageView = new ImageView();
 		imageView.setImage(new Image(Main.class.getResourceAsStream("recycleBin.png")));
-		imageView.setFitWidth(32);
-		imageView.setFitHeight(32);
-		imageView.setOnMouseClicked(click -> {
+		JFXButton imageBtn = new JFXButton(null, imageView);
+		imageBtn.setPrefSize(33, 33);
+		imageBtn.setOnMouseClicked(click -> {
 			baController.removeCustomBtn(customButton.getText());
 		});
 		if (baController.buttonAreaVBox.getChildren().size() == 2) {
@@ -560,7 +560,7 @@ public class MainController implements Initializable {
 		if (hbox.getChildren().size() < 3) {
 			HBox customButtonHBox = new HBox();
 			HBox.setMargin(customButtonHBox, new Insets(0, 0, 0, 5.5));
-			customButtonHBox.getChildren().addAll(imageView, customButton);
+			customButtonHBox.getChildren().addAll(imageBtn, customButton);
 			hbox.getChildren().add(customButtonHBox);
 			ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), customButton.getText());
 		}
