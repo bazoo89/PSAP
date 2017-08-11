@@ -2,34 +2,46 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="431.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SalaryController">
+<AnchorPane prefHeight="756.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SalaryController">
    <children>
-      <ToolBar layoutX="-1.0" prefHeight="45.0" prefWidth="811.0">
+      <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="814.0">
         <items>
-            <JFXButton onAction="#goBack" text="GO BACK" />
+            <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#goBack" prefHeight="40.0" prefWidth="40.0" text="GO BACK">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icons/goBack.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
         </items>
       </ToolBar>
-      <TitledPane fx:id="titledPane2017" animated="false" expanded="false" layoutY="45.0" onMouseClicked="#showSalaryDetails" prefHeight="32.0" prefWidth="95.0" text="2017">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-      </TitledPane>
-      <TitledPane fx:id="titledPane2018" animated="false" expanded="false" layoutY="77.0" onMouseClicked="#showSalaryDetails" prefHeight="32.0" prefWidth="95.0" text="2018">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         </content>
-      </TitledPane>
-      <HBox layoutX="95.0" layoutY="43.0" prefHeight="387.0" prefWidth="712.0">
+      <HBox layoutX="127.0" layoutY="53.0" prefHeight="700.0" prefWidth="687.0">
          <children>
-            <JFXTreeTableView fx:id="treeTableView" prefHeight="387.0" prefWidth="655.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <JFXTreeTableView fx:id="treeTableView" editable="true" prefHeight="700.0" prefWidth="645.0" />
+            <VBox fx:id="buttonVBox" prefHeight="700.0" prefWidth="50.0" />
          </children>
       </HBox>
+      <VBox fx:id="lateralVBox" layoutX="-1.0" layoutY="54.0" prefHeight="702.0" prefWidth="129.0">
+         <children>
+            <TitledPane fx:id="titledPane2017" animated="false" expanded="false" onMouseClicked="#showSalaryDetails" prefHeight="32.0" prefWidth="129.0" text="2017" />
+            <TitledPane fx:id="titledPane2018" animated="false" expanded="false" onMouseClicked="#showSalaryDetails" prefHeight="32.0" prefWidth="129.0" text="2018" />
+            <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="129.0" promptText="add year">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

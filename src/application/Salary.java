@@ -7,53 +7,33 @@ import javafx.beans.property.StringProperty;
 
 
 public class Salary extends RecursiveTreeObject<Salary>{
-	private final SimpleStringProperty month;
-    private final SimpleStringProperty amount;
-    private final SimpleStringProperty resHol;
-    private final SimpleStringProperty resPAR;
+	public SimpleStringProperty monthProperty;
+	public SimpleStringProperty amountProperty;
+    public SimpleStringProperty resHolProperty;
+    public SimpleStringProperty resPARProperty;
 
     public Salary(String month, String amount,String resHol, String resPAR) {
-        this.month = new SimpleStringProperty(month);
-        this.amount = new SimpleStringProperty(amount);
-        this.resHol = new SimpleStringProperty(resHol);
-        this.resPAR = new SimpleStringProperty(resPAR);
+        this.monthProperty = new SimpleStringProperty(month);
+        this.amountProperty = new SimpleStringProperty(amount);
+        this.resHolProperty = new SimpleStringProperty(resHol);
+        this.resPARProperty = new SimpleStringProperty(resPAR);
     }
 
-	public String getMonth() {
-		return month.get();
+	
+	public StringProperty monthProperty() {
+		return monthProperty;
 	}
-	public void setMonth(String m) {
-		month.set(m);
+	public StringProperty amountProperty() {
+		return amountProperty;
 	}
-	public String getAmount() {
-		return amount.get();
+	public StringProperty resHolProperty() {
+		return resHolProperty;
 	}
-	public void setAmount(String a) {
-		amount.set(a);
+	public StringProperty resPARProperty() {
+		return resPARProperty;
 	}
-	public String getResHol() {
-		return resHol.get();
+	public void setAmountProperty(String amount){
+		this.amountProperty= new SimpleStringProperty(amount);
 	}
-	public void setResHol(String rh) {
-		resHol.set(rh);
-	}
-	public String getResPAR() {
-		return resPAR.get();
-	}
-	public void setResPAR(String rp) {
-		resPAR.set(rp);
-	}
-//	public StringProperty monthProperty() {
-//		return month;
-//	}
-//	public StringProperty amountProperty() {
-//		return amount;
-//	}
-//	public StringProperty resHolProperty() {
-//		return resHol;
-//	}
-//	public StringProperty resPARProperty() {
-//		return resPAR;
-//	}
 	
 }

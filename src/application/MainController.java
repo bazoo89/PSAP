@@ -170,8 +170,8 @@ public class MainController implements Initializable {
 	@FXML
 	public Button settingsButton;
 
-	public static int sceneLength = 650;
-	public static int sceneWidth = 430;
+	public static int sceneLength = 810;
+	public static int sceneWidth = 755;
 	public int dayTotalHour = 0;
 	boolean penAlreadyClicked = false;
 	JFXDialog dialog = null;
