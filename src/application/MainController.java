@@ -77,9 +77,9 @@ public class MainController implements Initializable {
 	@FXML
 	private Button sicknessBtn;
 	@FXML
-	private Button nextBtn;
+	private JFXButton nextBtn;
 	@FXML
-	private Button previousBtn;
+	private JFXButton previousBtn;
 	@FXML
 	private TextField parResultTF;
 	@FXML

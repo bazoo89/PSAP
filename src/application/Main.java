@@ -46,7 +46,8 @@ public class Main extends Application {
 				Main.primaryStage.setScene(scene);
 				Main.primaryStage.setResizable(false);
 				Main.primaryStage.show();
-				Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
+				Image image=new Image("file:resources/icons/mainIcon.png");
+				Main.primaryStage.getIcons().add(image);
 				Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 				MainController mainController = loader.getController();
 				String date = mainController.calendar.getValue().toString().replace("-", "");

@@ -1,10 +1,12 @@
 package application;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
-public class Salary {
+public class Salary extends RecursiveTreeObject<Salary>{
 	private final SimpleStringProperty month;
     private final SimpleStringProperty amount;
     private final SimpleStringProperty resHol;
