@@ -6,6 +6,8 @@ import application.Salary;
 
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXTreeTableView;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,7 +42,7 @@ public class SalaryController implements Initializable {
     @FXML
     public TitledPane titledPane2018;
     @FXML
-    public TableView<Salary> tableView;
+    public JFXTreeTableView<Salary> tableView;
     @FXML
     public TableColumn<Salary,String> month;
     @FXML
@@ -103,7 +105,7 @@ public class SalaryController implements Initializable {
 			    }
 			);
 
-		tableView.setItems(salaries);
+//		tableView.setItems(salaries);
 		salaries.add(new Salary("Jan",null,null,null));
 		salaries.add(new Salary("Feb",null,null,null));
 		salaries.add(new Salary("Mar",null,null,null));
