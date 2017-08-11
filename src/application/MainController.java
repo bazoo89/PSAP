@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -28,6 +29,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -39,6 +42,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+import utils.HolidaysConstants;
 import utils.TempSavedInformation;
 
 public class MainController implements Initializable {
@@ -182,6 +187,23 @@ public class MainController implements Initializable {
 		hh_exitCB.setItems(hours);
 		mm_exitCB.setItems(minutes);
 		calendar.setValue(LocalDate.now());
+		Locale.setDefault(Locale.ITALY);
+		calendar.setOnAction(action -> {
+			reset();
+			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		});
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						HolidaysConstants.setCalendarHolidays(this, item);
+					}
+				};
+			}
+		};
+		calendar.setDayCellFactory(dayCellFactory);
 		parSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
@@ -433,7 +455,7 @@ public class MainController implements Initializable {
 		LocalDate nextDay = calendar.getValue().plusDays(1);
 		calendar.setValue(nextDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, nextDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
 		}
@@ -444,7 +466,7 @@ public class MainController implements Initializable {
 		LocalDate previousDay = calendar.getValue().minusDays(1);
 		calendar.setValue(previousDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, previousDay.toString().replace("-", ""), hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
 		if (loadedSuccessfully) {
 			countWorkedHours();
 		}
@@ -476,7 +498,7 @@ public class MainController implements Initializable {
 				String mm_entry = hourEntry.split(":")[1];
 				String hh_exit = hourExit.split(":")[0];
 				String mm_exit = hourExit.split(":")[1];
-				boolean successfullyCreation = createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
+				createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
 				//				if (successfullyCreation) {
 				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
 				//				}
@@ -488,7 +510,7 @@ public class MainController implements Initializable {
 			String customHHExit = baController.customHHExitTF.getText();
 			String customMMExit = baController.customMMExitTF.getText();
 			if (!customHHEntry.equals("") && !customMMEntry.equals("") && !customHHExit.equals("") && !customMMExit.equals("")) {
-				boolean successfullyCreation = createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
+				createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
 				//				if (successfullyCreation) {
 				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
 				//				}
@@ -552,7 +574,7 @@ public class MainController implements Initializable {
 			dialog.close();
 		});
 		ImageView imageView = new ImageView();
-		imageView.setImage(new Image(Main.class.getResourceAsStream("recycleBin.png")));
+		imageView.setImage(new Image("file:resources/icons/recycleBin.png"));
 		JFXButton imageBtn = new JFXButton(null, imageView);
 		imageBtn.setPrefSize(33, 33);
 		imageBtn.setOnMouseClicked(click -> {

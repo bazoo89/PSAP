@@ -1112,13 +1112,13 @@
             <id_hour>20170810</id_hour>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
+            <h_entry>16:15</h_entry>
+            <h_exit>17:10</h_exit>
             <id_hour>20170811</id_hour>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
+            <h_entry>09:20</h_entry>
+            <h_exit>11:25</h_exit>
             <id_hour>20170812</id_hour>
         </hour>
         <hour>
@@ -1829,7 +1829,6 @@
     </hours>
     <months>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>1</id_month>
             <par_res>0.0</par_res>
@@ -1840,7 +1839,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>2</id_month>
             <par_res>0.0</par_res>
@@ -1851,7 +1849,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>3</id_month>
             <par_res>0.0</par_res>
@@ -1862,7 +1859,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>4</id_month>
             <par_res>0.0</par_res>
@@ -1873,7 +1869,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>5</id_month>
             <par_res>0.0</par_res>
@@ -1884,7 +1879,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>6</id_month>
             <par_res>0.0</par_res>
@@ -1895,7 +1889,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>7</id_month>
             <par_res>0.0</par_res>
@@ -1906,7 +1899,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>8</id_month>
             <par_res>0.0</par_res>
@@ -1917,7 +1909,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>9</id_month>
             <par_res>0.0</par_res>
@@ -1928,7 +1919,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>10</id_month>
             <par_res>0.0</par_res>
@@ -1939,7 +1929,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>11</id_month>
             <par_res>0.0</par_res>
@@ -1950,7 +1939,6 @@
             <worked_hours>0.0</worked_hours>
         </month>
         <month>
-            <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id_month>12</id_month>
             <par_res>0.0</par_res>

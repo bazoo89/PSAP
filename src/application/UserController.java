@@ -62,15 +62,20 @@ public class UserController implements Initializable {
 	}
 
 	public void loginOrRegister() {
+		File folder = null;
 		name = name_textField.getText().toUpperCase();
 		lastname = lastname_textField.getText().toUpperCase();
+		String firstLetterName = name.substring(0, 1);
+		String userFolder = (firstLetterName.toLowerCase() + lastname.toLowerCase());
 		searchUser(name, lastname);
 		// REGISTER
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
-				String firstLetterName = name.substring(0, 1);
-				fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
-				userFile = new File("resources/XMLFile/" + fileName + ".xml");
+				fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name).toLowerCase();
+				folder = new File("resources/Files/" + userFolder);
+				folder.mkdir();
+				TempSavedInformation.getInstance().setUserFolder(folder);
+				userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
 				userFile.createNewFile();
 				TempSavedInformation.getInstance().setHourMonthFile(userFile);
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
@@ -97,6 +102,8 @@ public class UserController implements Initializable {
 		// LOGIN
 		else {
 			// TODO
+			folder = new File("resources/Files/" + userFolder);
+			TempSavedInformation.getInstance().setUserFolder(folder);
 			TempSavedInformation.getInstance().setHourMonthFile(new File(loggedUserPathFile));
 		}
 
@@ -116,7 +123,7 @@ public class UserController implements Initializable {
 		for (Person person : personsList) {
 			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
 				String nameFile = person.getDataFile() + ".xml";
-				loggedUserPathFile = "resources/XMLFile/" + nameFile;
+				loggedUserPathFile = "resources/Files/" + nameFile;
 				loggedUser = name + ":" + surname + ":" + loggedUserPathFile;
 				return;
 			}
@@ -145,15 +152,15 @@ public class UserController implements Initializable {
 			ToolsForManageFile.getInstance().writeUserLoggedInformation(loggedUser);
 			if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
 				String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
-				File preferencesFile = new File("resources/XMLFile/" + nameFile.toLowerCase());
+				String userFolderPath = TempSavedInformation.getInstance().getUserFolder().getPath();
+				File preferencesFile = new File(userFolderPath + "/" + nameFile.toLowerCase());
 				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
 				TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
 				ToolsForManageFile.getInstance().initCustomButtonPreferencesFile(preferencesFile);
 			}
 			MainController mainController = loader.getController();
-			String date = mainController.calendar.getValue().toString().replace("-", "");
-			boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), date, mainController.hh_entryCB,
-					mainController.mm_entryCB, mainController.hh_exitCB, mainController.mm_exitCB);
+			boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), mainController.calendar,
+					mainController.hh_entryCB, mainController.mm_entryCB, mainController.hh_exitCB, mainController.mm_exitCB);
 			if (loadedSuccessfully) {
 				mainController.countWorkedHours();
 			}
