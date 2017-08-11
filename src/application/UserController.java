@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import users.Person;
 import users.Persons;
 import utils.TempSavedInformation;
@@ -69,7 +70,7 @@ public class UserController implements Initializable {
 			try {
 				String firstLetterName = name.substring(0, 1);
 				fileName = (firstLetterName + lastname.toLowerCase() + default_file_name).toLowerCase();
-				userFile = new File("XMLFile/" + fileName + ".xml");
+				userFile = new File("resources/XMLFile/" + fileName + ".xml");
 				userFile.createNewFile();
 				TempSavedInformation.getInstance().setHourMonthFile(userFile);
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
@@ -115,7 +116,7 @@ public class UserController implements Initializable {
 		for (Person person : personsList) {
 			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
 				String nameFile = person.getDataFile() + ".xml";
-				loggedUserPathFile = "XMLFile/" + nameFile;
+				loggedUserPathFile = "resources/XMLFile/" + nameFile;
 				loggedUser = name + ":" + surname + ":" + loggedUserPathFile;
 				return;
 			}
@@ -134,8 +135,8 @@ public class UserController implements Initializable {
 			Scene scene = new Scene(root, sceneLength, sceneWidth);
 			Main.primaryStage.setScene(scene);
 			Main.primaryStage.setResizable(false);
-			Main.primaryStage.show();
-			Main.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icona.png")));
+			Image image = new Image("file:resources/icons/mainIcon.png");
+			Main.primaryStage.getIcons().add(image);
 			Main.primaryStage.setTitle(TITLE + " ::: " + name + " " + lastname);
 			TempSavedInformation.getInstance().getIsLogged().createNewFile();
 			TempSavedInformation.getInstance().setName(name);
@@ -144,7 +145,7 @@ public class UserController implements Initializable {
 			ToolsForManageFile.getInstance().writeUserLoggedInformation(loggedUser);
 			if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
 				String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
-				File preferencesFile = new File("XMLFile/" + nameFile.toLowerCase());
+				File preferencesFile = new File("resources/XMLFile/" + nameFile.toLowerCase());
 				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
 				TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
 				ToolsForManageFile.getInstance().initCustomButtonPreferencesFile(preferencesFile);
@@ -156,6 +157,8 @@ public class UserController implements Initializable {
 			if (loadedSuccessfully) {
 				mainController.countWorkedHours();
 			}
+			Main.primaryStage.initStyle(StageStyle.DECORATED);
+			Main.primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
