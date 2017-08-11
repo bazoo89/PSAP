@@ -251,9 +251,10 @@ public class ToolsForManageFile {
 	public ObservableList<Month> createAndGetMonthTemplateXML() {
 		final String ZERO = "0.0";
 		ObservableList<Month> months = FXCollections.observableArrayList();
-		int i = 1;
-		while (i <= 12) {
-			String stringMonth = i + "";
+		String[] monthList = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+		int i = 0;
+		while (i < monthList.length) {
+			String stringMonth = monthList[i];
 			Month month = new Month(stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
 			months.add(month);
 			i++;
@@ -350,7 +351,18 @@ public class ToolsForManageFile {
 		//TODO
 	}
 
-	public void loadSalaryTabFromDataFile() {
-		// TODO
+	public ArrayList<Month> loadSalaryTabFromDataFile(File dataFile) {
+		ArrayList<Month> monthList = new ArrayList<Month>();
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			for (Month month : wrapper.getMonth()) {
+				monthList.add(month);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return monthList;
 	}
 }

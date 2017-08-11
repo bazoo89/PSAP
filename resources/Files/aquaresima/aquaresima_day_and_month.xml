@@ -1831,7 +1831,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>1</id_month>
+            <id_month>Jan</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1842,7 +1842,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>2</id_month>
+            <id_month>Feb</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1853,7 +1853,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>3</id_month>
+            <id_month>Mar</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1864,7 +1864,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>4</id_month>
+            <id_month>Apr</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1875,7 +1875,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>5</id_month>
+            <id_month>May</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1886,7 +1886,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>6</id_month>
+            <id_month>Jun</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1897,7 +1897,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>7</id_month>
+            <id_month>Jul</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1908,7 +1908,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>8</id_month>
+            <id_month>Aug</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1919,7 +1919,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>9</id_month>
+            <id_month>Sep</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1930,7 +1930,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>10</id_month>
+            <id_month>Oct</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1941,7 +1941,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>11</id_month>
+            <id_month>Nov</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -1952,7 +1952,7 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>12</id_month>
+            <id_month>Dec</id_month>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
