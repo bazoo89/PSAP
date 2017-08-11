@@ -36,8 +36,8 @@ public class Main extends Application {
 				name = loggedNameLastname[0];
 				lastname = loggedNameLastname[1];
 				hourMonthFile = new File(loggedNameLastname[2]);
-				String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
-				preferencesFile = new File(loggedNameLastname[2].substring(0, loggedNameLastname[2].lastIndexOf("\\")) + "/" + nameFile);
+				String nameFile = (name.substring(0, 1) + lastname).toLowerCase() + "_preferences.xml";
+				preferencesFile = new File(loggedNameLastname[2].substring(0, loggedNameLastname[2].lastIndexOf("/")) + "/" + nameFile);
 				TempSavedInformation.getInstance().setName(name);
 				TempSavedInformation.getInstance().setLastname(lastname);
 				TempSavedInformation.getInstance().setHourMonthFile(hourMonthFile);

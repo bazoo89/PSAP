@@ -67,11 +67,11 @@ public class UserController implements Initializable {
 		lastname = lastname_textField.getText().toUpperCase();
 		String firstLetterName = name.substring(0, 1);
 		String userFolder = (firstLetterName.toLowerCase() + lastname.toLowerCase());
+		fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name).toLowerCase();
 		searchUser(name, lastname);
 		// REGISTER
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
-				fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name).toLowerCase();
 				folder = new File("resources/Files/" + userFolder);
 				folder.mkdir();
 				TempSavedInformation.getInstance().setUserFolder(folder);
@@ -90,7 +90,7 @@ public class UserController implements Initializable {
 					ToolsForManageFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
 					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
-				loggedUser = name + ":" + lastname + ":" + userFile.getPath();
+				loggedUser = name + ":" + lastname + ":" + userFile.getPath().replace("\\", "/");
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
@@ -104,7 +104,8 @@ public class UserController implements Initializable {
 			// TODO
 			folder = new File("resources/Files/" + userFolder);
 			TempSavedInformation.getInstance().setUserFolder(folder);
-			TempSavedInformation.getInstance().setHourMonthFile(new File(loggedUserPathFile));
+			userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
+			TempSavedInformation.getInstance().setHourMonthFile(userFile);
 		}
 
 	}
@@ -123,7 +124,8 @@ public class UserController implements Initializable {
 		for (Person person : personsList) {
 			if (person.getFirstName().equals(name) && person.getLastName().equals(surname)) {
 				String nameFile = person.getDataFile() + ".xml";
-				loggedUserPathFile = "resources/Files/" + nameFile;
+				String userFolder = (person.getFirstName().substring(0, 1) + person.getLastName()).toLowerCase();
+				loggedUserPathFile = "resources/Files/" + userFolder + "/" + nameFile;
 				loggedUser = name + ":" + surname + ":" + loggedUserPathFile;
 				return;
 			}
