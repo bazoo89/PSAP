@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preferences>
+    <buttons>
+        <button>
+            <id>1</id>
+            <value>09:00-19:00</value>
+        </button>
+        <button>
+            <id>2</id>
+            <value>unsetted</value>
+        </button>
+        <button>
+            <id>3</id>
+            <value>unsetted</value>
+        </button>
+    </buttons>
+</preferences>
