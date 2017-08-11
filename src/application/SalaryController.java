@@ -6,10 +6,15 @@ import application.Salary;
 
 import java.util.ResourceBundle;
 
+import javax.swing.JFormattedTextField;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.cells.editors.TextFieldEditorBuilder;
+import com.jfoenix.controls.cells.editors.base.EditorNodeBuilder;
+import com.jfoenix.controls.cells.editors.base.GenericEditableTreeTableCell;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.sun.javafx.scene.control.skin.LabeledText;
 
@@ -64,26 +69,55 @@ public class SalaryController implements Initializable {
     @FXML
     public JFXTreeTableView<Salary> treeTableView;
     @FXML
-    public JFXTreeTableColumn<Salary,String> month;
-    @FXML
-    public JFXTreeTableColumn<Salary,String> amount;
-    @FXML
-    public JFXTreeTableColumn<Salary,String> resHol;
-    @FXML
-    public JFXTreeTableColumn<Salary,String> resPAR;
-    @FXML
     public TextField addYearTF;
     @FXML 
     public VBox lateralVBox;
-    @FXML 
-    public VBox buttonVBox;
     
 	ObservableList<Salary> salaries=FXCollections.observableArrayList();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Image noteImg=new Image("file:resources/icons/note.png");
+		JFXButton janButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton febButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton marButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton aprButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton mayButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton junButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton julButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton augButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton sepButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton octButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton novButton=new JFXButton("",new ImageView(noteImg));
+		JFXButton decButton=new JFXButton("",new ImageView(noteImg));
+		HBox janButtonBox=new HBox();
+		janButtonBox.getChildren().add(janButton);
+		HBox febButtonBox=new HBox();
+		febButtonBox.getChildren().add(febButton);
+		HBox marButtonBox=new HBox();
+		marButtonBox.getChildren().add(marButton);
+		HBox aprButtonBox=new HBox();
+		aprButtonBox.getChildren().add(aprButton);
+		HBox mayButtonBox=new HBox();
+		mayButtonBox.getChildren().add(mayButton);
+		HBox junButtonBox=new HBox();
+		junButtonBox.getChildren().add(junButton);
+		HBox julButtonBox=new HBox();
+		julButtonBox.getChildren().add(julButton);
+		HBox augButtonBox=new HBox();
+		augButtonBox.getChildren().add(augButton);
+		HBox sepButtonBox=new HBox();
+		sepButtonBox.getChildren().add(sepButton);
+		HBox octButtonBox=new HBox();
+		octButtonBox.getChildren().add(octButton);
+		HBox novButtonBox=new HBox();
+		novButtonBox.getChildren().add(novButton);
+		HBox decButtonBox=new HBox();
+		decButtonBox.getChildren().add(decButton);
+		
 		JFXTreeTableColumn<Salary, String> month= new JFXTreeTableColumn<>("MONTH");
 		month.setPrefWidth(100);
 		month.setResizable(false);
+		month.setSortable(false);
 		month.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Salary,String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Salary, String> param) {
@@ -100,7 +134,8 @@ public class SalaryController implements Initializable {
 				return param.getValue().getValue().amountProperty;
 			}
 		});
-		amount.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+		amount.setCellFactory((TreeTableColumn<Salary, String> param) -> new GenericEditableTreeTableCell<>(
+	            new TextFieldEditorBuilder()));
 		amount.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Salary,String>>() {
 			@Override
 			public void handle(javafx.scene.control.TreeTableColumn.CellEditEvent<Salary, String> event) {
@@ -112,6 +147,7 @@ public class SalaryController implements Initializable {
 		JFXTreeTableColumn<Salary, String> resHol= new JFXTreeTableColumn<>("RESIDUAL HOLIDAYS");
 		resHol.setPrefWidth(185);
 		resHol.setResizable(false);
+		resHol.setSortable(false);
 		resHol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Salary,String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Salary, String> param) {
@@ -121,28 +157,34 @@ public class SalaryController implements Initializable {
 		JFXTreeTableColumn<Salary, String> resPAR= new JFXTreeTableColumn<>("RESIDUAL PAR");
 		resPAR.setPrefWidth(177);
 		resPAR.setResizable(false);
+		resPAR.setSortable(false);
 		resPAR.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Salary,String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Salary, String> param) {
 				return param.getValue().getValue().resPARProperty;
 			}
 		});
-		
-		salaries.add(new Salary("Jan",null,null,null));
-		salaries.add(new Salary("Feb",null,null,null));
-		salaries.add(new Salary("Mar",null,null,null));
-		salaries.add(new Salary("Apr",null,null,null));
-		salaries.add(new Salary("May",null,null,null));
-		salaries.add(new Salary("Jun",null,null,null));
-		salaries.add(new Salary("Jul",null,null,null));
-		salaries.add(new Salary("Aug",null,null,null));
-		salaries.add(new Salary("Sep",null,null,null));
-		salaries.add(new Salary("Oct",null,null,null));
-		salaries.add(new Salary("Nov",null,null,null));
-		salaries.add(new Salary("Dec",null,null,null));
+		JFXTreeTableColumn<Salary, String> notes= new JFXTreeTableColumn<>("");
+		notes.setPrefWidth(50);
+		notes.setResizable(false);
+		notes.setSortable(false);
+	
+
+		salaries.add(new Salary("Jan",null,null,null,janButtonBox));
+		salaries.add(new Salary("Feb",null,null,null,febButtonBox));
+		salaries.add(new Salary("Mar",null,null,null,marButtonBox));
+		salaries.add(new Salary("Apr",null,null,null,aprButtonBox));
+		salaries.add(new Salary("May",null,null,null,mayButtonBox));
+		salaries.add(new Salary("Jun",null,null,null,junButtonBox));
+		salaries.add(new Salary("Jul",null,null,null,julButtonBox));
+		salaries.add(new Salary("Aug",null,null,null,augButtonBox));
+		salaries.add(new Salary("Sep",null,null,null,sepButtonBox));
+		salaries.add(new Salary("Oct",null,null,null,octButtonBox));
+		salaries.add(new Salary("Nov",null,null,null,novButtonBox));
+		salaries.add(new Salary("Dec",null,null,null,decButtonBox));
 		
 		final TreeItem<Salary> root=new RecursiveTreeItem<Salary>(salaries,RecursiveTreeObject::getChildren);
-		treeTableView.getColumns().setAll(month,amount,resHol,resPAR);
+		treeTableView.getColumns().setAll(month,amount,resHol,resPAR,notes);
 		treeTableView.setRoot(root); 
 		treeTableView.setShowRoot(false);
 		
@@ -150,73 +192,27 @@ public class SalaryController implements Initializable {
 			@Override
 			public void handle(KeyEvent event) {
 				 if (event.getCode().equals(KeyCode.ENTER)){
-		            if(addYearTF.getText().startsWith("2") && addYearTF.getText().matches("^\\d{4}$")){
-//		            	if(){ condizione per limitare l'add dei titled pane
+		            if(addYearTF.getText()!=null && addYearTF.getText().startsWith("20") && addYearTF.getText().matches("^\\d{4}$")){
 			            	ObservableList<Node> nodes=lateralVBox.getChildren();
 			            	TitledPane newTitledPane=new TitledPane();
 			            	newTitledPane.setText(addYearTF.getText());
 			            	newTitledPane.setExpanded(false);
+			            	newTitledPane.setCollapsible(true);
 			            	int size=lateralVBox.getChildren().size();
 			            	lateralVBox.getChildren().add(size-1,newTitledPane);
+			            	newTitledPane.setOnMouseClicked(click ->{
+			            		if(newTitledPane.isFocused())
+			            			newTitledPane.setExpanded(true);
+			            		else
+			            			newTitledPane.setExpanded(false);
+			            	});
 			            	addYearTF.setText(null);
-//			            }
 		            }
 		        }
 			}
 		});
-		Image noteImg=new Image("file:resources/icons/note.png");
-		JFXButton janButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton febButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton marButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton aprButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton mayButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton junButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton julButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton augButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton sepButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton octButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton novButton=new JFXButton("",new ImageView(noteImg));
-		JFXButton decButton=new JFXButton("",new ImageView(noteImg));
-		HBox janButtonBox=new HBox();
-		janButtonBox.getChildren().add(janButton);
-		janButtonBox.setMargin(janButton, new Insets(60,0, 0, 0));
-		HBox febbuttonBox=new HBox();
-		febbuttonBox.getChildren().add(febButton);
-		febbuttonBox.setMargin(febButton, new Insets(20, 0, 0, 0));
-		HBox marButtonBox=new HBox();
-		marButtonBox.getChildren().add(marButton);
-		marButtonBox.setMargin(marButton, new Insets(20, 0, 0, 0));
-		HBox aprButtonBox=new HBox();
-		aprButtonBox.getChildren().add(aprButton);
-		aprButtonBox.setMargin(aprButton, new Insets(20,0, 0, 0));
-		HBox mayButtonBox=new HBox();
-		mayButtonBox.getChildren().add(mayButton);
-		mayButtonBox.setMargin(mayButton, new Insets(20, 0, 0, 0));
-		HBox junButtonBox=new HBox();
-		junButtonBox.getChildren().add(junButton);
-		junButtonBox.setMargin(junButton, new Insets(20, 0, 0, 0));
-		HBox julButtonBox=new HBox();
-		julButtonBox.getChildren().add(julButton);
-		julButtonBox.setMargin(julButton, new Insets(20,0, 0, 0));
-		HBox augButtonBox=new HBox();
-		augButtonBox.getChildren().add(augButton);
-		augButtonBox.setMargin(augButton, new Insets(20, 0, 0, 0));
-		HBox sepButtonBox=new HBox();
-		sepButtonBox.getChildren().add(sepButton);
-		sepButtonBox.setMargin(sepButton, new Insets(20, 0, 0, 0));
-		HBox octButtonBox=new HBox();
-		octButtonBox.getChildren().add(octButton);
-		octButtonBox.setMargin(octButton, new Insets(20, 0, 0, 0));
-		HBox novButtonBox=new HBox();
-		novButtonBox.getChildren().add(novButton);
-		novButtonBox.setMargin(novButton, new Insets(20,0, 0, 0));
-		HBox decButtonBox=new HBox();
-		decButtonBox.getChildren().add(decButton);
-		decButtonBox.setMargin(decButton, new Insets(20, 0, 0, 0));
 		
-		buttonVBox.getChildren().addAll(janButtonBox,febbuttonBox,marButtonBox,
-				aprButtonBox,mayButtonBox,junButtonBox,julButtonBox,augButtonBox,sepButtonBox,
-				octButtonBox,novButtonBox,decButtonBox);
+
 	}
 	public void goBack(){
 		try {
@@ -228,25 +224,25 @@ public class SalaryController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	public void showSalaryDetails(){
-		if(titledPane2017.isFocused()){
-			if(titledPane2017.isExpanded()){
-				titledPane2018.setExpanded(false);
-				treeTableView.setVisible(true);
-			}
-			else
-				treeTableView.setVisible(false);
-		}
-		else{
-			if(titledPane2018.isExpanded()){
-				titledPane2017.setExpanded(false);
-				treeTableView.setVisible(true);
-			}
-			else
-				treeTableView.setVisible(false);
-		}
-
-	}
+//	public void showSalaryDetails(){
+//		if(titledPane2017.isFocused()){
+//			if(titledPane2017.isExpanded()){
+//				titledPane2018.setExpanded(false);
+//				treeTableView.setVisible(true);
+//			}
+//			else
+//				treeTableView.setVisible(false);
+//		}
+//		else{
+//			if(titledPane2018.isExpanded()){
+//				titledPane2017.setExpanded(false);
+//				treeTableView.setVisible(true);
+//			}
+//			else
+//				treeTableView.setVisible(false);
+//		}
+//
+//	}
 
 	
 }
