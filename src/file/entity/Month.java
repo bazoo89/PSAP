@@ -121,7 +121,7 @@ public class Month {
 		this.salary = new SimpleStringProperty(salary);
 	}
 
-	public void setHolidayRes(String holidaysRes) {
+	public void setHolidaysRes(String holidaysRes) {
 		this.holidaysRes = new SimpleStringProperty(holidaysRes);
 	}
 

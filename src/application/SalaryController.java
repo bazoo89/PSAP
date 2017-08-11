@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import application.SalaryTab;
 import file.ToolsForManageFile;
-import file.entity.Salary;
+import file.entity.Month;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -76,10 +76,17 @@ public class SalaryController implements Initializable {
     public TextField addYearTF;
     @FXML 
     public VBox lateralVBox;
+    public JFXTreeTableColumn<SalaryTab, String> month;
+    public JFXTreeTableColumn<SalaryTab, String> amount;
+    public JFXTreeTableColumn<SalaryTab, String> resHol;
+    public JFXTreeTableColumn<SalaryTab, String> resPAR;
+    public JFXTreeTableColumn<SalaryTab, String> notes;
+    TreeItem<SalaryTab> root = null;
     
 	ObservableList<SalaryTab> salaries=FXCollections.observableArrayList();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ArrayList<Month> salaryList=ToolsForManageFile.getInstance().loadSalaryTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
 		Image noteImg=new Image("file:resources/icons/note.png");
 		JFXButton janButton=new JFXButton("",new ImageView(noteImg));
 		JFXButton febButton=new JFXButton("",new ImageView(noteImg));
@@ -118,7 +125,7 @@ public class SalaryController implements Initializable {
 		HBox decButtonBox=new HBox();
 		decButtonBox.getChildren().add(decButton);
 		
-		JFXTreeTableColumn<SalaryTab, String> month= new JFXTreeTableColumn<>("MONTH");
+		month= new JFXTreeTableColumn<>("MONTH");
 		month.setPrefWidth(100);
 		month.setResizable(false);
 		month.setSortable(false);
@@ -128,7 +135,7 @@ public class SalaryController implements Initializable {
 				return param.getValue().getValue().monthProperty;
 			}
 		});
-		JFXTreeTableColumn<SalaryTab, String> amount= new JFXTreeTableColumn<>("SALARY");
+		amount= new JFXTreeTableColumn<>("SALARY");
 		amount.setPrefWidth(177);
 		amount.setEditable(true);
 		amount.setResizable(false);
@@ -149,7 +156,7 @@ public class SalaryController implements Initializable {
 			}
 		});
 		
-		JFXTreeTableColumn<SalaryTab, String> resHol= new JFXTreeTableColumn<>("RESIDUAL HOLIDAYS");
+		resHol= new JFXTreeTableColumn<>("RESIDUAL HOLIDAYS");
 		resHol.setPrefWidth(185);
 		resHol.setResizable(false);
 		resHol.setSortable(false);
@@ -159,7 +166,7 @@ public class SalaryController implements Initializable {
 				return param.getValue().getValue().resHolProperty;
 			}
 		});
-		JFXTreeTableColumn<SalaryTab, String> resPAR= new JFXTreeTableColumn<>("RESIDUAL PAR");
+		resPAR= new JFXTreeTableColumn<>("RESIDUAL PAR");
 		resPAR.setPrefWidth(177);
 		resPAR.setResizable(false);
 		resPAR.setSortable(false);
@@ -169,26 +176,11 @@ public class SalaryController implements Initializable {
 				return param.getValue().getValue().resPARProperty;
 			}
 		});
-		JFXTreeTableColumn<SalaryTab, String> notes= new JFXTreeTableColumn<>("");
+		notes= new JFXTreeTableColumn<>("");
 		notes.setPrefWidth(50);
 		notes.setResizable(false);
 		notes.setSortable(false);
-	
-
-		salaries.add(new SalaryTab("Jan",null,null,null,janButtonBox));
-		salaries.add(new SalaryTab("Feb",null,null,null,febButtonBox));
-		salaries.add(new SalaryTab("Mar",null,null,null,marButtonBox));
-		salaries.add(new SalaryTab("Apr",null,null,null,aprButtonBox));
-		salaries.add(new SalaryTab("May",null,null,null,mayButtonBox));
-		salaries.add(new SalaryTab("Jun",null,null,null,junButtonBox));
-		salaries.add(new SalaryTab("Jul",null,null,null,julButtonBox));
-		salaries.add(new SalaryTab("Aug",null,null,null,augButtonBox));
-		salaries.add(new SalaryTab("Sep",null,null,null,sepButtonBox));
-		salaries.add(new SalaryTab("Oct",null,null,null,octButtonBox));
-		salaries.add(new SalaryTab("Nov",null,null,null,novButtonBox));
-		salaries.add(new SalaryTab("Dec",null,null,null,decButtonBox));
-		
-		final TreeItem<SalaryTab> root=new RecursiveTreeItem<SalaryTab>(salaries,RecursiveTreeObject::getChildren);
+		root=new RecursiveTreeItem<SalaryTab>(salaries,RecursiveTreeObject::getChildren);
 		treeTableView.getColumns().setAll(month,amount,resHol,resPAR,notes);
 		treeTableView.setRoot(root); 
 		treeTableView.setShowRoot(false);
@@ -206,22 +198,20 @@ public class SalaryController implements Initializable {
 			            	int size=lateralVBox.getChildren().size();
 			            	lateralVBox.getChildren().add(size-1,newTitledPane);
 			            	newTitledPane.setOnMouseClicked(click ->{
-			            		ArrayList<Salary> salaryList=ToolsForManageFile.getInstance().loadSalaryTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
+			            		ArrayList<Month> salaryList=ToolsForManageFile.getInstance().loadSalaryTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
 			            		populateTableView(salaryList);
 			            	});
 			            	addYearTF.setText(null);
 		            }
 		        }
 			}
-
-		
 		});
+		populateTableView(salaryList);
 	}
-	private void populateTableView(ArrayList<Salary> salaryList) {
-		for (Salary salary : salaryList) {
-			
+	private void populateTableView(ArrayList<Month> salaryList) {
+		for (Month salary : salaryList) {
+			salaries.add(new SalaryTab(salary.getId(), salary.getSalary(), salary.getHolidaysRes(), salary.getParRes(), null));
 		}
-		
 	}
 	public void goBack(){
 		try {

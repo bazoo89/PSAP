@@ -442,7 +442,7 @@ public class MainController implements Initializable {
 
 	public void goToSalary() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/application/SalaryTab.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/Salary.fxml"));
 			Scene salaryScene = new Scene(root, sceneLength, sceneWidth);
 			Main.primaryStage.setScene(salaryScene);
 		} catch (IOException e) {
