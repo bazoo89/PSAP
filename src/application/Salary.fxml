@@ -33,7 +33,7 @@
                <children>
                   <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="131.0">
                      <children>
-                        <TitledPane fx:id="titledPane2017" animated="false" expanded="false" prefHeight="32.0" prefWidth="146.0" text="2017" />
+                        <TitledPane fx:id="titledPane2017" animated="false" expanded="true" prefHeight="32.0" prefWidth="146.0" text="2017" />
                         <TitledPane fx:id="titledPane2018" animated="false" expanded="false" prefHeight="32.0" prefWidth="81.0" text="2018" />
                         <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="84.0" promptText="add year">
                            <font>

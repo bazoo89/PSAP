@@ -8,14 +8,14 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.layout.HBox;
 
 
-public class Salary extends RecursiveTreeObject<Salary>{
+public class SalaryTab extends RecursiveTreeObject<SalaryTab>{
 	public SimpleStringProperty monthProperty;
 	public SimpleStringProperty amountProperty;
     public SimpleStringProperty resHolProperty;
     public SimpleStringProperty resPARProperty;
     public HBox hbox;
 
-    public Salary(String month, String amount,String resHol, String resPAR,HBox hbox) {
+    public SalaryTab(String month, String amount,String resHol, String resPAR,HBox hbox) {
         this.monthProperty = new SimpleStringProperty(month);
         this.amountProperty = new SimpleStringProperty(amount);
         this.resHolProperty = new SimpleStringProperty(resHol);

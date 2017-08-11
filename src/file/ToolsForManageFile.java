@@ -23,6 +23,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import file.entity.CustomButton;
 import file.entity.Hour;
 import file.entity.Month;
+import file.entity.Salary;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -350,7 +351,8 @@ public class ToolsForManageFile {
 		//TODO
 	}
 
-	public void loadSalaryTabFromDataFile() {
+	public ArrayList<Salary> loadSalaryTabFromDataFile(File dataFile) {
 		// TODO
+		return null;
 	}
 }
