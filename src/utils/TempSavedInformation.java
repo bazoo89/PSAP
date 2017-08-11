@@ -9,6 +9,7 @@ public class TempSavedInformation {
 	private String lastname = null;
 	private File hourMonthFile = null;
 	private File preferencesFile = null;
+	private File userFolder = null;
 	private File isLogged = null;
 
 	public static TempSavedInformation getInstance() {
@@ -48,6 +49,14 @@ public class TempSavedInformation {
 
 	public void setPreferencesFile(File preferencesFile) {
 		this.preferencesFile = preferencesFile;
+	}
+
+	public File getUserFolder() {
+		return userFolder;
+	}
+
+	public void setUserFolder(File userFolder) {
+		this.userFolder = userFolder;
 	}
 
 	public File getIsLogged() {

@@ -18,6 +18,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.jfoenix.controls.JFXDatePicker;
+
 import file.entity.CustomButton;
 import file.entity.Hour;
 import file.entity.Month;
@@ -131,13 +133,14 @@ public class ToolsForManageFile {
 		}
 	}
 
-	public boolean loadHoursTabFromDataFile(File dataFile, String date, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
+	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
 		boolean loadedSuccessfuly = false;
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Unmarshaller um = context.createUnmarshaller();
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
+			String date = calendar.getValue().toString().replace("-", "");
 			for (Hour hour : hoursList) {
 				if (hour.getId().equals(date)) {
 					if (!hour.getHEntry().equals(defaultHour)) {

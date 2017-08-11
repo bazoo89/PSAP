@@ -22,11 +22,12 @@ public class Main extends Application {
 	private String name = null;
 	private String lastname = null;
 	private File hourMonthFile = null;
+	private File preferencesFile = null;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Main.primaryStage = primaryStage;
-		TempSavedInformation.getInstance().setIsLogged(new File("resources/XMLFile/userLogged.info"));
+		TempSavedInformation.getInstance().setIsLogged(new File("resources/Files/userLogged.info"));
 		File isLogged = TempSavedInformation.getInstance().getIsLogged();
 		if (isLogged.exists() && !isLogged.isDirectory()) {
 			String loggedUser = ToolsForManageFile.getInstance().readAndGetUserLoggedInformation();
@@ -35,9 +36,12 @@ public class Main extends Application {
 				name = loggedNameLastname[0];
 				lastname = loggedNameLastname[1];
 				hourMonthFile = new File(loggedNameLastname[2]);
+				String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
+				preferencesFile = new File(loggedNameLastname[2].substring(0, loggedNameLastname[2].lastIndexOf("\\")) + "/" + nameFile);
 				TempSavedInformation.getInstance().setName(name);
 				TempSavedInformation.getInstance().setLastname(lastname);
 				TempSavedInformation.getInstance().setHourMonthFile(hourMonthFile);
+				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
 			}
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
@@ -51,22 +55,22 @@ public class Main extends Application {
 				Main.primaryStage.initStyle(StageStyle.DECORATED);
 				Main.primaryStage.show();
 				MainController mainController = loader.getController();
-				String date = mainController.calendar.getValue().toString().replace("-", "");
-				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, date, mainController.hh_entryCB, mainController.mm_entryCB,
+				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB,
 						mainController.hh_exitCB, mainController.mm_exitCB);
 				if (loadedSuccessfully) {
 					mainController.countWorkedHours();
 				}
 				if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
 					String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
-					TempSavedInformation.getInstance().setPreferencesFile(new File("resources/XMLFile/" + nameFile.toLowerCase()));
+					String userFolderPath = TempSavedInformation.getInstance().getUserFolder().getPath();
+					TempSavedInformation.getInstance().setPreferencesFile(new File(userFolderPath + "/" + nameFile.toLowerCase()));
 					TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
-			File personsFile = new File("resources/XMLFile/Persons.xml");
+			File personsFile = new File("resources/Files/Persons.xml");
 			if (!personsFile.exists()) {
 				personsFile.createNewFile();
 			}
