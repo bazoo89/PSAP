@@ -347,8 +347,23 @@ public class ToolsForManageFile {
 		return customButtonList;
 	}
 
-	public void updateSalaryTabToDataFile() {
-		//TODO
+	public void updateSalaryTabToDataFile(File dataFile, String currentMonth, String newSalary) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Month> monthsList = wrapper.getMonth();
+			for (Month month : monthsList) {
+				if (month.getId().equals(currentMonth)) {
+					month.setSalary(newSalary);
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public ArrayList<Month> loadSalaryTabFromDataFile(File dataFile) {

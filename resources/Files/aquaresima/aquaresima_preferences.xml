@@ -3,7 +3,7 @@
     <buttons>
         <button>
             <id>1</id>
-            <value>unsetted</value>
+            <value>09:00-12:00</value>
         </button>
         <button>
             <id>2</id>

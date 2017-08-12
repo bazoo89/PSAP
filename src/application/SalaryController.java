@@ -142,7 +142,6 @@ public class SalaryController implements Initializable {
 		amount.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<SalaryTab,String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<SalaryTab, String> param) {
-				ToolsForManageFile.getInstance().updateSalaryTabToDataFile();
 				return param.getValue().getValue().amountProperty;
 			}
 		});
@@ -152,7 +151,9 @@ public class SalaryController implements Initializable {
 			@Override
 			public void handle(javafx.scene.control.TreeTableColumn.CellEditEvent<SalaryTab, String> event) {
 				TreeItem<SalaryTab> currentEditingSalary=treeTableView.getTreeItem(event.getTreeTablePosition().getRow());
-				currentEditingSalary.getValue().setAmountProperty(event.getNewValue());
+				SalaryTab selectedRow = currentEditingSalary.getValue();
+				selectedRow.setAmountProperty(event.getNewValue());
+				ToolsForManageFile.getInstance().updateSalaryTabToDataFile(TempSavedInformation.getInstance().getHourMonthFile(), selectedRow.monthProperty.get(), selectedRow.amountProperty.get());
 			}
 		});
 		
