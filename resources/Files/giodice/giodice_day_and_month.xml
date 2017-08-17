@@ -1139,6 +1139,7 @@
         <hour>
             <h_entry>00:00</h_entry>
             <h_exit>00:00</h_exit>
+            <hours_holidays>1.0</hours_holidays>
             <id_hour>20170816</id_hour>
         </hour>
         <hour>
@@ -1831,9 +1832,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>1</id_month>
+            <id>Jan</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>1</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1842,9 +1844,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>2</id_month>
+            <id>Feb</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>2</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1853,9 +1856,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>3</id_month>
+            <id>Mar</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>3</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1864,9 +1868,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>4</id_month>
+            <id>Apr</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>4</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1875,9 +1880,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>5</id_month>
+            <id>May</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>5</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1886,9 +1892,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>6</id_month>
+            <id>Jun</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>6</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1897,9 +1904,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>7</id_month>
+            <id>Jul</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>7</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1908,9 +1916,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>8</id_month>
+            <id>Aug</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>8</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1919,9 +1928,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>9</id_month>
+            <id>Sep</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>9</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1930,9 +1940,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>10</id_month>
+            <id>Oct</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>10</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1941,9 +1952,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>11</id_month>
+            <id>Nov</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>11</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
@@ -1952,9 +1964,10 @@
         <month>
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
-            <id_month>12</id_month>
+            <id>Dec</id>
+            <month>0.0</month>
             <par_res>0.0</par_res>
-            <par_used_temp>0.0</par_used_temp>
+            <par_used_temp>12</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>

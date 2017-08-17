@@ -28,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import users.Person;
 import users.Persons;
+import utils.Constants;
 import utils.TempSavedInformation;
 
 public class ToolsForManageFile {
@@ -201,7 +202,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -217,7 +218,7 @@ public class ToolsForManageFile {
 						day = (Integer.parseInt(day) + 1) + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -237,7 +238,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -255,7 +256,7 @@ public class ToolsForManageFile {
 		int i = 0;
 		while (i < monthList.length) {
 			String stringMonth = monthList[i];
-			Month month = new Month(stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
+			Month month = new Month(String.valueOf(i+1), stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
 			months.add(month);
 			i++;
 		}
@@ -379,5 +380,60 @@ public class ToolsForManageFile {
 			ex.printStackTrace();
 		}
 		return monthList;
+	}
+	
+	
+	// inserire nel metodo updateHourFile i salvataggi che faccio nel metodo sottostante,
+	// cosi scrivo su file non quando premo su OK ma quando salvo-GIUSTAMENTE
+	
+	// e modificare il metodo che slava i mesi, no deve scrivere i numeri ma i mesi!!!
+	public void updateHolidayIntoDatafile(File dataFile, String date, String type, String hour) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Hour> hoursList = wrapper.getHour();
+			List<Month> monthList = wrapper.getMonth();
+			String monthDate = date.substring(3,6);
+			for (Hour currentHour : hoursList) {
+				if (currentHour.getId().equals(date)) {
+					switch (type) {
+					case Constants.Holidays:
+						currentHour.setHolidaysHourUsed(hour);
+						break;
+					case Constants.PAR:
+						currentHour.setParHourUsed(hour);
+						break;
+					case Constants.Sickness:
+						currentHour.setSicknessHourUsed(hour);
+						break;
+					default:
+						break;
+					}
+					for (Month month : monthList) {
+						if(month.getId().equals(monthDate)){
+							switch (type) {
+							case Constants.Holidays:
+								month.setHolidaysRes(hour);
+								break;
+							case Constants.PAR:
+								month.setParRes(hour);
+								break;
+							case Constants.Sickness:
+								month.setSicknessUsedTemp(hour);
+								break;
+							default:
+								break;
+							}
+						}
+					}
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }
