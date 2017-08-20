@@ -361,7 +361,7 @@ public class MainController implements Initializable {
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
 			parHoursLabel.setText(parResultTF.getText());
-			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
+//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
 			countTotalHours(parHoursLabel);
 		} else if (freeDialog.isVisible()) {
 			freeDialog.setVisible(false);
@@ -611,7 +611,19 @@ public class MainController implements Initializable {
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
-		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit);
+		String holUsed = "00:00";
+		String parUsed = "00:00";
+		String sickUsed = "00:00";
+		if (freeResultTF != null && !freeResultTF.getText().equals("")){
+			holUsed = freeResultTF.getText();
+		}
+		if (parResultTF != null && !parResultTF.getText().equals("")){
+			parUsed = parResultTF.getText();
+		}
+		if (sickResultTF != null && !sickResultTF.getText().equals("")){
+			sickUsed = sickResultTF.getText();
+		}
+		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);
 
 	}
 	//*****************************//

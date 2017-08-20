@@ -114,26 +114,64 @@ public class ToolsForManageFile {
 		}
 	}
 
-	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit) {
+	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit, String holHours, String parHours, String sickHours) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Unmarshaller um = context.createUnmarshaller();
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
-			for (Hour hour : hoursList) {
-				if (hour.getId().equals(date)) {
-					hour.setHEntry(hEntry);
-					hour.setHExit(hExit);
-					Marshaller m = context.createMarshaller();
-					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-					m.marshal(wrapper, dataFile);
+			List<Month> monthList = wrapper.getMonth();
+			String monthDate = date.substring(4,6);
+			for (Hour currentHour : hoursList) {
+				if (currentHour.getId().equals(date)) {
+					currentHour.setHEntry(hEntry);
+					currentHour.setHExit(hExit);
+					currentHour.setHolidaysHourUsed(holHours);
+					currentHour.setParHourUsed(parHours);
+					currentHour.setSicknessHourUsed(sickHours);
+//					switch (type) {
+//					case Constants.Holidays:
+//						currentHour.setHolidaysHourUsed(hour);
+//						break;
+//					case Constants.PAR:
+//						currentHour.setParHourUsed(hour);
+//						break;
+//					case Constants.Sickness:
+//						currentHour.setSicknessHourUsed(hour);
+//						break;
+//					default:
+//						break;
+//					}
+					for (Month month : monthList) {
+						// TODO Sommare le ore e non riscriverle
+						if(month.getId().equals(monthDate)){
+//							switch (type) {
+//							case Constants.Holidays:
+								month.setHolidaysRes(holHours);
+//								break;
+//							case Constants.PAR:
+								month.setParRes(parHours);
+//								break;
+//							case Constants.Sickness:
+								month.setSicknessUsedTemp(sickHours);
+//								break;
+//							default:
+//								break;
+//							}
+						}
+					}
+				break;
 				}
 			}
+			Marshaller m = context.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			m.marshal(wrapper, dataFile);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
+	// TODO al aricamento del file deve compilare anche eventuali ferie/par/malattie
 	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
 		boolean loadedSuccessfuly = false;
 		try {
@@ -381,12 +419,11 @@ public class ToolsForManageFile {
 		}
 		return monthList;
 	}
-	
-	
+
+
 	// inserire nel metodo updateHourFile i salvataggi che faccio nel metodo sottostante,
 	// cosi scrivo su file non quando premo su OK ma quando salvo-GIUSTAMENTE
-	
-	// e modificare il metodo che slava i mesi, no deve scrivere i numeri ma i mesi!!!
+
 	public void updateHolidayIntoDatafile(File dataFile, String date, String type, String hour) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);

@@ -5,9 +5,4 @@
         <name>GIOVANNI</name>
         <lastname>IODICE</lastname>
     </person>
-    <person>
-        <dataFile>aquaresima_day_and_month</dataFile>
-        <name>ANDREA</name>
-        <lastname>QUARESIMA</lastname>
-    </person>
 </persons>
