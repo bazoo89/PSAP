@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Month {
-	private SimpleStringProperty id;
+	private StringProperty id;
 	private StringProperty month;
 	private StringProperty salary;
 	private StringProperty holidaysRes;
@@ -21,7 +21,8 @@ public class Month {
 		this(null, null, null, null, null, null, null, null, null, null);
 	}
 
-	public Month(String id, String month, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp, String par_used_temp) {
+	public Month(String id, String month, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp,
+			String par_used_temp) {
 		this.id = new SimpleStringProperty(id);
 		this.month = new SimpleStringProperty(month);
 		this.salary = new SimpleStringProperty(salary);
@@ -38,7 +39,7 @@ public class Month {
 	public String getId() {
 		return id.get();
 	}
-	
+
 	@XmlElement(name = "month")
 	public String getMonth() {
 		return month.get();
@@ -87,7 +88,7 @@ public class Month {
 	public StringProperty idProperty() {
 		return id;
 	}
-	
+
 	public StringProperty monthProperty() {
 		return month;
 	}
@@ -127,7 +128,7 @@ public class Month {
 	public void setId(String id) {
 		this.id = new SimpleStringProperty(id);
 	}
-	
+
 	public void setMonth(String month) {
 		this.month = new SimpleStringProperty(month);
 	}

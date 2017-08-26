@@ -77,7 +77,6 @@ public class UserController implements Initializable {
 				TempSavedInformation.getInstance().setUserFolder(folder);
 				userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
 				userFile.createNewFile();
-				TempSavedInformation.getInstance().setHourMonthFile(userFile);
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
 				Person person = new Person(name, lastname, fileName);
 

@@ -109,6 +109,7 @@ public class ToolsForManageFile {
 			wrapper.setMonth(monthsList);
 			// Marshalling and saving XML to the file.
 			m.marshal(wrapper, dataFile);
+			TempSavedInformation.getInstance().setHourMonthFile(dataFile);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -121,57 +122,38 @@ public class ToolsForManageFile {
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
 			List<Month> monthList = wrapper.getMonth();
-			String monthDate = date.substring(4,6);
+			String monthDate = date.substring(4, 6);
+			if (monthDate.startsWith("0")) {
+				monthDate = monthDate.replace("0", "");
+			}
 			for (Hour currentHour : hoursList) {
 				if (currentHour.getId().equals(date)) {
 					currentHour.setHEntry(hEntry);
 					currentHour.setHExit(hExit);
-					currentHour.setHolidaysHourUsed(holHours);
-					currentHour.setParHourUsed(parHours);
-					currentHour.setSicknessHourUsed(sickHours);
-//					switch (type) {
-//					case Constants.Holidays:
-//						currentHour.setHolidaysHourUsed(hour);
-//						break;
-//					case Constants.PAR:
-//						currentHour.setParHourUsed(hour);
-//						break;
-//					case Constants.Sickness:
-//						currentHour.setSicknessHourUsed(hour);
-//						break;
-//					default:
-//						break;
-//					}
+					currentHour.setHolidaysHoursUsed(holHours);
+					currentHour.setParHoursUsed(parHours);
+					currentHour.setSicknessHoursUsed(sickHours);
 					for (Month month : monthList) {
-						// TODO Sommare le ore e non riscriverle
-						if(month.getId().equals(monthDate)){
-//							switch (type) {
-//							case Constants.Holidays:
-								month.setHolidaysRes(holHours);
-//								break;
-//							case Constants.PAR:
-								month.setParRes(parHours);
-//								break;
-//							case Constants.Sickness:
-								month.setSicknessUsedTemp(sickHours);
-//								break;
-//							default:
-//								break;
-//							}
+						if (month.getId().equals(monthDate)) {
+							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp()) + Double.parseDouble(holHours);
+							double parUsedTemp = Double.parseDouble(month.getParUsedTemp()) + Double.parseDouble(parHours);
+							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(parHours);
+							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
+							month.setParUsedTemp(String.valueOf(parUsedTemp));
+							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
+							Marshaller m = context.createMarshaller();
+							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+							m.marshal(wrapper, dataFile);
 						}
 					}
-				break;
 				}
 			}
-			Marshaller m = context.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m.marshal(wrapper, dataFile);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
-	// TODO al aricamento del file deve compilare anche eventuali ferie/par/malattie
+	// TODO al caricamento del file deve compilare anche eventuali ferie/par/malattie
 	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
 		boolean loadedSuccessfuly = false;
 		try {
@@ -245,7 +227,7 @@ public class ToolsForManageFile {
 				}
 				break;
 			case 2:
-				month = i + "";
+				month = "0" + i;
 				for (int y = 1; y <= 28; y++) {
 					if (y < 10) {
 						day = "0" + y;
@@ -290,11 +272,11 @@ public class ToolsForManageFile {
 	public ObservableList<Month> createAndGetMonthTemplateXML() {
 		final String ZERO = "0.0";
 		ObservableList<Month> months = FXCollections.observableArrayList();
-		String[] monthList = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+		String[] monthList = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		int i = 0;
 		while (i < monthList.length) {
 			String stringMonth = monthList[i];
-			Month month = new Month(String.valueOf(i+1), stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
+			Month month = new Month(String.valueOf(i + 1), stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
 			months.add(month);
 			i++;
 		}
@@ -420,7 +402,6 @@ public class ToolsForManageFile {
 		return monthList;
 	}
 
-
 	// inserire nel metodo updateHourFile i salvataggi che faccio nel metodo sottostante,
 	// cosi scrivo su file non quando premo su OK ma quando salvo-GIUSTAMENTE
 
@@ -431,24 +412,24 @@ public class ToolsForManageFile {
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
 			List<Month> monthList = wrapper.getMonth();
-			String monthDate = date.substring(3,6);
+			String monthDate = date.substring(3, 6);
 			for (Hour currentHour : hoursList) {
 				if (currentHour.getId().equals(date)) {
 					switch (type) {
 					case Constants.Holidays:
-						currentHour.setHolidaysHourUsed(hour);
+						currentHour.setHolidaysHoursUsed(hour);
 						break;
 					case Constants.PAR:
-						currentHour.setParHourUsed(hour);
+						currentHour.setParHoursUsed(hour);
 						break;
 					case Constants.Sickness:
-						currentHour.setSicknessHourUsed(hour);
+						currentHour.setSicknessHoursUsed(hour);
 						break;
 					default:
 						break;
 					}
 					for (Month month : monthList) {
-						if(month.getId().equals(monthDate)){
+						if (month.getId().equals(monthDate)) {
 							switch (type) {
 							case Constants.Holidays:
 								month.setHolidaysRes(hour);

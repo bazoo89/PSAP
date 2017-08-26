@@ -216,15 +216,13 @@ public class MainController implements Initializable {
 				if ((decimal > 0 && decimal < 0.5) || (decimal > 0.5 && decimal < 1)) {
 					parResultTF.setText((int) newValue.floatValue() + "");
 				} else {
-					if (decimal == 0){
+					if (decimal == 0) {
 						parResultTF.setText((int) newValue.floatValue() + "");
 						parSlider.setValue((int) newValue.floatValue());
-					}
-					else if (decimal == 0.5){
+					} else if (decimal == 0.5) {
 						parResultTF.setText((int) newValue.floatValue() + ".5");
 						parSlider.setValue((int) newValue.floatValue() + 0.5);
-					}
-					else{
+					} else {
 						parResultTF.setText(newValue.floatValue() + "");
 						parSlider.setValue(newValue.floatValue());
 					}
@@ -361,7 +359,7 @@ public class MainController implements Initializable {
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
 			parHoursLabel.setText(parResultTF.getText());
-//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
+			//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
 			countTotalHours(parHoursLabel);
 		} else if (freeDialog.isVisible()) {
 			freeDialog.setVisible(false);
@@ -552,7 +550,6 @@ public class MainController implements Initializable {
 			penAlreadyClicked = false;
 			penImageView.setEffect(null);
 		});
-		//		});
 		//		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
 		//			if (newValue) {
 		//				penImageView.setEffect(ds);
@@ -560,7 +557,6 @@ public class MainController implements Initializable {
 		//				penImageView.setEffect(null);
 		//			}
 		//		});
-
 	}
 
 	private boolean createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
@@ -611,16 +607,16 @@ public class MainController implements Initializable {
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
-		String holUsed = "00:00";
-		String parUsed = "00:00";
-		String sickUsed = "00:00";
-		if (freeResultTF != null && !freeResultTF.getText().equals("")){
+		String holUsed = "0.0";
+		String parUsed = "0.0";
+		String sickUsed = "0.0";
+		if (freeResultTF != null && !freeResultTF.getText().equals("") && freeHoursLabel.isVisible()) {
 			holUsed = freeResultTF.getText();
 		}
-		if (parResultTF != null && !parResultTF.getText().equals("")){
+		if (parResultTF != null && !parResultTF.getText().equals("") && parHoursLabel.isVisible()) {
 			parUsed = parResultTF.getText();
 		}
-		if (sickResultTF != null && !sickResultTF.getText().equals("")){
+		if (sickResultTF != null && !sickResultTF.getText().equals("") && sickHoursLabel.isVisible()) {
 			sickUsed = sickResultTF.getText();
 		}
 		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);

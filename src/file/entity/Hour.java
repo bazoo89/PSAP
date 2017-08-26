@@ -40,19 +40,19 @@ public class Hour {
 	public String getHExit() {
 		return h_exit.get();
 	}
-	
-	@XmlElement(name = "hours_holidays")
-	public String getHHolidays() {
+
+	@XmlElement(name = "holidaysHoursUsed")
+	public String getHolidaysHoursUsed() {
 		return holidaysHoursUsed.get();
 	}
-	
-	@XmlElement(name = "hours_par")
-	public String getHPar() {
+
+	@XmlElement(name = "parHoursUsed")
+	public String getParHoursUsed() {
 		return parHoursUsed.get();
 	}
-	
-	@XmlElement(name = "hours_sickness")
-	public String getHSickness() {
+
+	@XmlElement(name = "sicknessHoursUsed")
+	public String getSicknessHoursUsed() {
 		return sicknessHoursUsed.get();
 	}
 
@@ -67,15 +67,15 @@ public class Hour {
 	public StringProperty hExitProperty() {
 		return h_exit;
 	}
-	
+
 	public StringProperty holidaysHourProperty() {
 		return holidaysHoursUsed;
 	}
-	
+
 	public StringProperty parHoursProperty() {
 		return parHoursUsed;
 	}
-	
+
 	public StringProperty sicknessHourProperty() {
 		return sicknessHoursUsed;
 	}
@@ -91,16 +91,16 @@ public class Hour {
 	public void setHExit(String hExit) {
 		this.h_exit = new SimpleStringProperty(hExit);
 	}
-	
-	public void setHolidaysHourUsed(String holidaysUsed) {
+
+	public void setHolidaysHoursUsed(String holidaysUsed) {
 		this.holidaysHoursUsed = new SimpleStringProperty(holidaysUsed);
 	}
-	
-	public void setParHourUsed(String parUsed) {
+
+	public void setParHoursUsed(String parUsed) {
 		this.parHoursUsed = new SimpleStringProperty(parUsed);
 	}
-	
-	public void setSicknessHourUsed(String sicknessUSed) {
+
+	public void setSicknessHoursUsed(String sicknessUSed) {
 		this.sicknessHoursUsed = new SimpleStringProperty(sicknessUSed);
 	}
 }
