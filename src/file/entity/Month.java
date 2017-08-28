@@ -6,7 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Month {
-	private StringProperty idMonth;
+	private StringProperty id;
+	private StringProperty month;
 	private StringProperty salary;
 	private StringProperty holidaysRes;
 	private StringProperty parRes;
@@ -17,11 +18,13 @@ public class Month {
 	private StringProperty parUsedTemp;
 
 	public Month() {
-		this(null, null, null, null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null, null, null, null);
 	}
 
-	public Month(String id, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp, String par_used_temp) {
-		this.idMonth = new SimpleStringProperty(id);
+	public Month(String id, String month, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp,
+			String par_used_temp) {
+		this.id = new SimpleStringProperty(id);
+		this.month = new SimpleStringProperty(month);
 		this.salary = new SimpleStringProperty(salary);
 		this.holidaysRes = new SimpleStringProperty(holidays_res);
 		this.parRes = new SimpleStringProperty(par_res);
@@ -32,9 +35,14 @@ public class Month {
 		this.parUsedTemp = new SimpleStringProperty(par_used_temp);
 	}
 
-	@XmlElement(name = "id_month")
+	@XmlElement(name = "id")
 	public String getId() {
-		return idMonth.get();
+		return id.get();
+	}
+
+	@XmlElement(name = "month")
+	public String getMonth() {
+		return month.get();
 	}
 
 	@XmlElement(name = "salary")
@@ -78,7 +86,11 @@ public class Month {
 	}
 
 	public StringProperty idProperty() {
-		return idMonth;
+		return id;
+	}
+
+	public StringProperty monthProperty() {
+		return month;
 	}
 
 	public StringProperty salaryProperty() {
@@ -114,7 +126,11 @@ public class Month {
 	}
 
 	public void setId(String id) {
-		this.idMonth = new SimpleStringProperty(id);
+		this.id = new SimpleStringProperty(id);
+	}
+
+	public void setMonth(String month) {
+		this.month = new SimpleStringProperty(month);
 	}
 
 	public void setSalary(String salary) {

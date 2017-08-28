@@ -28,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import users.Person;
 import users.Persons;
+import utils.Constants;
 import utils.TempSavedInformation;
 
 public class ToolsForManageFile {
@@ -108,24 +109,43 @@ public class ToolsForManageFile {
 			wrapper.setMonth(monthsList);
 			// Marshalling and saving XML to the file.
 			m.marshal(wrapper, dataFile);
+			TempSavedInformation.getInstance().setHourMonthFile(dataFile);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
-	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit) {
+	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit, String holHours, String parHours, String sickHours) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Unmarshaller um = context.createUnmarshaller();
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
-			for (Hour hour : hoursList) {
-				if (hour.getId().equals(date)) {
-					hour.setHEntry(hEntry);
-					hour.setHExit(hExit);
-					Marshaller m = context.createMarshaller();
-					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-					m.marshal(wrapper, dataFile);
+			List<Month> monthList = wrapper.getMonth();
+			String monthDate = date.substring(4, 6);
+			if (monthDate.startsWith("0")) {
+				monthDate = monthDate.replace("0", "");
+			}
+			for (Hour currentHour : hoursList) {
+				if (currentHour.getId().equals(date)) {
+					currentHour.setHEntry(hEntry);
+					currentHour.setHExit(hExit);
+					currentHour.setHolidaysHoursUsed(holHours);
+					currentHour.setParHoursUsed(parHours);
+					currentHour.setSicknessHoursUsed(sickHours);
+					for (Month month : monthList) {
+						if (month.getId().equals(monthDate)) {
+							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp()) + Double.parseDouble(holHours);
+							double parUsedTemp = Double.parseDouble(month.getParUsedTemp()) + Double.parseDouble(parHours);
+							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(parHours);
+							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
+							month.setParUsedTemp(String.valueOf(parUsedTemp));
+							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
+							Marshaller m = context.createMarshaller();
+							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+							m.marshal(wrapper, dataFile);
+						}
+					}
 				}
 			}
 		} catch (Exception ex) {
@@ -133,6 +153,7 @@ public class ToolsForManageFile {
 		}
 	}
 
+	// TODO al caricamento del file deve compilare anche eventuali ferie/par/malattie
 	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
 		boolean loadedSuccessfuly = false;
 		try {
@@ -201,12 +222,12 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
 			case 2:
-				month = i + "";
+				month = "0" + i;
 				for (int y = 1; y <= 28; y++) {
 					if (y < 10) {
 						day = "0" + y;
@@ -217,7 +238,7 @@ public class ToolsForManageFile {
 						day = (Integer.parseInt(day) + 1) + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -237,7 +258,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
 					hours.add(hour);
 				}
 				break;
@@ -251,11 +272,11 @@ public class ToolsForManageFile {
 	public ObservableList<Month> createAndGetMonthTemplateXML() {
 		final String ZERO = "0.0";
 		ObservableList<Month> months = FXCollections.observableArrayList();
-		String[] monthList = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+		String[] monthList = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		int i = 0;
 		while (i < monthList.length) {
 			String stringMonth = monthList[i];
-			Month month = new Month(stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
+			Month month = new Month(String.valueOf(i + 1), stringMonth, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO);
 			months.add(month);
 			i++;
 		}
@@ -347,8 +368,23 @@ public class ToolsForManageFile {
 		return customButtonList;
 	}
 
-	public void updateSalaryTabToDataFile() {
-		//TODO
+	public void updateSalaryTabToDataFile(File dataFile, String currentMonth, String newSalary) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Month> monthsList = wrapper.getMonth();
+			for (Month month : monthsList) {
+				if (month.getId().equals(currentMonth)) {
+					month.setSalary(newSalary);
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public ArrayList<Month> loadSalaryTabFromDataFile(File dataFile) {
@@ -364,5 +400,58 @@ public class ToolsForManageFile {
 			ex.printStackTrace();
 		}
 		return monthList;
+	}
+
+	// inserire nel metodo updateHourFile i salvataggi che faccio nel metodo sottostante,
+	// cosi scrivo su file non quando premo su OK ma quando salvo-GIUSTAMENTE
+
+	public void updateHolidayIntoDatafile(File dataFile, String date, String type, String hour) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			List<Hour> hoursList = wrapper.getHour();
+			List<Month> monthList = wrapper.getMonth();
+			String monthDate = date.substring(3, 6);
+			for (Hour currentHour : hoursList) {
+				if (currentHour.getId().equals(date)) {
+					switch (type) {
+					case Constants.Holidays:
+						currentHour.setHolidaysHoursUsed(hour);
+						break;
+					case Constants.PAR:
+						currentHour.setParHoursUsed(hour);
+						break;
+					case Constants.Sickness:
+						currentHour.setSicknessHoursUsed(hour);
+						break;
+					default:
+						break;
+					}
+					for (Month month : monthList) {
+						if (month.getId().equals(monthDate)) {
+							switch (type) {
+							case Constants.Holidays:
+								month.setHolidaysRes(hour);
+								break;
+							case Constants.PAR:
+								month.setParRes(hour);
+								break;
+							case Constants.Sickness:
+								month.setSicknessUsedTemp(hour);
+								break;
+							default:
+								break;
+							}
+						}
+					}
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }

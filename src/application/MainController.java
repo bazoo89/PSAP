@@ -43,7 +43,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-import utils.HolidaysConstants;
+import utils.Constants;
 import utils.TempSavedInformation;
 
 public class MainController implements Initializable {
@@ -198,7 +198,7 @@ public class MainController implements Initializable {
 				return new DateCell() {
 					@Override
 					public void updateItem(LocalDate item, boolean empty) {
-						HolidaysConstants.setCalendarHolidays(this, item);
+						Constants.setCalendarHolidays(this, item);
 					}
 				};
 			}
@@ -207,6 +207,7 @@ public class MainController implements Initializable {
 		parSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+				parSlider.setValue(newValue.doubleValue());
 				if (newValue == null) {
 					parResultTF.setText("");
 					return;
@@ -215,12 +216,16 @@ public class MainController implements Initializable {
 				if ((decimal > 0 && decimal < 0.5) || (decimal > 0.5 && decimal < 1)) {
 					parResultTF.setText((int) newValue.floatValue() + "");
 				} else {
-					if (decimal == 0)
+					if (decimal == 0) {
 						parResultTF.setText((int) newValue.floatValue() + "");
-					else if (decimal == 0.5)
+						parSlider.setValue((int) newValue.floatValue());
+					} else if (decimal == 0.5) {
 						parResultTF.setText((int) newValue.floatValue() + ".5");
-					else
+						parSlider.setValue((int) newValue.floatValue() + 0.5);
+					} else {
 						parResultTF.setText(newValue.floatValue() + "");
+						parSlider.setValue(newValue.floatValue());
+					}
 				}
 			}
 		});
@@ -347,12 +352,14 @@ public class MainController implements Initializable {
 	}
 
 	public void countSpecialHours() {
+		// Display free/par/sickness day
 		int specialHours = 0;
 		if (parDialog.isVisible()) {
 			parDialog.setVisible(false);
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
 			parHoursLabel.setText(parResultTF.getText());
+			//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
 			countTotalHours(parHoursLabel);
 		} else if (freeDialog.isVisible()) {
 			freeDialog.setVisible(false);
@@ -499,9 +506,6 @@ public class MainController implements Initializable {
 				String hh_exit = hourExit.split(":")[0];
 				String mm_exit = hourExit.split(":")[1];
 				createHBox(baController, hh_entry, mm_entry, hh_exit, mm_exit);
-				//				if (successfullyCreation) {
-				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
-				//				}
 			}
 		}
 		baController.createCustomBtn.setOnMouseClicked(mouseClick -> {
@@ -511,9 +515,6 @@ public class MainController implements Initializable {
 			String customMMExit = baController.customMMExitTF.getText();
 			if (!customHHEntry.equals("") && !customMMEntry.equals("") && !customHHExit.equals("") && !customMMExit.equals("")) {
 				createHBox(baController, customHHEntry, customMMEntry, customHHExit, customMMExit);
-				//				if (successfullyCreation) {
-				//					ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
-				//				}
 			}
 		});
 		baController.cancelBtn.setOnMouseClicked(mouseClick -> {
@@ -549,7 +550,6 @@ public class MainController implements Initializable {
 			penAlreadyClicked = false;
 			penImageView.setEffect(null);
 		});
-		//		});
 		//		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
 		//			if (newValue) {
 		//				penImageView.setEffect(ds);
@@ -557,7 +557,6 @@ public class MainController implements Initializable {
 		//				penImageView.setEffect(null);
 		//			}
 		//		});
-
 	}
 
 	private boolean createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
@@ -608,19 +607,20 @@ public class MainController implements Initializable {
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
 		String date = calendar.getValue().toString().replace("-", "");
-		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit);
+		String holUsed = "0.0";
+		String parUsed = "0.0";
+		String sickUsed = "0.0";
+		if (freeResultTF != null && !freeResultTF.getText().equals("") && freeHoursLabel.isVisible()) {
+			holUsed = freeResultTF.getText();
+		}
+		if (parResultTF != null && !parResultTF.getText().equals("") && parHoursLabel.isVisible()) {
+			parUsed = parResultTF.getText();
+		}
+		if (sickResultTF != null && !sickResultTF.getText().equals("") && sickHoursLabel.isVisible()) {
+			sickUsed = sickResultTF.getText();
+		}
+		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);
 
 	}
-
-	//	public void testCreateCustomButton() {
-	//		String nameButton = "10:00-19:00";
-	//		ToolsForManageFile.getInstance().saveCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
-	//	}
-	//
-	//	public void testDeleteCustomButton() {
-	//		String nameButton = "10:00-19:00";
-	//		ToolsForManageFile.getInstance().deleteCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile(), nameButton);
-	//	}
-
 	//*****************************//
 }

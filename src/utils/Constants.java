@@ -8,7 +8,7 @@ import java.time.Year;
 import javafx.scene.control.DateCell;
 import javafx.scene.paint.Color;
 
-public class HolidaysConstants {
+public class Constants {
 
 	public final static String gennaio_1 = "0101";
 	public final static String gennaio_6 = "0106";
@@ -28,6 +28,10 @@ public class HolidaysConstants {
 	public final static String year2017 = "2017";
 	public final static String year2018 = "2018";
 	public final static String year2019 = "2019";
+	
+	public final static String Holidays = "Holidays";
+	public final static String PAR = "PAR";
+	public final static String Sickness = "Sickness";
 
 	public String getEasterDate(String year) {
 		if (year.equals("2018")) {
