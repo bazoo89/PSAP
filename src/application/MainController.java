@@ -64,39 +64,15 @@ public class MainController implements Initializable {
 	@FXML
 	private Button saveBtn;
 	@FXML
-	private Button freeDaysBtn;
+	public Button freeDaysBtn;
 	@FXML
-	private Button parOKBtn;
+	public Button parBtn;
 	@FXML
-	private Button sickOKBtn;
-	@FXML
-	private Button freeOKBtn;
-	@FXML
-	private Button parClearBtn;
-	@FXML
-	private Button freeClearBtn;
-	@FXML
-	private Button sickClearBtn;
-	@FXML
-	private Button parBtn;
-	@FXML
-	private Button sicknessBtn;
+	public Button sicknessBtn;
 	@FXML
 	private JFXButton nextBtn;
 	@FXML
 	private JFXButton previousBtn;
-	@FXML
-	private TextField parResultTF;
-	@FXML
-	private TextField freeResultTF;
-	@FXML
-	private TextField sickResultTF;
-	@FXML
-	private CheckBox parIsHalfHour;
-	@FXML
-	private CheckBox freeIsHalfHour;
-	@FXML
-	private CheckBox sickIsHalfHour;
 	@FXML
 	private AnchorPane parBorderPane;
 	@FXML
@@ -104,41 +80,11 @@ public class MainController implements Initializable {
 	@FXML
 	private AnchorPane sickBorderPane;
 	@FXML
-	private Label freeHoursLabel;
-	@FXML
-	private Label parHoursLabel;
-	@FXML
-	private Label sickHoursLabel;
-	@FXML
 	public JFXDatePicker calendar;
-	@FXML
-	public Circle freeCircle;
-	@FXML
-	public Circle sickCircle;
-	@FXML
-	public Circle parCircle;
 	@FXML
 	public JFXDialogLayout customButtonDialogLayout;
 	@FXML
 	public JFXDialog customButtonDialog;
-	@FXML
-	public JFXDialog parDialog;
-	@FXML
-	public JFXDialog freeDialog;
-	@FXML
-	public JFXDialog sickDialog;
-	@FXML
-	public JFXDialogLayout parDialogLayout;
-	@FXML
-	public JFXDialogLayout freeDialogLayout;
-	@FXML
-	public JFXDialogLayout sickDialogLayout;
-	@FXML
-	public JFXSlider parSlider;
-	@FXML
-	public JFXSlider freeSlider;
-	@FXML
-	public JFXSlider sickSlider;
 	@FXML
 	public ImageView penImageView;
 	@FXML
@@ -169,6 +115,12 @@ public class MainController implements Initializable {
 	public Button homeButton;
 	@FXML
 	public Button settingsButton;
+	@FXML
+	public Label parLabel;
+	@FXML
+	public Label freeDayLabel;
+	@FXML
+	public Label sickLabel;
 
 	public static int sceneLength = 810;
 	public static int sceneWidth = 755;
@@ -204,71 +156,8 @@ public class MainController implements Initializable {
 			}
 		};
 		calendar.setDayCellFactory(dayCellFactory);
-		parSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-				parSlider.setValue(newValue.doubleValue());
-				if (newValue == null) {
-					parResultTF.setText("");
-					return;
-				}
-				float decimal = newValue.floatValue() - (int) newValue.floatValue();
-				if ((decimal > 0 && decimal < 0.5) || (decimal > 0.5 && decimal < 1)) {
-					parResultTF.setText((int) newValue.floatValue() + "");
-				} else {
-					if (decimal == 0) {
-						parResultTF.setText((int) newValue.floatValue() + "");
-						parSlider.setValue((int) newValue.floatValue());
-					} else if (decimal == 0.5) {
-						parResultTF.setText((int) newValue.floatValue() + ".5");
-						parSlider.setValue((int) newValue.floatValue() + 0.5);
-					} else {
-						parResultTF.setText(newValue.floatValue() + "");
-						parSlider.setValue(newValue.floatValue());
-					}
-				}
-			}
-		});
-		freeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-				if (newValue == null) {
-					freeResultTF.setText("");
-					return;
-				}
-				float decimal = newValue.floatValue() - (int) newValue.floatValue();
-				if ((decimal > 0 && decimal < 0.5) || (decimal > 0.5 && decimal < 1)) {
-					freeResultTF.setText((int) newValue.floatValue() + "");
-				} else {
-					if (decimal == 0)
-						freeResultTF.setText((int) newValue.floatValue() + "");
-					else if (decimal == 0.5)
-						freeResultTF.setText((int) newValue.floatValue() + ".5");
-					else
-						freeResultTF.setText(newValue.floatValue() + "");
-				}
-			}
-		});
-		sickSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-				if (newValue == null) {
-					sickResultTF.setText("");
-					return;
-				}
-				float decimal = newValue.floatValue() - (int) newValue.floatValue();
-				if ((decimal > 0 && decimal < 0.5) || (decimal > 0.5 && decimal < 1)) {
-					sickResultTF.setText((int) newValue.floatValue() + "");
-				} else {
-					if (decimal == 0)
-						sickResultTF.setText((int) newValue.floatValue() + "");
-					else if (decimal == 0.5)
-						sickResultTF.setText((int) newValue.floatValue() + ".5");
-					else
-						sickResultTF.setText(newValue.floatValue() + "");
-				}
-			}
-		});
+		
+		
 		mainStackPane.setOnMouseClicked(event -> {
 			if (penAlreadyClicked)
 				penImageView.setEffect(null);
@@ -311,137 +200,29 @@ public class MainController implements Initializable {
 		}
 	}
 
-	public void chooseParHours() {
-		if (!parDialog.isVisible()) {
-			parDialog.show(parDialogLayout);
-			parSlider.setValue(0);
-			parResultTF.setText(Double.toString(parSlider.getValue()));
-			if (sickDialog.isVisible())
-				sickDialog.close();
-			if (freeDialog.isVisible())
-				freeDialog.close();
-		} else {
-			parDialog.setVisible(false);
-		}
-	}
+//	public void chooseParHours() {
+//		if (!parDialog.isVisible()) {
+//			parDialog.show(parDialogLayout);
+//			parSlider.setValue(0);
+//			parResultTF.setText(Double.toString(parSlider.getValue()));
+//			if (sickDialog.isVisible())
+//				sickDialog.close();
+//			if (freeDialog.isVisible())
+//				freeDialog.close();
+//		} else {
+//			parDialog.setVisible(false);
+//		}
+//	}
 
-	public void chooseFreeHours() {
-		if (!freeDialog.isVisible()) {
-			freeDialog.show(freeDialogLayout);
-			freeSlider.setValue(0);
-			freeResultTF.setText(Double.toString(freeSlider.getValue()));
-			if (sickDialog.isVisible())
-				sickDialog.close();
-			if (parDialog.isVisible())
-				parDialog.close();
-		} else
-			freeDialog.setVisible(false);
-	}
 
-	public void chooseSickHours() {
-		if (!sickDialog.isVisible()) {
-			sickDialog.show(sickDialogLayout);
-			sickSlider.setValue(0);
-			sickResultTF.setText(Double.toString(sickSlider.getValue()));
-			if (parDialog.isVisible())
-				parDialog.close();
-			if (freeDialog.isVisible())
-				freeDialog.close();
-		} else
-			sickDialog.setVisible(false);
-	}
-
-	public void countSpecialHours() {
-		// Display free/par/sickness day
-		int specialHours = 0;
-		if (parDialog.isVisible()) {
-			parDialog.setVisible(false);
-			parCircle.setVisible(true);
-			parHoursLabel.setVisible(true);
-			parHoursLabel.setText(parResultTF.getText());
-			//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
-			countTotalHours(parHoursLabel);
-		} else if (freeDialog.isVisible()) {
-			freeDialog.setVisible(false);
-			freeCircle.setVisible(true);
-			freeHoursLabel.setVisible(true);
-			freeHoursLabel.setText(freeResultTF.getText());
-			countTotalHours(freeHoursLabel);
-		} else if (sickDialog.isVisible()) {
-			sickDialog.setVisible(false);
-			sickCircle.setVisible(true);
-			sickHoursLabel.setVisible(true);
-			sickHoursLabel.setText(sickResultTF.getText());
-			countTotalHours(sickHoursLabel);
-		} else {
-		}
-	}
-
-	public void clear() {
-		if (parDialog.isVisible()) {
-			parSlider.setValue(0);
-			if (parCircle.isVisible())
-				parCircle.setVisible(false);
-			if (parHoursLabel.isVisible()) {
-				parHoursLabel.setText(null);
-				parHoursLabel.setVisible(false);
-			}
-		} else if (freeDialog.isVisible()) {
-			freeSlider.setValue(0);
-			if (freeCircle.isVisible())
-				freeCircle.setVisible(false);
-			if (freeHoursLabel.isVisible()) {
-				freeHoursLabel.setText(null);
-				freeHoursLabel.setVisible(false);
-			}
-		} else if (sickDialog.isVisible()) {
-			sickSlider.setValue(0);
-			if (sickCircle.isVisible())
-				sickCircle.setVisible(false);
-			if (sickHoursLabel.isVisible()) {
-				sickHoursLabel.setText(null);
-				sickHoursLabel.setVisible(false);
-			}
-		} else {
-		}
-	}
-
-	public void countTotalHours(Label label) {
-		//		int specialHour=Integer.parseInt(label.getText());
-		//		int standardHour=Integer.parseInt(workedHoursTF.getText());
-		//		try {
-		//			dayTotalHour=specialHour+standardHour;
-		//			if(dayTotalHour>=8){
-		//				hh_entryCB.setEditable(false);
-		//				hh_exitCB.setEditable(false);
-		//				mm_entryCB.setEditable(false);
-		//				mm_exitCB.setEditable(false);
-		//			}
-		//		} catch (Exception e) {
-		//			System.out.println(e.getMessage());
-		//		}
-	}
 
 	public void reset() {
 		hh_entryCB.setValue(null);
 		hh_exitCB.setValue(null);
 		mm_entryCB.setValue(null);
 		mm_exitCB.setValue(null);
-		parCircle.setVisible(false);
-		freeCircle.setVisible(false);
-		sickCircle.setVisible(false);
-		parHoursLabel.setText(null);
-		parHoursLabel.setVisible(false);
-		freeHoursLabel.setText(null);
-		freeHoursLabel.setVisible(false);
-		sickHoursLabel.setText(null);
-		sickHoursLabel.setVisible(false);
-		if (parDialog.isVisible())
-			parDialog.close();
-		if (sickDialog.isVisible())
-			sickDialog.close();
-		if (freeDialog.isVisible())
-			freeDialog.close();
+		
+
 		workedHoursLabel.setText("press save to calculate");
 	}
 
@@ -559,6 +340,87 @@ public class MainController implements Initializable {
 		//		});
 	}
 
+	public void openParDialog() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("Special Hours"));
+		content.setBody(root);
+		SpecialHoursController shController = loader.getController();
+		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
+		dialog.show();
+		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
+		parLabel.setText(shController.resultTF.getText());
+		dialog.close();
+		shController.countTotalHours(parLabel);
+//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			dialog.close();
+			
+		});
+		shController.clearBtn.setOnMouseClicked(mouseClick -> {
+			parLabel.setText(null);
+			dialog.close();
+		});
+	}
+	public void openFreeDayDialog() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("Special Hours"));
+		content.setBody(root);
+		SpecialHoursController shController = loader.getController();
+		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
+		dialog.show();
+		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
+		freeDayLabel.setText(shController.resultTF.getText());
+		dialog.close();
+		shController.countTotalHours(freeDayLabel);
+//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			dialog.close();
+			
+		});
+		shController.clearBtn.setOnMouseClicked(mouseClick -> {
+			freeDayLabel.setText(null);
+			dialog.close();
+		});
+	}
+	public void openSicknessDialog() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("Special Hours"));
+		content.setBody(root);
+		SpecialHoursController shController = loader.getController();
+		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
+		dialog.show();
+		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
+		sickLabel.setText(shController.resultTF.getText());
+		dialog.close();
+		shController.countTotalHours(sickLabel);
+//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			dialog.close();
+			
+		});
+		shController.clearBtn.setOnMouseClicked(mouseClick -> {
+			sickLabel.setText(null);
+			dialog.close();
+		});
+	}
 	private boolean createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
 		boolean successfullyCreation = false;
 		HBox hbox = null;
@@ -603,6 +465,14 @@ public class MainController implements Initializable {
 	//******* Utils Methods *******//
 
 	public void save() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
+		Parent root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		SpecialHoursController shController = loader.getController();
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
@@ -610,14 +480,14 @@ public class MainController implements Initializable {
 		String holUsed = "0.0";
 		String parUsed = "0.0";
 		String sickUsed = "0.0";
-		if (freeResultTF != null && !freeResultTF.getText().equals("") && freeHoursLabel.isVisible()) {
-			holUsed = freeResultTF.getText();
+		if (shController.resultTF != null && !shController.resultTF.getText().equals("") && !freeDayLabel.getText().equals("")) {
+			holUsed = shController.resultTF.getText();
 		}
-		if (parResultTF != null && !parResultTF.getText().equals("") && parHoursLabel.isVisible()) {
-			parUsed = parResultTF.getText();
+		if (shController.resultTF  != null && !shController.resultTF.getText().equals("") && !parLabel.getText().equals("")) {
+			parUsed = shController.resultTF.getText();
 		}
-		if (sickResultTF != null && !sickResultTF.getText().equals("") && sickHoursLabel.isVisible()) {
-			sickUsed = sickResultTF.getText();
+		if (shController.resultTF  != null && !shController.resultTF.getText().equals("") && !sickLabel.getText().equals("")) {
+			sickUsed = shController.resultTF.getText();
 		}
 		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);
 

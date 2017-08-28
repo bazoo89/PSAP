@@ -16,8 +16,8 @@ import utils.TempSavedInformation;
 
 public class Main extends Application {
 	public static Stage primaryStage;
-	public static int sceneLength = 930;
-	public static int sceneWidth = 780;
+	public static int sceneWidth = 930;
+	public static int sceneHeight = 400;
 	//	private final String TITLE = "SAP&GO";
 	private String name = null;
 	private String lastname = null;
@@ -46,7 +46,7 @@ public class Main extends Application {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
 				Parent root = loader.load();
-				Scene scene = new Scene(root, sceneLength, sceneWidth);
+				Scene scene = new Scene(root, sceneWidth, sceneHeight);
 				Main.primaryStage.setScene(scene);
 				Main.primaryStage.setResizable(false);
 				Image image = new Image("file:resources/icons/mainIcon.png");

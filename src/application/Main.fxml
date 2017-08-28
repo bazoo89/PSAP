@@ -3,26 +3,21 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXDialog?>
-<?import com.jfoenix.controls.JFXDialogLayout?>
-<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainStackPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<StackPane fx:id="mainStackPane" maxHeight="400.0" minHeight="400.0" prefHeight="400.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <AnchorPane prefHeight="764.0" prefWidth="945.0">
+      <AnchorPane maxHeight="400.0" minHeight="400.0" prefHeight="621.0" prefWidth="945.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ea1a316" height="46.0" layoutX="784.0" layoutY="729.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ea1a316" height="46.0" layoutX="792.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="132.0" />
             <Label layoutX="142.0" layoutY="72.0" prefHeight="21.0" prefWidth="181.0" text="ENTRY" />
             <Label layoutX="406.0" layoutY="72.0" prefHeight="21.0" prefWidth="181.0" text="EXIT" />
             <ToolBar layoutX="1.0" prefHeight="15.0" prefWidth="944.0">
@@ -66,92 +61,8 @@
                   <Font name="System Italic" size="15.0" />
                </font>
             </Label>
-            <Separator layoutX="533.0" layoutY="160.0" orientation="VERTICAL" prefHeight="626.0" prefWidth="10.0" />
-            <JFXButton fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" layoutX="860.0" layoutY="735.0" onAction="#countWorkedHours" text="SAVE">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/icons/save.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="parBtn" layoutX="37.0" layoutY="268.0" onAction="#chooseParHours" text="PAR" />
-            <JFXButton fx:id="freeDaysBtn" layoutX="37.0" layoutY="439.0" onAction="#chooseFreeHours" text="FREE DAY" />
-            <JFXButton fx:id="sicknessBtn" layoutX="37.0" layoutY="618.0" onAction="#chooseSickHours" text="SICKNESS" />
-            <JFXDialogLayout fx:id="parDialogLayout" layoutX="177.0" layoutY="218.0" prefHeight="130.0" prefWidth="352.0">
-               <children>
-                  <JFXDialog fx:id="parDialog" prefHeight="112.0" prefWidth="341.0">
-                     <children>
-                        <AnchorPane prefHeight="107.0" prefWidth="293.0">
-                           <children>
-                              <JFXButton fx:id="parOKBtn" layoutX="208.0" layoutY="54.0" onAction="#countSpecialHours" text="OK" />
-                              <TextField fx:id="parResultTF" alignment="CENTER" layoutX="52.0" layoutY="54.0" prefHeight="31.0" prefWidth="48.0" />
-                              <JFXSlider fx:id="parSlider" blockIncrement="0.5" layoutX="12.0" layoutY="14.0" majorTickUnit="1" min="1" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
-                              <JFXButton fx:id="parClearBtn" layoutX="121.0" layoutY="54.0" onAction="#clear" text="CLEAR" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </JFXDialog>
-               </children>
-            </JFXDialogLayout>
-            <JFXDialogLayout fx:id="freeDialogLayout" layoutX="177.0" layoutY="390.0" prefHeight="130.0" prefWidth="352.0">
-               <children>
-                  <JFXDialog fx:id="freeDialog" prefHeight="75.0" prefWidth="230.0">
-                     <children>
-                        <AnchorPane prefHeight="107.0" prefWidth="293.0">
-                           <children>
-                              <JFXButton fx:id="freeOKBtn" layoutX="212.0" layoutY="54.0" onAction="#countSpecialHours" text="OK" />
-                              <TextField fx:id="freeResultTF" alignment="CENTER" layoutX="47.0" layoutY="54.0" prefHeight="31.0" prefWidth="48.0" />
-                              <JFXSlider fx:id="freeSlider" blockIncrement="0.5" layoutX="12.0" layoutY="14.0" majorTickUnit="1" min="1.0" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
-                              <JFXButton fx:id="freeClearBtn" layoutX="132.0" layoutY="54.0" onAction="#clear" text="CLEAR" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </JFXDialog>
-               </children>
-            </JFXDialogLayout>
-            <JFXDialogLayout fx:id="sickDialogLayout" layoutX="177.0" layoutY="569.0" prefHeight="130.0" prefWidth="352.0">
-               <children>
-                  <JFXDialog fx:id="sickDialog" prefHeight="112.0" prefWidth="341.0">
-                     <children>
-                        <AnchorPane prefHeight="107.0" prefWidth="293.0">
-                           <children>
-                              <JFXButton fx:id="sickOKBtn" layoutX="204.0" layoutY="61.0" onAction="#countSpecialHours" text="OK" />
-                              <TextField fx:id="sickResultTF" alignment="CENTER" layoutX="53.0" layoutY="61.0" prefHeight="31.0" prefWidth="48.0" />
-                              <JFXSlider fx:id="sickSlider" blockIncrement="0.5" layoutX="12.0" layoutY="9.0" majorTickUnit="1" min="1.0" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="269.0" showTickMarks="true" snapToTicks="true" />
-                              <JFXButton fx:id="sickClearBtn" layoutX="126.0" layoutY="61.0" onAction="#clear" text="CLEAR" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </JFXDialog>
-               </children>
-            </JFXDialogLayout>
-            <Circle fx:id="parCircle" fill="#20c90d" layoutX="142.0" layoutY="283.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
-            <Label fx:id="parHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="261.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Circle fx:id="freeCircle" fill="#eeff2e" layoutX="142.0" layoutY="455.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
-            <Label fx:id="freeHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="432.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Circle fx:id="sickCircle" fill="#fc3e3e" layoutX="142.0" layoutY="634.0" radius="23.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" />
-            <Label fx:id="sickHoursLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="612.0" prefHeight="45.0" prefWidth="48.0" textAlignment="CENTER" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="787.0" layoutY="735.0" onAction="#reset" text="RESET">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/icons/reset.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
+            <Separator layoutX="533.0" layoutY="160.0" orientation="VERTICAL" prefHeight="233.0" prefWidth="5.0" />
+            <JFXButton fx:id="parBtn" layoutX="113.0" layoutY="239.0" onAction="#openParDialog" text="PAR" />
             <ImageView fx:id="penImageView" fitHeight="35.0" fitWidth="30.0" layoutX="80.0" layoutY="111.0" onMouseClicked="#goToButtonArea" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/icons/note.png" />
@@ -175,6 +86,23 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="884.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icons/save.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="810.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icons/reset.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="freeDaysBtn" layoutX="238.0" layoutY="239.0" onAction="#openFreeDayDialog" text="FREE DAY" />
+            <JFXButton fx:id="sicknessBtn" layoutX="416.0" layoutY="239.0" onAction="#openSicknessDialog" text="SICKNESS" />
+            <Label fx:id="parLabel" layoutX="120.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
+            <Label fx:id="freeDayLabel" layoutX="268.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
+            <Label fx:id="sickLabel" layoutX="435.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
+            <JFXButton fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" layoutX="871.0" layoutY="340.0" onAction="#countWorkedHours" text="SAVE" />
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="795.0" layoutY="340.0" onAction="#reset" text="RESET" />
          </children>
       </AnchorPane>
    </children>

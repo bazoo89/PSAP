@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="84.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SpecialHoursController">
+   <children>
+      <HBox prefHeight="0.0" prefWidth="401.0">
+         <children>
+            <TextField fx:id="resultTF" prefHeight="31.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </HBox.margin></TextField>
+            <JFXSlider fx:id="slider" blockIncrement="0.5" majorTickUnit="0.5" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true">
+               <HBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </HBox.margin></JFXSlider>
+         </children></HBox>
+      <HBox prefHeight="42.0" prefWidth="343.0">
+         <children>
+            <JFXButton fx:id="clearBtn" text="CLEAR">
+               <HBox.margin>
+                  <Insets left="230.0" top="10.0" />
+               </HBox.margin></JFXButton>
+            <JFXButton fx:id="specialOkBtn" contentDisplay="TOP" text="OK">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></JFXButton>
+         </children>
+      </HBox>
+   </children>
+</VBox>
