@@ -20,12 +20,14 @@ import javax.xml.bind.Unmarshaller;
 
 import com.jfoenix.controls.JFXDatePicker;
 
+import application.MainController;
 import file.entity.CustomButton;
 import file.entity.Hour;
 import file.entity.Month;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import users.Person;
 import users.Persons;
 import utils.Constants;
@@ -36,6 +38,7 @@ public class ToolsForManageFile {
 	private static ToolsForManageFile instance;
 
 	final String defaultHour = "00:00";
+	final String defaultParFreeSick = "0.0";
 
 	public static ToolsForManageFile getInstance() {
 		if (instance == null) {
@@ -154,7 +157,8 @@ public class ToolsForManageFile {
 	}
 
 	// TODO al caricamento del file deve compilare anche eventuali ferie/par/malattie
-	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB) {
+	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB,
+			Label parLabel, Label freeLabel, Label sickLabel) {
 		boolean loadedSuccessfuly = false;
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
@@ -178,6 +182,27 @@ public class ToolsForManageFile {
 						String mm = hourArray[1];
 						hh_exitCB.setValue(hh);
 						mm_exitCB.setValue(mm);
+						loadedSuccessfuly = true;
+					}
+					// Par hours used
+					if (!hour.getParHoursUsed().equals(defaultParFreeSick)) {
+						parLabel.setText(hour.getParHoursUsed());
+						parLabel.setVisible(true);
+						MainController.areParHoursSetted = true;
+						loadedSuccessfuly = true;
+					}
+					// Holidays hours used
+					if (!hour.getHolidaysHoursUsed().equals(defaultParFreeSick)) {
+						freeLabel.setText(hour.getHolidaysHoursUsed());
+						freeLabel.setVisible(true);
+						MainController.areFreeHoursSetted = true;
+						loadedSuccessfuly = true;
+					}
+					// Sickness hours used
+					if (!hour.getSicknessHoursUsed().equals(defaultParFreeSick)) {
+						sickLabel.setText(hour.getSicknessHoursUsed());
+						sickLabel.setVisible(true);
+						MainController.areSickHoursSetted = true;
 						loadedSuccessfuly = true;
 					}
 					if (loadedSuccessfuly) {
@@ -222,7 +247,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;
@@ -238,7 +263,7 @@ public class ToolsForManageFile {
 						day = (Integer.parseInt(day) + 1) + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;
@@ -258,7 +283,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultHour, defaultHour, defaultHour);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;

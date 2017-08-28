@@ -104,11 +104,11 @@ public class MainController implements Initializable {
 	@FXML
 	private AnchorPane sickBorderPane;
 	@FXML
-	private Label freeHoursLabel;
+	public Label freeHoursLabel;
 	@FXML
-	private Label parHoursLabel;
+	public Label parHoursLabel;
 	@FXML
-	private Label sickHoursLabel;
+	public Label sickHoursLabel;
 	@FXML
 	public JFXDatePicker calendar;
 	@FXML
@@ -179,9 +179,9 @@ public class MainController implements Initializable {
 	ObservableList<String> hours = FXCollections.observableArrayList("08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
 	ObservableList<String> minutes = FXCollections.observableArrayList("00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55");
 	ArrayList<CustomButton> savedCustomButtonsList = null;
-	private boolean areParHoursSetted = false;
-	private boolean areFreeHoursSetted = false;
-	private boolean areSickHoursSetted = false;
+	public static boolean areParHoursSetted = false;
+	public static boolean areFreeHoursSetted = false;
+	public static boolean areSickHoursSetted = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -193,7 +193,8 @@ public class MainController implements Initializable {
 		Locale.setDefault(Locale.ITALY);
 		calendar.setOnAction(action -> {
 			reset();
-			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel,
+					freeHoursLabel, sickHoursLabel);
 		});
 		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
 			@Override
@@ -484,7 +485,8 @@ public class MainController implements Initializable {
 		LocalDate nextDay = calendar.getValue().plusDays(1);
 		calendar.setValue(nextDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
+				sickHoursLabel);
 		if (loadedSuccessfully) {
 			countWorkedHours();
 		}
@@ -495,7 +497,8 @@ public class MainController implements Initializable {
 		LocalDate previousDay = calendar.getValue().minusDays(1);
 		calendar.setValue(previousDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
+				sickHoursLabel);
 		if (loadedSuccessfully) {
 			countWorkedHours();
 		}
