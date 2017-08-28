@@ -1898,12 +1898,12 @@
             <sicknessHoursUsed>00:00</sicknessHoursUsed>
         </hour>
         <hour>
-            <h_entry>11:05</h_entry>
-            <h_exit>17:15</h_exit>
-            <holidaysHoursUsed>0.0</holidaysHoursUsed>
+            <h_entry>00:00</h_entry>
+            <h_exit>00:00</h_exit>
+            <holidaysHoursUsed>00:00</holidaysHoursUsed>
             <id_hour>20170826</id_hour>
-            <parHoursUsed>1.0</parHoursUsed>
-            <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <parHoursUsed>00:00</parHoursUsed>
+            <sicknessHoursUsed>00:00</sicknessHoursUsed>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1914,12 +1914,12 @@
             <sicknessHoursUsed>00:00</sicknessHoursUsed>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
-            <holidaysHoursUsed>00:00</holidaysHoursUsed>
+            <h_entry>10:15</h_entry>
+            <h_exit>12:30</h_exit>
+            <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170828</id_hour>
-            <parHoursUsed>00:00</parHoursUsed>
-            <sicknessHoursUsed>00:00</sicknessHoursUsed>
+            <parHoursUsed>1</parHoursUsed>
+            <sicknessHoursUsed>0.0</sicknessHoursUsed>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -3009,13 +3009,13 @@
         </month>
         <month>
             <holidays_res>0.0</holidays_res>
-            <holidays_used_temp>0.0</holidays_used_temp>
+            <holidays_used_temp>1.0</holidays_used_temp>
             <id>8</id>
             <month>Aug</month>
             <par_res>0.0</par_res>
-            <par_used_temp>1.0</par_used_temp>
+            <par_used_temp>1.5</par_used_temp>
             <salary>0.0</salary>
-            <sickness_used_temp>1.0</sickness_used_temp>
+            <sickness_used_temp>3.5</sickness_used_temp>
             <worked_days>0.0</worked_days>
             <worked_hours>0.0</worked_hours>
         </month>

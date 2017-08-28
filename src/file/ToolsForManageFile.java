@@ -137,7 +137,7 @@ public class ToolsForManageFile {
 						if (month.getId().equals(monthDate)) {
 							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp()) + Double.parseDouble(holHours);
 							double parUsedTemp = Double.parseDouble(month.getParUsedTemp()) + Double.parseDouble(parHours);
-							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(parHours);
+							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(sickHours);
 							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
 							month.setParUsedTemp(String.valueOf(parUsedTemp));
 							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));

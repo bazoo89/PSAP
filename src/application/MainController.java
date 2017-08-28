@@ -179,6 +179,9 @@ public class MainController implements Initializable {
 	ObservableList<String> hours = FXCollections.observableArrayList("08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
 	ObservableList<String> minutes = FXCollections.observableArrayList("00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55");
 	ArrayList<CustomButton> savedCustomButtonsList = null;
+	private boolean areParHoursSetted = false;
+	private boolean areFreeHoursSetted = false;
+	private boolean areSickHoursSetted = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -352,6 +355,7 @@ public class MainController implements Initializable {
 	}
 
 	public void countSpecialHours() {
+		// Method called when OK is clicked
 		// Display free/par/sickness day
 		int specialHours = 0;
 		if (parDialog.isVisible()) {
@@ -359,30 +363,46 @@ public class MainController implements Initializable {
 			parCircle.setVisible(true);
 			parHoursLabel.setVisible(true);
 			parHoursLabel.setText(parResultTF.getText());
-			//			ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parHoursLabel.getText());
+			if (!areParHoursSetted) {
+				areParHoursSetted = true;
+			}
 			countTotalHours(parHoursLabel);
 		} else if (freeDialog.isVisible()) {
 			freeDialog.setVisible(false);
 			freeCircle.setVisible(true);
 			freeHoursLabel.setVisible(true);
 			freeHoursLabel.setText(freeResultTF.getText());
+			if (!areFreeHoursSetted) {
+				areFreeHoursSetted = true;
+			}
 			countTotalHours(freeHoursLabel);
 		} else if (sickDialog.isVisible()) {
 			sickDialog.setVisible(false);
 			sickCircle.setVisible(true);
 			sickHoursLabel.setVisible(true);
 			sickHoursLabel.setText(sickResultTF.getText());
+			if (!areSickHoursSetted) {
+				areSickHoursSetted = true;
+			}
 			countTotalHours(sickHoursLabel);
 		} else {
 		}
 	}
 
 	public void clear() {
+		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
+		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
+		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
+		String date = calendar.getValue().toString().replace("-", "");
+		String holUsed = "0.0";
+		String parUsed = "0.0";
+		String sickUsed = "0.0";
 		if (parDialog.isVisible()) {
 			parSlider.setValue(0);
 			if (parCircle.isVisible())
 				parCircle.setVisible(false);
 			if (parHoursLabel.isVisible()) {
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, "-" + parHoursLabel.getText(), sickUsed);
 				parHoursLabel.setText(null);
 				parHoursLabel.setVisible(false);
 			}
@@ -391,6 +411,7 @@ public class MainController implements Initializable {
 			if (freeCircle.isVisible())
 				freeCircle.setVisible(false);
 			if (freeHoursLabel.isVisible()) {
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, "-" + freeHoursLabel.getText(), parUsed, sickUsed);
 				freeHoursLabel.setText(null);
 				freeHoursLabel.setVisible(false);
 			}
@@ -399,6 +420,7 @@ public class MainController implements Initializable {
 			if (sickCircle.isVisible())
 				sickCircle.setVisible(false);
 			if (sickHoursLabel.isVisible()) {
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, "-" + sickHoursLabel.getText());
 				sickHoursLabel.setText(null);
 				sickHoursLabel.setVisible(false);
 			}
@@ -610,14 +632,17 @@ public class MainController implements Initializable {
 		String holUsed = "0.0";
 		String parUsed = "0.0";
 		String sickUsed = "0.0";
-		if (freeResultTF != null && !freeResultTF.getText().equals("") && freeHoursLabel.isVisible()) {
+		if (areFreeHoursSetted) {
 			holUsed = freeResultTF.getText();
+			areFreeHoursSetted = false;
 		}
-		if (parResultTF != null && !parResultTF.getText().equals("") && parHoursLabel.isVisible()) {
+		if (areParHoursSetted) {
 			parUsed = parResultTF.getText();
+			areParHoursSetted = false;
 		}
-		if (sickResultTF != null && !sickResultTF.getText().equals("") && sickHoursLabel.isVisible()) {
+		if (areSickHoursSetted) {
 			sickUsed = sickResultTF.getText();
+			areSickHoursSetted = false;
 		}
 		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);
 
