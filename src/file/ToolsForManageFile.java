@@ -136,19 +136,35 @@ public class ToolsForManageFile {
 					currentHour.setHolidaysHoursUsed(holHours);
 					currentHour.setParHoursUsed(parHours);
 					currentHour.setSicknessHoursUsed(sickHours);
-					for (Month month : monthList) {
-						if (month.getId().equals(monthDate)) {
-							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp()) + Double.parseDouble(holHours);
-							double parUsedTemp = Double.parseDouble(month.getParUsedTemp()) + Double.parseDouble(parHours);
-							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(sickHours);
-							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
-							month.setParUsedTemp(String.valueOf(parUsedTemp));
-							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
-							Marshaller m = context.createMarshaller();
-							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-							m.marshal(wrapper, dataFile);
-						}
-					}
+
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+
+					// TODO per il mese andare a scrivere solo quando si clicca sul + nella tableview, iterando su tutti i giorni del mese
+
+					//					for (Month month : monthList) {
+					//						if (month.getId().equals(monthDate)) {
+					//							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp());
+					//							double parUsedTemp = Double.parseDouble(month.getParUsedTemp());
+					//							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp());
+					//							if (!holHours.equals("")) {
+					//								holidayUsedtemp += Double.parseDouble(holHours);
+					//							}
+					//							if (!parHours.equals("")) {
+					//								parUsedTemp += Double.parseDouble(parHours);
+					//							}
+					//							if (!sickHours.equals("")) {
+					//								sickUsedTemp += Double.parseDouble(sickHours);
+					//							}
+					//							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
+					//							month.setParUsedTemp(String.valueOf(parUsedTemp));
+					//							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
+					//							Marshaller m = context.createMarshaller();
+					//							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					//							m.marshal(wrapper, dataFile);
+					//						}
+					//					}
 				}
 			}
 		} catch (Exception ex) {

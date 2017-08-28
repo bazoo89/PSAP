@@ -1914,11 +1914,11 @@
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
         </hour>
         <hour>
-            <h_entry>09:20</h_entry>
-            <h_exit>16:40</h_exit>
+            <h_entry>09:10</h_entry>
+            <h_exit>14:15</h_exit>
             <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170828</id_hour>
-            <parHoursUsed>2</parHoursUsed>
+            <parHoursUsed></parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
         </hour>
         <hour>
@@ -3013,7 +3013,7 @@
             <id>8</id>
             <month>Aug</month>
             <par_res>0.0</par_res>
-            <par_used_temp>10.0</par_used_temp>
+            <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
             <sickness_used_temp>0.0</sickness_used_temp>
             <worked_days>0.0</worked_days>
