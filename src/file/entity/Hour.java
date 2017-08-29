@@ -12,18 +12,20 @@ public class Hour {
 	private StringProperty holidaysHoursUsed;
 	private StringProperty parHoursUsed;
 	private StringProperty sicknessHoursUsed;
+	private StringProperty workedHours;
 
 	public Hour() {
-		this(null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null);
 	}
 
-	public Hour(String id, String hEntry, String hExit, String holUsed, String parUsed, String sickUsed) {
+	public Hour(String id, String hEntry, String hExit, String holUsed, String parUsed, String sickUsed, String workedHours) {
 		this.idHour = new SimpleStringProperty(id);
 		this.h_entry = new SimpleStringProperty(hEntry);
 		this.h_exit = new SimpleStringProperty(hExit);
 		this.holidaysHoursUsed = new SimpleStringProperty(holUsed);
 		this.parHoursUsed = new SimpleStringProperty(parUsed);
 		this.sicknessHoursUsed = new SimpleStringProperty(sickUsed);
+		this.workedHours = new SimpleStringProperty(workedHours);
 	}
 
 	@XmlElement(name = "id_hour")
@@ -56,6 +58,11 @@ public class Hour {
 		return sicknessHoursUsed.get();
 	}
 
+	@XmlElement(name = "workedHours")
+	public String getWorkedHours() {
+		return workedHours.get();
+	}
+
 	public StringProperty idProperty() {
 		return idHour;
 	}
@@ -80,6 +87,10 @@ public class Hour {
 		return sicknessHoursUsed;
 	}
 
+	public StringProperty workedHoursProperty() {
+		return workedHours;
+	}
+
 	public void setId(String id) {
 		this.idHour = new SimpleStringProperty(id);
 	}
@@ -102,5 +113,9 @@ public class Hour {
 
 	public void setSicknessHoursUsed(String sicknessUSed) {
 		this.sicknessHoursUsed = new SimpleStringProperty(sicknessUSed);
+	}
+
+	public void setWorkedHours(String workedHours) {
+		this.workedHours = new SimpleStringProperty(workedHours);
 	}
 }

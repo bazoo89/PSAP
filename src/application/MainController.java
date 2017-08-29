@@ -60,7 +60,7 @@ public class MainController implements Initializable {
 	@FXML
 	public ComboBox<String> mm_exitCB;
 	@FXML
-	private Label workedHoursLabel;
+	public Label workedHoursLabel;
 	@FXML
 	private Button saveBtn;
 	@FXML
@@ -194,7 +194,7 @@ public class MainController implements Initializable {
 		calendar.setOnAction(action -> {
 			reset();
 			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel,
-					freeHoursLabel, sickHoursLabel);
+					freeHoursLabel, sickHoursLabel, workedHoursLabel);
 		});
 		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
 			@Override
@@ -403,7 +403,7 @@ public class MainController implements Initializable {
 			if (parCircle.isVisible())
 				parCircle.setVisible(false);
 			if (parHoursLabel.isVisible()) {
-				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, "-" + parHoursLabel.getText(), sickUsed);
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, "-" + parHoursLabel.getText(), sickUsed, workedHoursLabel.getText());
 				parHoursLabel.setText(null);
 				parHoursLabel.setVisible(false);
 			}
@@ -412,7 +412,7 @@ public class MainController implements Initializable {
 			if (freeCircle.isVisible())
 				freeCircle.setVisible(false);
 			if (freeHoursLabel.isVisible()) {
-				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, "-" + freeHoursLabel.getText(), parUsed, sickUsed);
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, "-" + freeHoursLabel.getText(), parUsed, sickUsed, workedHoursLabel.getText());
 				freeHoursLabel.setText(null);
 				freeHoursLabel.setVisible(false);
 			}
@@ -421,7 +421,7 @@ public class MainController implements Initializable {
 			if (sickCircle.isVisible())
 				sickCircle.setVisible(false);
 			if (sickHoursLabel.isVisible()) {
-				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, "-" + sickHoursLabel.getText());
+				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, "-" + sickHoursLabel.getText(), workedHoursLabel.getText());
 				sickHoursLabel.setText(null);
 				sickHoursLabel.setVisible(false);
 			}
@@ -486,10 +486,10 @@ public class MainController implements Initializable {
 		calendar.setValue(nextDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
-				sickHoursLabel);
-		if (loadedSuccessfully) {
-			countWorkedHours();
-		}
+				sickHoursLabel, workedHoursLabel);
+		//		if (loadedSuccessfully) {
+		//			countWorkedHours();
+		//		}
 	}
 
 	public void goPrevious() {
@@ -498,10 +498,10 @@ public class MainController implements Initializable {
 		calendar.setValue(previousDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
-				sickHoursLabel);
-		if (loadedSuccessfully) {
-			countWorkedHours();
-		}
+				sickHoursLabel, workedHoursLabel);
+		//		if (loadedSuccessfully) {
+		//			countWorkedHours();
+		//		}
 	}
 
 	public void goToButtonArea() {
@@ -631,23 +631,25 @@ public class MainController implements Initializable {
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
 		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
 		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
+		String workedHours = workedHoursLabel.getText();
 		String date = calendar.getValue().toString().replace("-", "");
 		String holUsed = "0.0";
 		String parUsed = "0.0";
 		String sickUsed = "0.0";
+
 		if (areFreeHoursSetted) {
-			holUsed = freeResultTF.getText();
+			holUsed = freeHoursLabel.getText();
 			areFreeHoursSetted = false;
 		}
 		if (areParHoursSetted) {
-			parUsed = parResultTF.getText();
+			parUsed = parHoursLabel.getText();
 			areParHoursSetted = false;
 		}
 		if (areSickHoursSetted) {
-			sickUsed = sickResultTF.getText();
+			sickUsed = sickHoursLabel.getText();
 			areSickHoursSetted = false;
 		}
-		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed);
+		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed, workedHours);
 
 	}
 	//*****************************//

@@ -8,6 +8,7 @@
             <id_hour>20170101</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -16,6 +17,7 @@
             <id_hour>20170102</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -24,6 +26,7 @@
             <id_hour>20170103</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -32,6 +35,7 @@
             <id_hour>20170104</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -40,6 +44,7 @@
             <id_hour>20170105</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -48,6 +53,7 @@
             <id_hour>20170106</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -56,6 +62,7 @@
             <id_hour>20170107</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -64,6 +71,7 @@
             <id_hour>20170108</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -72,6 +80,7 @@
             <id_hour>20170109</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -80,6 +89,7 @@
             <id_hour>20170110</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -88,6 +98,7 @@
             <id_hour>20170111</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -96,6 +107,7 @@
             <id_hour>20170112</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -104,6 +116,7 @@
             <id_hour>20170113</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -112,6 +125,7 @@
             <id_hour>20170114</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -120,6 +134,7 @@
             <id_hour>20170115</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -128,6 +143,7 @@
             <id_hour>20170116</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -136,6 +152,7 @@
             <id_hour>20170117</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -144,6 +161,7 @@
             <id_hour>20170118</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -152,6 +170,7 @@
             <id_hour>20170119</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -160,6 +179,7 @@
             <id_hour>20170120</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -168,6 +188,7 @@
             <id_hour>20170121</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -176,6 +197,7 @@
             <id_hour>20170122</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -184,6 +206,7 @@
             <id_hour>20170123</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -192,6 +215,7 @@
             <id_hour>20170124</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -200,6 +224,7 @@
             <id_hour>20170125</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -208,6 +233,7 @@
             <id_hour>20170126</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -216,6 +242,7 @@
             <id_hour>20170127</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -224,6 +251,7 @@
             <id_hour>20170128</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -232,6 +260,7 @@
             <id_hour>20170129</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -240,6 +269,7 @@
             <id_hour>20170130</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -248,6 +278,7 @@
             <id_hour>20170131</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -256,6 +287,7 @@
             <id_hour>20170201</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -264,6 +296,7 @@
             <id_hour>20170202</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -272,6 +305,7 @@
             <id_hour>20170203</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -280,6 +314,7 @@
             <id_hour>20170204</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -288,6 +323,7 @@
             <id_hour>20170205</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -296,6 +332,7 @@
             <id_hour>20170206</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -304,6 +341,7 @@
             <id_hour>20170207</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -312,6 +350,7 @@
             <id_hour>20170208</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -320,6 +359,7 @@
             <id_hour>20170209</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -328,6 +368,7 @@
             <id_hour>20170210</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -336,6 +377,7 @@
             <id_hour>20170211</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -344,6 +386,7 @@
             <id_hour>20170212</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -352,6 +395,7 @@
             <id_hour>20170213</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -360,6 +404,7 @@
             <id_hour>20170214</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -368,6 +413,7 @@
             <id_hour>20170215</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -376,6 +422,7 @@
             <id_hour>20170216</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -384,6 +431,7 @@
             <id_hour>20170217</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -392,6 +440,7 @@
             <id_hour>20170218</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -400,6 +449,7 @@
             <id_hour>20170219</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -408,6 +458,7 @@
             <id_hour>20170220</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -416,6 +467,7 @@
             <id_hour>20170221</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -424,6 +476,7 @@
             <id_hour>20170222</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -432,6 +485,7 @@
             <id_hour>20170223</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -440,6 +494,7 @@
             <id_hour>20170224</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -448,6 +503,7 @@
             <id_hour>20170225</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -456,6 +512,7 @@
             <id_hour>20170226</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -464,6 +521,7 @@
             <id_hour>20170227</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -472,6 +530,7 @@
             <id_hour>20170228</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -480,6 +539,7 @@
             <id_hour>20170301</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -488,6 +548,7 @@
             <id_hour>20170302</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -496,6 +557,7 @@
             <id_hour>20170303</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -504,6 +566,7 @@
             <id_hour>20170304</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -512,6 +575,7 @@
             <id_hour>20170305</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -520,6 +584,7 @@
             <id_hour>20170306</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -528,6 +593,7 @@
             <id_hour>20170307</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -536,6 +602,7 @@
             <id_hour>20170308</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -544,6 +611,7 @@
             <id_hour>20170309</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -552,6 +620,7 @@
             <id_hour>20170310</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -560,6 +629,7 @@
             <id_hour>20170311</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -568,6 +638,7 @@
             <id_hour>20170312</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -576,6 +647,7 @@
             <id_hour>20170313</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -584,6 +656,7 @@
             <id_hour>20170314</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -592,6 +665,7 @@
             <id_hour>20170315</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -600,6 +674,7 @@
             <id_hour>20170316</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -608,6 +683,7 @@
             <id_hour>20170317</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -616,6 +692,7 @@
             <id_hour>20170318</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -624,6 +701,7 @@
             <id_hour>20170319</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -632,6 +710,7 @@
             <id_hour>20170320</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -640,6 +719,7 @@
             <id_hour>20170321</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -648,6 +728,7 @@
             <id_hour>20170322</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -656,6 +737,7 @@
             <id_hour>20170323</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -664,6 +746,7 @@
             <id_hour>20170324</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -672,6 +755,7 @@
             <id_hour>20170325</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -680,6 +764,7 @@
             <id_hour>20170326</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -688,6 +773,7 @@
             <id_hour>20170327</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -696,6 +782,7 @@
             <id_hour>20170328</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -704,6 +791,7 @@
             <id_hour>20170329</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -712,6 +800,7 @@
             <id_hour>20170330</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -720,6 +809,7 @@
             <id_hour>20170331</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -728,6 +818,7 @@
             <id_hour>20170401</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -736,6 +827,7 @@
             <id_hour>20170402</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -744,6 +836,7 @@
             <id_hour>20170403</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -752,6 +845,7 @@
             <id_hour>20170404</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -760,6 +854,7 @@
             <id_hour>20170405</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -768,6 +863,7 @@
             <id_hour>20170406</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -776,6 +872,7 @@
             <id_hour>20170407</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -784,6 +881,7 @@
             <id_hour>20170408</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -792,6 +890,7 @@
             <id_hour>20170409</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -800,6 +899,7 @@
             <id_hour>20170410</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -808,6 +908,7 @@
             <id_hour>20170411</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -816,6 +917,7 @@
             <id_hour>20170412</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -824,6 +926,7 @@
             <id_hour>20170413</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -832,6 +935,7 @@
             <id_hour>20170414</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -840,6 +944,7 @@
             <id_hour>20170415</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -848,6 +953,7 @@
             <id_hour>20170416</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -856,6 +962,7 @@
             <id_hour>20170417</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -864,6 +971,7 @@
             <id_hour>20170418</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -872,6 +980,7 @@
             <id_hour>20170419</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -880,6 +989,7 @@
             <id_hour>20170420</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -888,6 +998,7 @@
             <id_hour>20170421</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -896,6 +1007,7 @@
             <id_hour>20170422</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -904,6 +1016,7 @@
             <id_hour>20170423</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -912,6 +1025,7 @@
             <id_hour>20170424</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -920,6 +1034,7 @@
             <id_hour>20170425</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -928,6 +1043,7 @@
             <id_hour>20170426</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -936,6 +1052,7 @@
             <id_hour>20170427</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -944,6 +1061,7 @@
             <id_hour>20170428</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -952,6 +1070,7 @@
             <id_hour>20170429</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -960,6 +1079,7 @@
             <id_hour>20170430</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -968,6 +1088,7 @@
             <id_hour>20170501</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -976,6 +1097,7 @@
             <id_hour>20170502</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -984,6 +1106,7 @@
             <id_hour>20170503</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -992,6 +1115,7 @@
             <id_hour>20170504</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1000,6 +1124,7 @@
             <id_hour>20170505</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1008,6 +1133,7 @@
             <id_hour>20170506</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1016,6 +1142,7 @@
             <id_hour>20170507</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1024,6 +1151,7 @@
             <id_hour>20170508</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1032,6 +1160,7 @@
             <id_hour>20170509</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1040,6 +1169,7 @@
             <id_hour>20170510</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1048,6 +1178,7 @@
             <id_hour>20170511</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1056,6 +1187,7 @@
             <id_hour>20170512</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1064,6 +1196,7 @@
             <id_hour>20170513</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1072,6 +1205,7 @@
             <id_hour>20170514</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1080,6 +1214,7 @@
             <id_hour>20170515</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1088,6 +1223,7 @@
             <id_hour>20170516</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1096,6 +1232,7 @@
             <id_hour>20170517</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1104,6 +1241,7 @@
             <id_hour>20170518</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1112,6 +1250,7 @@
             <id_hour>20170519</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1120,6 +1259,7 @@
             <id_hour>20170520</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1128,6 +1268,7 @@
             <id_hour>20170521</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1136,6 +1277,7 @@
             <id_hour>20170522</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1144,6 +1286,7 @@
             <id_hour>20170523</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1152,6 +1295,7 @@
             <id_hour>20170524</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1160,6 +1304,7 @@
             <id_hour>20170525</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1168,6 +1313,7 @@
             <id_hour>20170526</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1176,6 +1322,7 @@
             <id_hour>20170527</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1184,6 +1331,7 @@
             <id_hour>20170528</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1192,6 +1340,7 @@
             <id_hour>20170529</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1200,6 +1349,7 @@
             <id_hour>20170530</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1208,6 +1358,7 @@
             <id_hour>20170531</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1216,6 +1367,7 @@
             <id_hour>20170601</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1224,6 +1376,7 @@
             <id_hour>20170602</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1232,6 +1385,7 @@
             <id_hour>20170603</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1240,6 +1394,7 @@
             <id_hour>20170604</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1248,6 +1403,7 @@
             <id_hour>20170605</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1256,6 +1412,7 @@
             <id_hour>20170606</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1264,6 +1421,7 @@
             <id_hour>20170607</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1272,6 +1430,7 @@
             <id_hour>20170608</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1280,6 +1439,7 @@
             <id_hour>20170609</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1288,6 +1448,7 @@
             <id_hour>20170610</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1296,6 +1457,7 @@
             <id_hour>20170611</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1304,6 +1466,7 @@
             <id_hour>20170612</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1312,6 +1475,7 @@
             <id_hour>20170613</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1320,6 +1484,7 @@
             <id_hour>20170614</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1328,6 +1493,7 @@
             <id_hour>20170615</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1336,6 +1502,7 @@
             <id_hour>20170616</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1344,6 +1511,7 @@
             <id_hour>20170617</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1352,6 +1520,7 @@
             <id_hour>20170618</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1360,6 +1529,7 @@
             <id_hour>20170619</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1368,6 +1538,7 @@
             <id_hour>20170620</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1376,6 +1547,7 @@
             <id_hour>20170621</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1384,6 +1556,7 @@
             <id_hour>20170622</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1392,6 +1565,7 @@
             <id_hour>20170623</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1400,6 +1574,7 @@
             <id_hour>20170624</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1408,6 +1583,7 @@
             <id_hour>20170625</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1416,6 +1592,7 @@
             <id_hour>20170626</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1424,6 +1601,7 @@
             <id_hour>20170627</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1432,6 +1610,7 @@
             <id_hour>20170628</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1440,6 +1619,7 @@
             <id_hour>20170629</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1448,6 +1628,7 @@
             <id_hour>20170630</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1456,6 +1637,7 @@
             <id_hour>20170701</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1464,6 +1646,7 @@
             <id_hour>20170702</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1472,6 +1655,7 @@
             <id_hour>20170703</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1480,6 +1664,7 @@
             <id_hour>20170704</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1488,6 +1673,7 @@
             <id_hour>20170705</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1496,6 +1682,7 @@
             <id_hour>20170706</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1504,6 +1691,7 @@
             <id_hour>20170707</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1512,6 +1700,7 @@
             <id_hour>20170708</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1520,6 +1709,7 @@
             <id_hour>20170709</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1528,6 +1718,7 @@
             <id_hour>20170710</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1536,6 +1727,7 @@
             <id_hour>20170711</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1544,6 +1736,7 @@
             <id_hour>20170712</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1552,6 +1745,7 @@
             <id_hour>20170713</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1560,6 +1754,7 @@
             <id_hour>20170714</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1568,6 +1763,7 @@
             <id_hour>20170715</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1576,6 +1772,7 @@
             <id_hour>20170716</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1584,6 +1781,7 @@
             <id_hour>20170717</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1592,6 +1790,7 @@
             <id_hour>20170718</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1600,6 +1799,7 @@
             <id_hour>20170719</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1608,6 +1808,7 @@
             <id_hour>20170720</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1616,6 +1817,7 @@
             <id_hour>20170721</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1624,6 +1826,7 @@
             <id_hour>20170722</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1632,6 +1835,7 @@
             <id_hour>20170723</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1640,6 +1844,7 @@
             <id_hour>20170724</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1648,6 +1853,7 @@
             <id_hour>20170725</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1656,6 +1862,7 @@
             <id_hour>20170726</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1664,6 +1871,7 @@
             <id_hour>20170727</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1672,6 +1880,7 @@
             <id_hour>20170728</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1680,6 +1889,7 @@
             <id_hour>20170729</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1688,6 +1898,7 @@
             <id_hour>20170730</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1696,6 +1907,7 @@
             <id_hour>20170731</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1704,6 +1916,7 @@
             <id_hour>20170801</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1712,6 +1925,7 @@
             <id_hour>20170802</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1720,6 +1934,7 @@
             <id_hour>20170803</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1728,6 +1943,7 @@
             <id_hour>20170804</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1736,6 +1952,7 @@
             <id_hour>20170805</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1744,6 +1961,7 @@
             <id_hour>20170806</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1752,6 +1970,7 @@
             <id_hour>20170807</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1760,6 +1979,7 @@
             <id_hour>20170808</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1768,6 +1988,7 @@
             <id_hour>20170809</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1776,6 +1997,7 @@
             <id_hour>20170810</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1784,6 +2006,7 @@
             <id_hour>20170811</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1792,6 +2015,7 @@
             <id_hour>20170812</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1800,6 +2024,7 @@
             <id_hour>20170813</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1808,6 +2033,7 @@
             <id_hour>20170814</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1816,6 +2042,7 @@
             <id_hour>20170815</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1824,6 +2051,7 @@
             <id_hour>20170816</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1832,6 +2060,7 @@
             <id_hour>20170817</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1840,6 +2069,7 @@
             <id_hour>20170818</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1848,6 +2078,7 @@
             <id_hour>20170819</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1856,6 +2087,7 @@
             <id_hour>20170820</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1864,6 +2096,7 @@
             <id_hour>20170821</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1872,6 +2105,7 @@
             <id_hour>20170822</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1880,6 +2114,7 @@
             <id_hour>20170823</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1888,6 +2123,7 @@
             <id_hour>20170824</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1896,6 +2132,7 @@
             <id_hour>20170825</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1904,6 +2141,7 @@
             <id_hour>20170826</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1912,14 +2150,16 @@
             <id_hour>20170827</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
-            <h_entry>09:10</h_entry>
-            <h_exit>14:15</h_exit>
+            <h_entry>00:00</h_entry>
+            <h_exit>00:00</h_exit>
             <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170828</id_hour>
-            <parHoursUsed></parHoursUsed>
+            <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1928,6 +2168,7 @@
             <id_hour>20170829</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1936,6 +2177,7 @@
             <id_hour>20170830</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1944,6 +2186,7 @@
             <id_hour>20170831</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1952,6 +2195,7 @@
             <id_hour>20170901</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1960,6 +2204,7 @@
             <id_hour>20170902</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1968,6 +2213,7 @@
             <id_hour>20170903</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1976,6 +2222,7 @@
             <id_hour>20170904</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1984,6 +2231,7 @@
             <id_hour>20170905</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -1992,6 +2240,7 @@
             <id_hour>20170906</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2000,6 +2249,7 @@
             <id_hour>20170907</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2008,6 +2258,7 @@
             <id_hour>20170908</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2016,6 +2267,7 @@
             <id_hour>20170909</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2024,6 +2276,7 @@
             <id_hour>20170910</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2032,6 +2285,7 @@
             <id_hour>20170911</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2040,6 +2294,7 @@
             <id_hour>20170912</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2048,6 +2303,7 @@
             <id_hour>20170913</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2056,6 +2312,7 @@
             <id_hour>20170914</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2064,6 +2321,7 @@
             <id_hour>20170915</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2072,6 +2330,7 @@
             <id_hour>20170916</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2080,6 +2339,7 @@
             <id_hour>20170917</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2088,6 +2348,7 @@
             <id_hour>20170918</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2096,6 +2357,7 @@
             <id_hour>20170919</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2104,6 +2366,7 @@
             <id_hour>20170920</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2112,6 +2375,7 @@
             <id_hour>20170921</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2120,6 +2384,7 @@
             <id_hour>20170922</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2128,6 +2393,7 @@
             <id_hour>20170923</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2136,6 +2402,7 @@
             <id_hour>20170924</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2144,6 +2411,7 @@
             <id_hour>20170925</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2152,6 +2420,7 @@
             <id_hour>20170926</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2160,6 +2429,7 @@
             <id_hour>20170927</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2168,6 +2438,7 @@
             <id_hour>20170928</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2176,6 +2447,7 @@
             <id_hour>20170929</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2184,6 +2456,7 @@
             <id_hour>20170930</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2192,6 +2465,7 @@
             <id_hour>20171001</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2200,6 +2474,7 @@
             <id_hour>20171002</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2208,6 +2483,7 @@
             <id_hour>20171003</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2216,6 +2492,7 @@
             <id_hour>20171004</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2224,6 +2501,7 @@
             <id_hour>20171005</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2232,6 +2510,7 @@
             <id_hour>20171006</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2240,6 +2519,7 @@
             <id_hour>20171007</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2248,6 +2528,7 @@
             <id_hour>20171008</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2256,6 +2537,7 @@
             <id_hour>20171009</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2264,6 +2546,7 @@
             <id_hour>20171010</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2272,6 +2555,7 @@
             <id_hour>20171011</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2280,6 +2564,7 @@
             <id_hour>20171012</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2288,6 +2573,7 @@
             <id_hour>20171013</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2296,6 +2582,7 @@
             <id_hour>20171014</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2304,6 +2591,7 @@
             <id_hour>20171015</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2312,6 +2600,7 @@
             <id_hour>20171016</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2320,6 +2609,7 @@
             <id_hour>20171017</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2328,6 +2618,7 @@
             <id_hour>20171018</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2336,6 +2627,7 @@
             <id_hour>20171019</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2344,6 +2636,7 @@
             <id_hour>20171020</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2352,6 +2645,7 @@
             <id_hour>20171021</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2360,6 +2654,7 @@
             <id_hour>20171022</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2368,6 +2663,7 @@
             <id_hour>20171023</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2376,6 +2672,7 @@
             <id_hour>20171024</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2384,6 +2681,7 @@
             <id_hour>20171025</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2392,6 +2690,7 @@
             <id_hour>20171026</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2400,6 +2699,7 @@
             <id_hour>20171027</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2408,6 +2708,7 @@
             <id_hour>20171028</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2416,6 +2717,7 @@
             <id_hour>20171029</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2424,6 +2726,7 @@
             <id_hour>20171030</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2432,6 +2735,7 @@
             <id_hour>20171031</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2440,6 +2744,7 @@
             <id_hour>20171101</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2448,6 +2753,7 @@
             <id_hour>20171102</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2456,6 +2762,7 @@
             <id_hour>20171103</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2464,6 +2771,7 @@
             <id_hour>20171104</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2472,6 +2780,7 @@
             <id_hour>20171105</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2480,6 +2789,7 @@
             <id_hour>20171106</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2488,6 +2798,7 @@
             <id_hour>20171107</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2496,6 +2807,7 @@
             <id_hour>20171108</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2504,6 +2816,7 @@
             <id_hour>20171109</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2512,6 +2825,7 @@
             <id_hour>20171110</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2520,6 +2834,7 @@
             <id_hour>20171111</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2528,6 +2843,7 @@
             <id_hour>20171112</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2536,6 +2852,7 @@
             <id_hour>20171113</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2544,6 +2861,7 @@
             <id_hour>20171114</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2552,6 +2870,7 @@
             <id_hour>20171115</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2560,6 +2879,7 @@
             <id_hour>20171116</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2568,6 +2888,7 @@
             <id_hour>20171117</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2576,6 +2897,7 @@
             <id_hour>20171118</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2584,6 +2906,7 @@
             <id_hour>20171119</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2592,6 +2915,7 @@
             <id_hour>20171120</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2600,6 +2924,7 @@
             <id_hour>20171121</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2608,6 +2933,7 @@
             <id_hour>20171122</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2616,6 +2942,7 @@
             <id_hour>20171123</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2624,6 +2951,7 @@
             <id_hour>20171124</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2632,6 +2960,7 @@
             <id_hour>20171125</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2640,6 +2969,7 @@
             <id_hour>20171126</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2648,6 +2978,7 @@
             <id_hour>20171127</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2656,6 +2987,7 @@
             <id_hour>20171128</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2664,6 +2996,7 @@
             <id_hour>20171129</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2672,6 +3005,7 @@
             <id_hour>20171130</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2680,6 +3014,7 @@
             <id_hour>20171201</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2688,6 +3023,7 @@
             <id_hour>20171202</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2696,6 +3032,7 @@
             <id_hour>20171203</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2704,6 +3041,7 @@
             <id_hour>20171204</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2712,6 +3050,7 @@
             <id_hour>20171205</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2720,6 +3059,7 @@
             <id_hour>20171206</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2728,6 +3068,7 @@
             <id_hour>20171207</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2736,6 +3077,7 @@
             <id_hour>20171208</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2744,6 +3086,7 @@
             <id_hour>20171209</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2752,6 +3095,7 @@
             <id_hour>20171210</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2760,6 +3104,7 @@
             <id_hour>20171211</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2768,6 +3113,7 @@
             <id_hour>20171212</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2776,6 +3122,7 @@
             <id_hour>20171213</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2784,6 +3131,7 @@
             <id_hour>20171214</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2792,6 +3140,7 @@
             <id_hour>20171215</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2800,6 +3149,7 @@
             <id_hour>20171216</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2808,6 +3158,7 @@
             <id_hour>20171217</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2816,6 +3167,7 @@
             <id_hour>20171218</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2824,6 +3176,7 @@
             <id_hour>20171219</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2832,6 +3185,7 @@
             <id_hour>20171220</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2840,6 +3194,7 @@
             <id_hour>20171221</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2848,6 +3203,7 @@
             <id_hour>20171222</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2856,6 +3212,7 @@
             <id_hour>20171223</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2864,6 +3221,7 @@
             <id_hour>20171224</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2872,6 +3230,7 @@
             <id_hour>20171225</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2880,6 +3239,7 @@
             <id_hour>20171226</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2888,6 +3248,7 @@
             <id_hour>20171227</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2896,6 +3257,7 @@
             <id_hour>20171228</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2904,6 +3266,7 @@
             <id_hour>20171229</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2912,6 +3275,7 @@
             <id_hour>20171230</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
@@ -2920,6 +3284,7 @@
             <id_hour>20171231</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>0.0</workedHours>
         </hour>
     </hours>
     <months>
@@ -2927,7 +3292,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>1</id>
-            <month>Jan</month>
+            <monthName>Jan</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2939,7 +3304,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>2</id>
-            <month>Feb</month>
+            <monthName>Feb</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2951,7 +3316,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>3</id>
-            <month>Mar</month>
+            <monthName>Mar</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2963,7 +3328,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>4</id>
-            <month>Apr</month>
+            <monthName>Apr</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2975,7 +3340,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>5</id>
-            <month>May</month>
+            <monthName>May</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2987,7 +3352,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>6</id>
-            <month>Jun</month>
+            <monthName>Jun</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -2999,7 +3364,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>7</id>
-            <month>Jul</month>
+            <monthName>Jul</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -3011,7 +3376,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>8</id>
-            <month>Aug</month>
+            <monthName>Aug</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -3023,7 +3388,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>9</id>
-            <month>Sep</month>
+            <monthName>Sep</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -3035,7 +3400,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>10</id>
-            <month>Oct</month>
+            <monthName>Oct</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -3047,7 +3412,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>11</id>
-            <month>Nov</month>
+            <monthName>Nov</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
@@ -3059,7 +3424,7 @@
             <holidays_res>0.0</holidays_res>
             <holidays_used_temp>0.0</holidays_used_temp>
             <id>12</id>
-            <month>Dec</month>
+            <monthName>Dec</monthName>
             <par_res>0.0</par_res>
             <par_used_temp>0.0</par_used_temp>
             <salary>0.0</salary>
