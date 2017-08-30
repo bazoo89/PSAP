@@ -114,6 +114,8 @@ public class SalaryController implements Initializable {
 
 		month = new JFXTreeTableColumn<>("MONTH");
 		month.setPrefWidth(100);
+		month.setMaxWidth(100);
+		month.setMinWidth(100);
 		month.setResizable(false);
 		month.setSortable(false);
 		month.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<SalaryTab, String>, ObservableValue<String>>() {
@@ -124,6 +126,8 @@ public class SalaryController implements Initializable {
 		});
 		amount = new JFXTreeTableColumn<>("SALARY");
 		amount.setPrefWidth(177);
+		amount.setMaxWidth(177);
+		amount.setMinWidth(177);
 		amount.setEditable(true);
 		amount.setResizable(false);
 		amount.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<SalaryTab, String>, ObservableValue<String>>() {
@@ -145,6 +149,8 @@ public class SalaryController implements Initializable {
 
 		resHol = new JFXTreeTableColumn<>("RESIDUAL HOLIDAYS");
 		resHol.setPrefWidth(185);
+		resHol.setMaxWidth(185);
+		resHol.setMinWidth(185);
 		resHol.setResizable(false);
 		resHol.setSortable(false);
 		resHol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<SalaryTab, String>, ObservableValue<String>>() {
@@ -155,6 +161,8 @@ public class SalaryController implements Initializable {
 		});
 		resPAR = new JFXTreeTableColumn<>("RESIDUAL PAR");
 		resPAR.setPrefWidth(177);
+		resPAR.setMaxWidth(177);
+		resPAR.setMinWidth(177);
 		resPAR.setResizable(false);
 		resPAR.setSortable(false);
 		resPAR.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<SalaryTab, String>, ObservableValue<String>>() {
@@ -165,6 +173,8 @@ public class SalaryController implements Initializable {
 		});
 		notes = new JFXTreeTableColumn<>("");
 		notes.setPrefWidth(50);
+		notes.setMinWidth(50);
+		notes.setMaxWidth(50);
 		notes.setResizable(false);
 		notes.setSortable(false);
 		notes.setCellValueFactory(new Callback<CellDataFeatures<SalaryTab, JFXButton>, ObservableValue<JFXButton>>() {
@@ -213,6 +223,9 @@ public class SalaryController implements Initializable {
 						hboxTitle.getChildren().add(text);
 						content.setHeading(hboxTitle);
 						content.setBody(root);
+						stackPane.setOnMouseClicked(mouseClicked ->{
+							summary.setEffect(null);
+						});
 						dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.RIGHT);
 						//						content.setStyle("-fx-background-color: rgba(0.0, 0.0, 0.0, 0.6);");
 						dialog.setStyle("-fx-background-color: rgba(0.0, 0.0, 0.0, 0.2);");
@@ -231,7 +244,7 @@ public class SalaryController implements Initializable {
 		treeTableView.getColumns().setAll(month, amount, resHol, resPAR, notes);
 		treeTableView.setRoot(root);
 		treeTableView.setShowRoot(false);
-		treeTableView.setFixedCellSize(54);
+		treeTableView.setFixedCellSize(53);
 
 		addYearTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override

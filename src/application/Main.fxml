@@ -62,12 +62,7 @@
                </font>
             </Label>
             <Separator layoutX="533.0" layoutY="160.0" orientation="VERTICAL" prefHeight="233.0" prefWidth="5.0" />
-            <JFXButton fx:id="parBtn" layoutX="113.0" layoutY="239.0" onAction="#openParDialog" text="PAR" />
-            <ImageView fx:id="penImageView" fitHeight="35.0" fitWidth="30.0" layoutX="80.0" layoutY="111.0" onMouseClicked="#goToButtonArea" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/icons/note.png" />
-               </image>
-            </ImageView>
+            <JFXButton id="parFreeSickLabel" fx:id="parBtn" layoutX="89.0" layoutY="203.0" onAction="#openParDialog" stylesheets="@../../resources/parFreeSick.css" text="PAR" />
             <JFXButton fx:id="previousBtn" contentDisplay="GRAPHIC_ONLY" layoutX="7.0" layoutY="160.0" onAction="#goPrevious" prefHeight="35.0" prefWidth="35.0">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -96,13 +91,22 @@
                   <Image url="@../../resources/icons/reset.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="freeDaysBtn" layoutX="238.0" layoutY="239.0" onAction="#openFreeDayDialog" text="FREE DAY" />
-            <JFXButton fx:id="sicknessBtn" layoutX="416.0" layoutY="239.0" onAction="#openSicknessDialog" text="SICKNESS" />
-            <Label fx:id="parLabel" layoutX="120.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
-            <Label fx:id="freeDayLabel" layoutX="268.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
-            <Label fx:id="sickLabel" layoutX="435.0" layoutY="283.0" maxWidth="35.0" minWidth="35.0" prefHeight="21.0" prefWidth="35.0" />
+            <JFXButton id="parFreeSickLabel" fx:id="freeDaysBtn" layoutX="233.0" layoutY="203.0" onAction="#openFreeDayDialog" stylesheets="@../../resources/parFreeSick.css" text="FREE DAY" />
+            <JFXButton id="parFreeSickLabel" fx:id="sicknessBtn" layoutX="410.0" layoutY="203.0" onAction="#openSicknessDialog" stylesheets="@../../resources/parFreeSick.css" text="SICKNESS" />
+            <Label fx:id="parLabel" layoutX="77.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
+            <Label fx:id="freeDayLabel" layoutX="239.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
+            <Label fx:id="sickLabel" layoutX="416.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
             <JFXButton fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" layoutX="871.0" layoutY="340.0" onAction="#countWorkedHours" text="SAVE" />
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="795.0" layoutY="340.0" onAction="#reset" text="RESET" />
+            <JFXButton fx:id="penImageView" contentDisplay="GRAPHIC_ONLY" layoutX="63.0" layoutY="111.0" onMouseClicked="#goToButtonArea">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icons/note.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

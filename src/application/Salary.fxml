@@ -17,8 +17,8 @@
    <children>
       <AnchorPane prefHeight="756.0" prefWidth="821.0">
          <children>
-            <JFXTreeTableView fx:id="treeTableView" editable="true" layoutX="125.0" layoutY="54.0" prefHeight="700.0" prefWidth="700.0" />
-            <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="821.0">
+            <JFXTreeTableView fx:id="treeTableView" editable="true" layoutX="149.0" layoutY="54.0" prefHeight="700.0" prefWidth="700.0" />
+            <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="849.0">
               <items>
                   <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#goBack" prefHeight="40.0" prefWidth="40.0" text="GO BACK">
                      <graphic>

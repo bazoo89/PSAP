@@ -87,7 +87,7 @@ public class MainController implements Initializable {
 	@FXML
 	public JFXDialog customButtonDialog;
 	@FXML
-	public ImageView penImageView;
+	public JFXButton penImageView;
 	@FXML
 	public JFXButton allDayBtn;
 	@FXML
@@ -123,8 +123,8 @@ public class MainController implements Initializable {
 	@FXML
 	public Label sickLabel;
 
-	public static int sceneLength = 810;
-	public static int sceneWidth = 755;
+	public int sceneWidthSalary = 850;
+	public int sceneHeightSalary = 755;
 	public int dayTotalHour = 0;
 	boolean penAlreadyClicked = false;
 	JFXDialog dialog = null;
@@ -138,9 +138,9 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//		parLabel.setText("");
-		//		freeHoursLabel.setText("");
-		//		sickHoursLabel.setText("");
+		parLabel.setStyle("-fx-font-style: italic; -fx-fill: red; -fx-font-size: 30px;");
+		freeDayLabel.setStyle("-fx-font-style: italic; -fx-fill: red; -fx-font-size: 30px;");
+		sickLabel.setStyle("-fx-font-style: italic; -fx-fill: red; -fx-font-size: 30px;");
 		hh_entryCB.setItems(hours);
 		mm_entryCB.setItems(minutes);
 		hh_exitCB.setItems(hours);
@@ -165,10 +165,10 @@ public class MainController implements Initializable {
 		};
 		calendar.setDayCellFactory(dayCellFactory);
 
-		mainStackPane.setOnMouseClicked(event -> {
-			if (penAlreadyClicked)
-				penImageView.setEffect(null);
-		});
+//		mainStackPane.setOnMouseClicked(event -> {
+//			if (penAlreadyClicked)
+//				penImageView.setEffect(null);
+//		});
 	}
 
 	//******* This method counts the worked hours and displays the result on the workedHours text field *******//
@@ -315,7 +315,9 @@ public class MainController implements Initializable {
 		hh_exitCB.setValue(null);
 		mm_entryCB.setValue(null);
 		mm_exitCB.setValue(null);
-
+		parLabel.setText("");
+		sickLabel.setText("");
+		freeDayLabel.setText("");
 		workedHoursLabel.setText("press save to calculate");
 	}
 
@@ -324,7 +326,7 @@ public class MainController implements Initializable {
 	public void goToSalary() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Salary.fxml"));
-			Scene salaryScene = new Scene(root, sceneLength, sceneWidth);
+			Scene salaryScene = new Scene(root, sceneWidthSalary, sceneHeightSalary);
 			Main.primaryStage.setScene(salaryScene);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -357,8 +359,8 @@ public class MainController implements Initializable {
 
 	public void goToButtonArea() {
 		DropShadow ds = new DropShadow(20, Color.RED);
-		penAlreadyClicked = true;
 		penImageView.setEffect(ds);
+		penAlreadyClicked=false;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ShortcutArea.fxml"));
 		Parent root = null;
 		try {
@@ -370,6 +372,12 @@ public class MainController implements Initializable {
 		JFXDialogLayout content = new JFXDialogLayout();
 		content.setHeading(new Text("Shortcut"));
 		content.setBody(root);
+		mainStackPane.setOnMouseClicked(mouseClicked ->{
+			if(!penAlreadyClicked){
+				penImageView.setEffect(null);
+				penAlreadyClicked=true;
+			}
+		});
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		savedCustomButtonsList = (ArrayList<CustomButton>) ToolsForManageFile.getInstance().loadCustomButtonPreferences(TempSavedInformation.getInstance().getPreferencesFile());
 		if (savedCustomButtonsList.size() != 0) {
@@ -447,6 +455,10 @@ public class MainController implements Initializable {
 		content.setHeading(new Text("Special Hours"));
 		content.setBody(root);
 		SpecialHoursController shController = loader.getController();
+		if(parLabel!=null && !parLabel.getText().equals("")){
+			shController.slider.setValue(Double.parseDouble(parLabel.getText()));
+			shController.resultTF.setText(parLabel.getText());
+		}
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
@@ -459,7 +471,7 @@ public class MainController implements Initializable {
 			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
-			parLabel.setText(null);
+			parLabel.setText("");
 			areParHoursSetted = false;
 			dialog.close();
 		});
@@ -477,6 +489,10 @@ public class MainController implements Initializable {
 		content.setHeading(new Text("Special Hours"));
 		content.setBody(root);
 		SpecialHoursController shController = loader.getController();
+		if(freeDayLabel!=null && !freeDayLabel.getText().equals("")){
+			shController.slider.setValue(Double.parseDouble(freeDayLabel.getText()));
+			shController.resultTF.setText(freeDayLabel.getText());
+		}
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
@@ -489,7 +505,7 @@ public class MainController implements Initializable {
 			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
-			freeDayLabel.setText(null);
+			freeDayLabel.setText("");
 			areFreeHoursSetted = false;
 			dialog.close();
 		});
@@ -507,6 +523,10 @@ public class MainController implements Initializable {
 		content.setHeading(new Text("Special Hours"));
 		content.setBody(root);
 		SpecialHoursController shController = loader.getController();
+		if(sickLabel!=null && !sickLabel.getText().equals("")){
+			shController.slider.setValue(Double.parseDouble(sickLabel.getText()));
+			shController.resultTF.setText(sickLabel.getText());
+		}
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
@@ -516,11 +536,10 @@ public class MainController implements Initializable {
 			}
 			dialog.close();
 			shController.countTotalHours(sickLabel);
-			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
 
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
-			sickLabel.setText(null);
+			sickLabel.setText("");
 			areSickHoursSetted = false;
 			dialog.close();
 		});
@@ -536,7 +555,7 @@ public class MainController implements Initializable {
 			hh_exitCB.setValue(customHHExit);
 			mm_exitCB.setValue(customMMExit);
 			penAlreadyClicked = false;
-			penImageView.setEffect(null);
+//			penImageView.setEffect(null);
 			dialog.close();
 		});
 		ImageView imageView = new ImageView();
