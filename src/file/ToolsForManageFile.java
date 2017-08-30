@@ -173,7 +173,6 @@ public class ToolsForManageFile {
 		}
 	}
 
-	// TODO al caricamento del file deve compilare anche eventuali ferie/par/malattie
 	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB,
 			Label parLabel, Label freeLabel, Label sickLabel, Label workedHours) {
 		boolean loadedSuccessfuly = false;
@@ -433,7 +432,7 @@ public class ToolsForManageFile {
 		}
 	}
 
-	public ArrayList<Month> loadSalaryTabFromDataFile(File dataFile) {
+	public ArrayList<Month> getMonthsFromDataFile(File dataFile) {
 		ArrayList<Month> monthList = new ArrayList<Month>();
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
@@ -448,8 +447,20 @@ public class ToolsForManageFile {
 		return monthList;
 	}
 
-	// inserire nel metodo updateHourFile i salvataggi che faccio nel metodo sottostante,
-	// cosi scrivo su file non quando premo su OK ma quando salvo-GIUSTAMENTE
+	public ArrayList<Hour> getHoursFromDataFile(File dataFile) {
+		ArrayList<Hour> hoursList = new ArrayList<Hour>();
+		try {
+			JAXBContext context = JAXBContext.newInstance(DataFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
+			for (Hour hour : wrapper.getHour()) {
+				hoursList.add(hour);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return hoursList;
+	}
 
 	public void updateHolidayIntoDatafile(File dataFile, String date, String type, String hour) {
 		try {

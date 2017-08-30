@@ -73,7 +73,7 @@ public class SalaryController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ArrayList<Month> salaryList = ToolsForManageFile.getInstance().loadSalaryTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
+		ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
 		//		Image noteImg = new Image("file:resources/icons/note.png");
 		//		JFXButton janButton = new JFXButton("", new ImageView(noteImg));
 		//		JFXButton febButton = new JFXButton("", new ImageView(noteImg));
@@ -223,7 +223,7 @@ public class SalaryController implements Initializable {
 						hboxTitle.getChildren().add(text);
 						content.setHeading(hboxTitle);
 						content.setBody(root);
-						stackPane.setOnMouseClicked(mouseClicked ->{
+						stackPane.setOnMouseClicked(mouseClicked -> {
 							summary.setEffect(null);
 						});
 						dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.RIGHT);
@@ -259,7 +259,7 @@ public class SalaryController implements Initializable {
 						int size = lateralVBox.getChildren().size();
 						lateralVBox.getChildren().add(size - 1, newTitledPane);
 						newTitledPane.setOnMouseClicked(click -> {
-							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().loadSalaryTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
+							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
 							populateTableView(salaryList);
 						});
 						addYearTF.setText(null);

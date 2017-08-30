@@ -2173,10 +2173,10 @@
         <hour>
             <h_entry>09:00</h_entry>
             <h_exit>12:15</h_exit>
-            <holidaysHoursUsed>3.5</holidaysHoursUsed>
+            <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170830</id_hour>
             <parHoursUsed>1</parHoursUsed>
-            <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <sicknessHoursUsed></sicknessHoursUsed>
             <workedHours>03:15</workedHours>
         </hour>
         <hour>
