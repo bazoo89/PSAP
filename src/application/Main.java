@@ -57,11 +57,10 @@ public class Main extends Application {
 				Main.primaryStage.show();
 				MainController mainController = loader.getController();
 				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB,
-						mainController.hh_exitCB, mainController.mm_exitCB, mainController.parHoursLabel, mainController.freeHoursLabel, mainController.sickHoursLabel,
-						mainController.workedHoursLabel);
-				if (loadedSuccessfully) {
-					mainController.countWorkedHours();
-				}
+						mainController.hh_exitCB, mainController.mm_exitCB, mainController.parLabel, mainController.freeDayLabel, mainController.sickLabel, mainController.workedHoursLabel);
+				//				if (loadedSuccessfully) {
+				//					mainController.countWorkedHours();
+				//				}
 				if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
 					String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
 					String userFolderPath = TempSavedInformation.getInstance().getUserFolder().getPath();

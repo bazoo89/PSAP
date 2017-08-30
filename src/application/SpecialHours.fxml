@@ -15,7 +15,7 @@
                <HBox.margin>
                   <Insets left="5.0" top="5.0" />
                </HBox.margin></TextField>
-            <JFXSlider fx:id="slider" blockIncrement="0.5" majorTickUnit="0.5" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="290.0" showTickLabels="true" showTickMarks="true">
+            <JFXSlider fx:id="slider" blockIncrement="1.0" majorTickUnit="1.0" max="8.0" minorTickCount="1" prefHeight="18.0" prefWidth="290.0" showTickMarks="true" snapToTicks="true">
                <HBox.margin>
                   <Insets left="15.0" top="10.0" />
                </HBox.margin></JFXSlider>

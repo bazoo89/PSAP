@@ -12,12 +12,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXSlider;
 
 import file.ToolsForManageFile;
 import file.entity.CustomButton;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,7 +24,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -40,7 +36,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import utils.Constants;
@@ -79,12 +74,12 @@ public class MainController implements Initializable {
 	private AnchorPane freeBorderPane;
 	@FXML
 	private AnchorPane sickBorderPane;
-	@FXML
-	public Label freeHoursLabel;
-	@FXML
-	public Label parHoursLabel;
-	@FXML
-	public Label sickHoursLabel;
+	//	@FXML
+	//	public Label freeHoursLabel;
+	//	@FXML
+	//	public Label parHoursLabel;
+	//	@FXML
+	//	public Label sickHoursLabel;
 	@FXML
 	public JFXDatePicker calendar;
 	@FXML
@@ -143,6 +138,9 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//		parLabel.setText("");
+		//		freeHoursLabel.setText("");
+		//		sickHoursLabel.setText("");
 		hh_entryCB.setItems(hours);
 		mm_entryCB.setItems(minutes);
 		hh_exitCB.setItems(hours);
@@ -151,8 +149,8 @@ public class MainController implements Initializable {
 		Locale.setDefault(Locale.ITALY);
 		calendar.setOnAction(action -> {
 			reset();
-			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel,
-					freeHoursLabel, sickHoursLabel, workedHoursLabel);
+			ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parLabel,
+					freeDayLabel, sickLabel, workedHoursLabel);
 		});
 		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
 			@Override
@@ -166,8 +164,7 @@ public class MainController implements Initializable {
 			}
 		};
 		calendar.setDayCellFactory(dayCellFactory);
-		
-		
+
 		mainStackPane.setOnMouseClicked(event -> {
 			if (penAlreadyClicked)
 				penImageView.setEffect(null);
@@ -210,93 +207,92 @@ public class MainController implements Initializable {
 		}
 	}
 
-//	public void chooseParHours() {
-//		if (!parDialog.isVisible()) {
-//			parDialog.show(parDialogLayout);
-//			parSlider.setValue(0);
-//			parResultTF.setText(Double.toString(parSlider.getValue()));
-//			if (sickDialog.isVisible())
-//				sickDialog.close();
-//			if (freeDialog.isVisible())
-//				freeDialog.close();
-//		} else {
-//			parDialog.setVisible(false);
-//		}
-//	}
-//	public void countSpecialHours() {
-//		// Method called when OK is clicked
-//		// Display free/par/sickness day
-//		int specialHours = 0;
-//		if (parDialog.isVisible()) {
-//			parDialog.setVisible(false);
-//			parCircle.setVisible(true);
-//			parHoursLabel.setVisible(true);
-//			parHoursLabel.setText(parResultTF.getText());
-//			if (!areParHoursSetted) {
-//				areParHoursSetted = true;
-//			}
-//			countTotalHours(parHoursLabel);
-//		} else if (freeDialog.isVisible()) {
-//			freeDialog.setVisible(false);
-//			freeCircle.setVisible(true);
-//			freeHoursLabel.setVisible(true);
-//			freeHoursLabel.setText(freeResultTF.getText());
-//			if (!areFreeHoursSetted) {
-//				areFreeHoursSetted = true;
-//			}
-//			countTotalHours(freeHoursLabel);
-//		} else if (sickDialog.isVisible()) {
-//			sickDialog.setVisible(false);
-//			sickCircle.setVisible(true);
-//			sickHoursLabel.setVisible(true);
-//			sickHoursLabel.setText(sickResultTF.getText());
-//			if (!areSickHoursSetted) {
-//				areSickHoursSetted = true;
-//			}
-//			countTotalHours(sickHoursLabel);
-//		} else {
-//		}
-//	}
+	//	public void chooseParHours() {
+	//		if (!parDialog.isVisible()) {
+	//			parDialog.show(parDialogLayout);
+	//			parSlider.setValue(0);
+	//			parResultTF.setText(Double.toString(parSlider.getValue()));
+	//			if (sickDialog.isVisible())
+	//				sickDialog.close();
+	//			if (freeDialog.isVisible())
+	//				freeDialog.close();
+	//		} else {
+	//			parDialog.setVisible(false);
+	//		}
+	//	}
+	//	public void countSpecialHours() {
+	//		// Method called when OK is clicked
+	//		// Display free/par/sickness day
+	//		int specialHours = 0;
+	//		if (parDialog.isVisible()) {
+	//			parDialog.setVisible(false);
+	//			parCircle.setVisible(true);
+	//			parHoursLabel.setVisible(true);
+	//			parHoursLabel.setText(parResultTF.getText());
+	//			if (!areParHoursSetted) {
+	//				areParHoursSetted = true;
+	//			}
+	//			countTotalHours(parHoursLabel);
+	//		} else if (freeDialog.isVisible()) {
+	//			freeDialog.setVisible(false);
+	//			freeCircle.setVisible(true);
+	//			freeHoursLabel.setVisible(true);
+	//			freeHoursLabel.setText(freeResultTF.getText());
+	//			if (!areFreeHoursSetted) {
+	//				areFreeHoursSetted = true;
+	//			}
+	//			countTotalHours(freeHoursLabel);
+	//		} else if (sickDialog.isVisible()) {
+	//			sickDialog.setVisible(false);
+	//			sickCircle.setVisible(true);
+	//			sickHoursLabel.setVisible(true);
+	//			sickHoursLabel.setText(sickResultTF.getText());
+	//			if (!areSickHoursSetted) {
+	//				areSickHoursSetted = true;
+	//			}
+	//			countTotalHours(sickHoursLabel);
+	//		} else {
+	//		}
+	//	}
 
-//	public void clear() {
-//		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-//		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
-//		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
-//		String date = calendar.getValue().toString().replace("-", "");
-//		String holUsed = "0.0";
-//		String parUsed = "0.0";
-//		String sickUsed = "0.0";
-//		if (parDialog.isVisible()) {
-//			parSlider.setValue(0);
-//			if (parCircle.isVisible())
-//				parCircle.setVisible(false);
-//			if (parHoursLabel.isVisible()) {
-//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, "-" + parHoursLabel.getText(), sickUsed);
-//				parHoursLabel.setText(null);
-//				parHoursLabel.setVisible(false);
-//			}
-//		} else if (freeDialog.isVisible()) {
-//			freeSlider.setValue(0);
-//			if (freeCircle.isVisible())
-//				freeCircle.setVisible(false);
-//			if (freeHoursLabel.isVisible()) {
-//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, "-" + freeHoursLabel.getText(), parUsed, sickUsed);
-//				freeHoursLabel.setText(null);
-//				freeHoursLabel.setVisible(false);
-//			}
-//		} else if (sickDialog.isVisible()) {
-//			sickSlider.setValue(0);
-//			if (sickCircle.isVisible())
-//				sickCircle.setVisible(false);
-//			if (sickHoursLabel.isVisible()) {
-//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, "-" + sickHoursLabel.getText());
-//				sickHoursLabel.setText(null);
-//				sickHoursLabel.setVisible(false);
-//			}
-//		} else {
-//		}
-//	}
-
+	//	public void clear() {
+	//		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
+	//		String hEntry = hh_entryCB.getValue() + ":" + mm_entryCB.getValue();
+	//		String hExit = hh_exitCB.getValue() + ":" + mm_exitCB.getValue();
+	//		String date = calendar.getValue().toString().replace("-", "");
+	//		String holUsed = "0.0";
+	//		String parUsed = "0.0";
+	//		String sickUsed = "0.0";
+	//		if (parDialog.isVisible()) {
+	//			parSlider.setValue(0);
+	//			if (parCircle.isVisible())
+	//				parCircle.setVisible(false);
+	//			if (parHoursLabel.isVisible()) {
+	//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, "-" + parHoursLabel.getText(), sickUsed);
+	//				parHoursLabel.setText(null);
+	//				parHoursLabel.setVisible(false);
+	//			}
+	//		} else if (freeDialog.isVisible()) {
+	//			freeSlider.setValue(0);
+	//			if (freeCircle.isVisible())
+	//				freeCircle.setVisible(false);
+	//			if (freeHoursLabel.isVisible()) {
+	//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, "-" + freeHoursLabel.getText(), parUsed, sickUsed);
+	//				freeHoursLabel.setText(null);
+	//				freeHoursLabel.setVisible(false);
+	//			}
+	//		} else if (sickDialog.isVisible()) {
+	//			sickSlider.setValue(0);
+	//			if (sickCircle.isVisible())
+	//				sickCircle.setVisible(false);
+	//			if (sickHoursLabel.isVisible()) {
+	//				ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, "-" + sickHoursLabel.getText());
+	//				sickHoursLabel.setText(null);
+	//				sickHoursLabel.setVisible(false);
+	//			}
+	//		} else {
+	//		}
+	//	}
 
 	public void countTotalHours(Label label) {
 		//		int specialHour=Integer.parseInt(label.getText());
@@ -319,7 +315,6 @@ public class MainController implements Initializable {
 		hh_exitCB.setValue(null);
 		mm_entryCB.setValue(null);
 		mm_exitCB.setValue(null);
-		
 
 		workedHoursLabel.setText("press save to calculate");
 	}
@@ -341,8 +336,8 @@ public class MainController implements Initializable {
 		LocalDate nextDay = calendar.getValue().plusDays(1);
 		calendar.setValue(nextDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
-				sickHoursLabel, workedHoursLabel);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parLabel, freeDayLabel, sickLabel,
+				workedHoursLabel);
 		//		if (loadedSuccessfully) {
 		//			countWorkedHours();
 		//		}
@@ -353,8 +348,8 @@ public class MainController implements Initializable {
 		LocalDate previousDay = calendar.getValue().minusDays(1);
 		calendar.setValue(previousDay);
 		File userFile = TempSavedInformation.getInstance().getHourMonthFile();
-		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parHoursLabel, freeHoursLabel,
-				sickHoursLabel, workedHoursLabel);
+		boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(userFile, calendar, hh_entryCB, mm_entryCB, hh_exitCB, mm_exitCB, parLabel, freeDayLabel, sickLabel,
+				workedHoursLabel);
 		//		if (loadedSuccessfully) {
 		//			countWorkedHours();
 		//		}
@@ -403,7 +398,6 @@ public class MainController implements Initializable {
 			penAlreadyClicked = false;
 			penImageView.setEffect(null);
 		});
-		dialog.show();
 		baController.allDayBtn.setOnMouseClicked(mouseClick -> {
 			dialog.close();
 			hh_entryCB.setValue("09");
@@ -431,6 +425,7 @@ public class MainController implements Initializable {
 			penAlreadyClicked = false;
 			penImageView.setEffect(null);
 		});
+		dialog.show();
 		//		penImageView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
 		//			if (newValue) {
 		//				penImageView.setEffect(ds);
@@ -455,21 +450,21 @@ public class MainController implements Initializable {
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
-		parLabel.setText(shController.resultTF.getText());
-		if (!areParHoursSetted) {
-			areParHoursSetted = true;
-		}
-		dialog.close();
-		shController.countTotalHours(parLabel);
-//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			parLabel.setText(shController.resultTF.getText());
+			if (!areParHoursSetted) {
+				areParHoursSetted = true;
+			}
 			dialog.close();
-			
+			shController.countTotalHours(parLabel);
+			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
 			parLabel.setText(null);
+			areParHoursSetted = false;
 			dialog.close();
 		});
 	}
+
 	public void openFreeDayDialog() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
 		Parent root = null;
@@ -485,21 +480,21 @@ public class MainController implements Initializable {
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
-		freeDayLabel.setText(shController.resultTF.getText());
-		if (!areFreeHoursSetted) {
-			areFreeHoursSetted = true;
-		}
-		dialog.close();
-		shController.countTotalHours(freeDayLabel);
-//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			freeDayLabel.setText(shController.resultTF.getText());
+			if (!areFreeHoursSetted) {
+				areFreeHoursSetted = true;
+			}
 			dialog.close();
-			
+			shController.countTotalHours(freeDayLabel);
+			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
 			freeDayLabel.setText(null);
+			areFreeHoursSetted = false;
 			dialog.close();
 		});
 	}
+
 	public void openSicknessDialog() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SpecialHours.fxml"));
 		Parent root = null;
@@ -515,21 +510,22 @@ public class MainController implements Initializable {
 		dialog = new JFXDialog(mainStackPane, content, JFXDialog.DialogTransition.CENTER);
 		dialog.show();
 		shController.specialOkBtn.setOnMouseClicked(mouseClick -> {
-		sickLabel.setText(shController.resultTF.getText());
-		if (!areSickHoursSetted) {
-			areSickHoursSetted = true;
-		}
-		dialog.close();
-		shController.countTotalHours(sickLabel);
-//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+			sickLabel.setText(shController.resultTF.getText());
+			if (!areSickHoursSetted) {
+				areSickHoursSetted = true;
+			}
 			dialog.close();
-			
+			shController.countTotalHours(sickLabel);
+			//				ToolsForManageFile.getInstance().updateHolidayIntoDatafile(TempSavedInformation.getInstance().getHourMonthFile(),calendar.getValue().toString().replace("-", ""), Constants.Holidays, parLabel.getText());
+
 		});
 		shController.clearBtn.setOnMouseClicked(mouseClick -> {
 			sickLabel.setText(null);
+			areSickHoursSetted = false;
 			dialog.close();
 		});
 	}
+
 	private boolean createHBox(ButtonAreaController baController, String customHHEntry, String customMMEntry, String customHHExit, String customMMExit) {
 		boolean successfullyCreation = false;
 		HBox hbox = null;
@@ -568,8 +564,7 @@ public class MainController implements Initializable {
 		}
 		return successfullyCreation;
 	}
-	
-	
+
 	///////////////////////////////////////
 
 	//******* Utils Methods *******//
@@ -591,24 +586,24 @@ public class MainController implements Initializable {
 		String holUsed = "0.0";
 		String parUsed = "0.0";
 		String sickUsed = "0.0";
-		if (shController.resultTF != null && !shController.resultTF.getText().equals("") && !freeDayLabel.getText().equals("")) {
-			holUsed = shController.resultTF.getText();
-//		if (areFreeHoursSetted) {
-//			holUsed = freeResultTF.getText();
-//			areFreeHoursSetted = false;
+		//		if (shController.resultTF != null && !shController.resultTF.getText().equals("") && !freeDayLabel.getText().equals("")) {
+		//			holUsed = shController.resultTF.getText();
+		if (areFreeHoursSetted) {
+			holUsed = freeDayLabel.getText();
+			areFreeHoursSetted = false;
 		}
 
-		if (shController.resultTF  != null && !shController.resultTF.getText().equals("") && !parLabel.getText().equals("")) {
-			parUsed = shController.resultTF.getText();
-//		if (areParHoursSetted) {
-//			parUsed = parResultTF.getText();
-//			areParHoursSetted = false;
+		//		if (shController.resultTF != null && !shController.resultTF.getText().equals("") && !parLabel.getText().equals("")) {
+		//			parUsed = shController.resultTF.getText();
+		if (areParHoursSetted) {
+			parUsed = parLabel.getText();
+			areParHoursSetted = false;
 		}
-		if (shController.resultTF  != null && !shController.resultTF.getText().equals("") && !sickLabel.getText().equals("")) {
-			sickUsed = shController.resultTF.getText();
-//		if (areSickHoursSetted) {
-//			sickUsed = sickResultTF.getText();
-//			areSickHoursSetted = false;
+		//		if (shController.resultTF != null && !shController.resultTF.getText().equals("") && !sickLabel.getText().equals("")) {
+		//			sickUsed = shController.resultTF.getText();
+		if (areSickHoursSetted) {
+			sickUsed = sickLabel.getText();
+			areSickHoursSetted = false;
 		}
 		ToolsForManageFile.getInstance().updateHoursTabToDataFile(userFile, date, hEntry, hExit, holUsed, parUsed, sickUsed, workedHours);
 

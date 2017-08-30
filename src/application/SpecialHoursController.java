@@ -1,26 +1,18 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
 
-import file.ToolsForManageFile;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import utils.TempSavedInformation;
 
 public class SpecialHoursController implements Initializable {
 	@FXML
@@ -29,10 +21,8 @@ public class SpecialHoursController implements Initializable {
 	public JFXButton clearBtn;
 	@FXML
 	public JFXSlider slider;
-	@FXML 
+	@FXML
 	public TextField resultTF;
-
-
 
 	public FXMLLoader loader = null;
 	public MainController mainController = null;
@@ -67,8 +57,9 @@ public class SpecialHoursController implements Initializable {
 				}
 			}
 		});
-		
+
 	}
+
 	public void countTotalHours(Label label) {
 		//		int specialHour=Integer.parseInt(label.getText());
 		//		int standardHour=Integer.parseInt(workedHoursTF.getText());
