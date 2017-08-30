@@ -65,6 +65,7 @@ public class SalaryController implements Initializable {
 	public JFXTreeTableColumn<SalaryTab, String> resPAR;
 	public JFXTreeTableColumn<SalaryTab, JFXButton> notes;
 	JFXDialog dialog = null;
+	public Month clickedMonth;
 
 	private Image summary = new Image("file:resources/icons/summary.png");
 	TreeItem<SalaryTab> root = null;
@@ -206,7 +207,7 @@ public class SalaryController implements Initializable {
 					}
 
 					private void showSummary(JFXButton summary, int monthId) {
-						Month clickedMonth = salaryList.get(monthId);
+						clickedMonth = salaryList.get(monthId);
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Summary.fxml"));
 						Parent root = null;
 						try {
@@ -215,6 +216,7 @@ public class SalaryController implements Initializable {
 							e.printStackTrace();
 						}
 						SummaryController sumController = loader.getController();
+						sumController.populateView(clickedMonth);
 						JFXDialogLayout content = new JFXDialogLayout();
 
 						HBox hboxTitle = new HBox();
