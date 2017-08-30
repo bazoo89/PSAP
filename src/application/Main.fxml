@@ -93,9 +93,9 @@
             </ImageView>
             <JFXButton id="parFreeSickLabel" fx:id="freeDaysBtn" layoutX="233.0" layoutY="203.0" onAction="#openFreeDayDialog" stylesheets="@../../resources/parFreeSick.css" text="FREE DAY" />
             <JFXButton id="parFreeSickLabel" fx:id="sicknessBtn" layoutX="410.0" layoutY="203.0" onAction="#openSicknessDialog" stylesheets="@../../resources/parFreeSick.css" text="SICKNESS" />
-            <Label fx:id="parLabel" layoutX="77.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
-            <Label fx:id="freeDayLabel" layoutX="239.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
-            <Label fx:id="sickLabel" layoutX="416.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" />
+            <Label fx:id="parLabel" alignment="CENTER" layoutX="77.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" textAlignment="CENTER" />
+            <Label fx:id="freeDayLabel" alignment="CENTER" layoutX="239.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" textAlignment="CENTER" />
+            <Label fx:id="sickLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="414.0" layoutY="253.0" maxWidth="77.0" minWidth="35.0" prefHeight="60.0" prefWidth="77.0" textAlignment="CENTER" />
             <JFXButton fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" layoutX="871.0" layoutY="340.0" onAction="#countWorkedHours" text="SAVE" />
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="795.0" layoutY="340.0" onAction="#reset" text="RESET" />
             <JFXButton fx:id="penImageView" contentDisplay="GRAPHIC_ONLY" layoutX="63.0" layoutY="111.0" onMouseClicked="#goToButtonArea">
