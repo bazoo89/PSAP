@@ -41,8 +41,6 @@ public class UserController implements Initializable {
 	@FXML
 	private Button cancelButton;
 
-	public static int sceneLength = 930;
-	public static int sceneWidth = 780;
 	private final String TITLE = "SAP&GO";
 	private File personFile = null;
 	private File userFile = null;
@@ -140,7 +138,7 @@ public class UserController implements Initializable {
 			stage.close();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
 			Parent root = loader.load();
-			Scene scene = new Scene(root, sceneLength, sceneWidth);
+			Scene scene = new Scene(root, Main.sceneWidth, Main.sceneHeight);
 			Main.primaryStage.setScene(scene);
 			Main.primaryStage.setResizable(false);
 			Image image = new Image("file:resources/icons/mainIcon.png");
