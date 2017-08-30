@@ -118,7 +118,7 @@ public class ToolsForManageFile {
 		}
 	}
 
-	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit, String holHours, String parHours, String sickHours) {
+	public void updateHoursTabToDataFile(File dataFile, String date, String hEntry, String hExit, String holHours, String parHours, String sickHours, String workedHours) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
 			Unmarshaller um = context.createUnmarshaller();
@@ -136,19 +136,36 @@ public class ToolsForManageFile {
 					currentHour.setHolidaysHoursUsed(holHours);
 					currentHour.setParHoursUsed(parHours);
 					currentHour.setSicknessHoursUsed(sickHours);
-					for (Month month : monthList) {
-						if (month.getId().equals(monthDate)) {
-							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp()) + Double.parseDouble(holHours);
-							double parUsedTemp = Double.parseDouble(month.getParUsedTemp()) + Double.parseDouble(parHours);
-							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp()) + Double.parseDouble(sickHours);
-							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
-							month.setParUsedTemp(String.valueOf(parUsedTemp));
-							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
-							Marshaller m = context.createMarshaller();
-							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-							m.marshal(wrapper, dataFile);
-						}
-					}
+					currentHour.setWorkedHours(workedHours);
+
+					Marshaller m = context.createMarshaller();
+					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					m.marshal(wrapper, dataFile);
+
+					// TODO per il mese andare a scrivere solo quando si clicca sul + nella tableview, iterando su tutti i giorni del mese
+
+					//					for (Month month : monthList) {
+					//						if (month.getId().equals(monthDate)) {
+					//							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp());
+					//							double parUsedTemp = Double.parseDouble(month.getParUsedTemp());
+					//							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp());
+					//							if (!holHours.equals("")) {
+					//								holidayUsedtemp += Double.parseDouble(holHours);
+					//							}
+					//							if (!parHours.equals("")) {
+					//								parUsedTemp += Double.parseDouble(parHours);
+					//							}
+					//							if (!sickHours.equals("")) {
+					//								sickUsedTemp += Double.parseDouble(sickHours);
+					//							}
+					//							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
+					//							month.setParUsedTemp(String.valueOf(parUsedTemp));
+					//							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
+					//							Marshaller m = context.createMarshaller();
+					//							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+					//							m.marshal(wrapper, dataFile);
+					//						}
+					//					}
 				}
 			}
 		} catch (Exception ex) {
@@ -158,7 +175,7 @@ public class ToolsForManageFile {
 
 	// TODO al caricamento del file deve compilare anche eventuali ferie/par/malattie
 	public boolean loadHoursTabFromDataFile(File dataFile, JFXDatePicker calendar, ComboBox<String> hh_entryCB, ComboBox<String> mm_entryCB, ComboBox<String> hh_exitCB, ComboBox<String> mm_exitCB,
-			Label parLabel, Label freeLabel, Label sickLabel) {
+			Label parLabel, Label freeLabel, Label sickLabel, Label workedHours) {
 		boolean loadedSuccessfuly = false;
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
@@ -182,6 +199,10 @@ public class ToolsForManageFile {
 						String mm = hourArray[1];
 						hh_exitCB.setValue(hh);
 						mm_exitCB.setValue(mm);
+						loadedSuccessfuly = true;
+					}
+					if (!hour.getWorkedHours().equals(defaultParFreeSick)) {
+						workedHours.setText(hour.getWorkedHours());
 						loadedSuccessfuly = true;
 					}
 					// Par hours used
@@ -247,7 +268,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;
@@ -263,7 +284,7 @@ public class ToolsForManageFile {
 						day = (Integer.parseInt(day) + 1) + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;
@@ -283,7 +304,7 @@ public class ToolsForManageFile {
 						day = y + "";
 					}
 					String id = stringYear + month + day;
-					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
+					hour = new Hour(id, defaultHour, defaultHour, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick, defaultParFreeSick);
 					hours.add(hour);
 				}
 				break;

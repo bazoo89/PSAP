@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 public class Month {
 	private StringProperty id;
-	private StringProperty month;
+	private StringProperty monthName;
 	private StringProperty salary;
 	private StringProperty holidaysRes;
 	private StringProperty parRes;
@@ -21,10 +21,10 @@ public class Month {
 		this(null, null, null, null, null, null, null, null, null, null);
 	}
 
-	public Month(String id, String month, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp,
+	public Month(String id, String monthName, String salary, String holidays_res, String par_res, String worked_days, String worked_hours, String sickness_used_temp, String holidays_used_temp,
 			String par_used_temp) {
 		this.id = new SimpleStringProperty(id);
-		this.month = new SimpleStringProperty(month);
+		this.monthName = new SimpleStringProperty(monthName);
 		this.salary = new SimpleStringProperty(salary);
 		this.holidaysRes = new SimpleStringProperty(holidays_res);
 		this.parRes = new SimpleStringProperty(par_res);
@@ -40,9 +40,9 @@ public class Month {
 		return id.get();
 	}
 
-	@XmlElement(name = "month")
-	public String getMonth() {
-		return month.get();
+	@XmlElement(name = "monthName")
+	public String getMonthName() {
+		return monthName.get();
 	}
 
 	@XmlElement(name = "salary")
@@ -89,8 +89,8 @@ public class Month {
 		return id;
 	}
 
-	public StringProperty monthProperty() {
-		return month;
+	public StringProperty monthNameProperty() {
+		return monthName;
 	}
 
 	public StringProperty salaryProperty() {
@@ -129,8 +129,8 @@ public class Month {
 		this.id = new SimpleStringProperty(id);
 	}
 
-	public void setMonth(String month) {
-		this.month = new SimpleStringProperty(month);
+	public void setMonthName(String monthName) {
+		this.monthName = new SimpleStringProperty(monthName);
 	}
 
 	public void setSalary(String salary) {

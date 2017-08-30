@@ -47,6 +47,7 @@ public class Main extends Application {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
 				Parent root = loader.load();
 				Scene scene = new Scene(root, sceneWidth, sceneHeight);
+				scene.getStylesheets().add("file:resources/application.css");
 				Main.primaryStage.setScene(scene);
 				Main.primaryStage.setResizable(false);
 				Image image = new Image("file:resources/icons/mainIcon.png");
@@ -56,7 +57,8 @@ public class Main extends Application {
 				Main.primaryStage.show();
 				MainController mainController = loader.getController();
 				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB,
-						mainController.hh_exitCB, mainController.mm_exitCB, mainController.parHoursLabel, mainController.freeHoursLabel, mainController.sickHoursLabel);
+						mainController.hh_exitCB, mainController.mm_exitCB, mainController.parHoursLabel, mainController.freeHoursLabel, mainController.sickHoursLabel,
+						mainController.workedHoursLabel);
 				if (loadedSuccessfully) {
 					mainController.countWorkedHours();
 				}

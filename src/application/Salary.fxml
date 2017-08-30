@@ -9,42 +9,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="756.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SalaryController">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SalaryController">
    <children>
-      <JFXTreeTableView fx:id="treeTableView" editable="true" layoutX="125.0" layoutY="54.0" prefHeight="700.0" prefWidth="705.0" />
-      <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="821.0">
-        <items>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#goBack" prefHeight="40.0" prefWidth="40.0" text="GO BACK">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/icons/goBack.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-        </items>
-      </ToolBar>
-      <ScrollPane layoutY="54.0" prefHeight="700.0" prefWidth="149.0">
-         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="126.0">
-               <children>
-                  <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="131.0">
+      <AnchorPane prefHeight="756.0" prefWidth="821.0">
+         <children>
+            <JFXTreeTableView fx:id="treeTableView" editable="true" layoutX="125.0" layoutY="54.0" prefHeight="700.0" prefWidth="700.0" />
+            <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="821.0">
+              <items>
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#goBack" prefHeight="40.0" prefWidth="40.0" text="GO BACK">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/icons/goBack.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+              </items>
+            </ToolBar>
+            <ScrollPane layoutY="54.0" prefHeight="700.0" prefWidth="149.0">
+               <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="126.0">
                      <children>
-                        <TitledPane fx:id="titledPane2017" animated="false" expanded="true" prefHeight="32.0" prefWidth="146.0" text="2017" />
-                        <TitledPane fx:id="titledPane2018" animated="false" expanded="false" prefHeight="32.0" prefWidth="81.0" text="2018" />
-                        <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="84.0" promptText="add year">
-                           <font>
-                              <Font name="System Italic" size="15.0" />
-                           </font>
-                        </TextField>
+                        <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="131.0">
+                           <children>
+                              <TitledPane fx:id="titledPane2017" animated="false" expanded="true" prefHeight="32.0" prefWidth="146.0" text="2017" />
+                              <TitledPane fx:id="titledPane2018" animated="false" expanded="false" prefHeight="32.0" prefWidth="81.0" text="2018" />
+                              <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="84.0" promptText="add year">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
