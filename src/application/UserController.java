@@ -161,7 +161,8 @@ public class UserController implements Initializable {
 			}
 			MainController mainController = loader.getController();
 			boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), mainController.calendar,
-					mainController.hh_entryCB, mainController.mm_entryCB, mainController.hh_exitCB, mainController.mm_exitCB);
+					mainController.hh_entryCB, mainController.mm_entryCB, mainController.hh_exitCB, mainController.mm_exitCB, mainController.parHoursLabel, mainController.freeHoursLabel,
+					mainController.sickHoursLabel);
 			if (loadedSuccessfully) {
 				mainController.countWorkedHours();
 			}
