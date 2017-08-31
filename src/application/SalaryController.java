@@ -20,6 +20,7 @@ import file.entity.Month;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -59,6 +61,13 @@ public class SalaryController implements Initializable {
 	public TextField addYearTF;
 	@FXML
 	public VBox lateralVBox;
+	@FXML
+	public VBox buttonVBox;
+	@FXML
+	public JFXButton recycleBin2017;
+	@FXML
+	public JFXButton recycleBin2018;
+	
 	public JFXTreeTableColumn<SalaryTab, String> month;
 	public JFXTreeTableColumn<SalaryTab, String> amount;
 	public JFXTreeTableColumn<SalaryTab, String> resHol;
@@ -75,44 +84,6 @@ public class SalaryController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
-		//		Image noteImg = new Image("file:resources/icons/note.png");
-		//		JFXButton janButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton febButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton marButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton aprButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton mayButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton junButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton julButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton augButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton sepButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton octButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton novButton = new JFXButton("", new ImageView(noteImg));
-		//		JFXButton decButton = new JFXButton("", new ImageView(noteImg));
-		//		HBox janButtonBox = new HBox();
-		//		janButtonBox.getChildren().add(janButton);
-		//		HBox febButtonBox = new HBox();
-		//		febButtonBox.getChildren().add(febButton);
-		//		HBox marButtonBox = new HBox();
-		//		marButtonBox.getChildren().add(marButton);
-		//		HBox aprButtonBox = new HBox();
-		//		aprButtonBox.getChildren().add(aprButton);
-		//		HBox mayButtonBox = new HBox();
-		//		mayButtonBox.getChildren().add(mayButton);
-		//		HBox junButtonBox = new HBox();
-		//		junButtonBox.getChildren().add(junButton);
-		//		HBox julButtonBox = new HBox();
-		//		julButtonBox.getChildren().add(julButton);
-		//		HBox augButtonBox = new HBox();
-		//		augButtonBox.getChildren().add(augButton);
-		//		HBox sepButtonBox = new HBox();
-		//		sepButtonBox.getChildren().add(sepButton);
-		//		HBox octButtonBox = new HBox();
-		//		octButtonBox.getChildren().add(octButton);
-		//		HBox novButtonBox = new HBox();
-		//		novButtonBox.getChildren().add(novButton);
-		//		HBox decButtonBox = new HBox();
-		//		decButtonBox.getChildren().add(decButton);
-
 		month = new JFXTreeTableColumn<>("MONTH");
 		month.setPrefWidth(100);
 		month.setMaxWidth(100);
@@ -247,7 +218,6 @@ public class SalaryController implements Initializable {
 		treeTableView.setRoot(root);
 		treeTableView.setShowRoot(false);
 		treeTableView.setFixedCellSize(53);
-
 		addYearTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -256,13 +226,28 @@ public class SalaryController implements Initializable {
 						ObservableList<Node> nodes = lateralVBox.getChildren();
 						TitledPane newTitledPane = new TitledPane();
 						newTitledPane.setText(addYearTF.getText());
-						newTitledPane.setExpanded(false);
+						newTitledPane.setExpanded(true);
+						closeOtherTitledPanes(newTitledPane);
 						newTitledPane.setAnimated(false);
 						int size = lateralVBox.getChildren().size();
 						lateralVBox.getChildren().add(size - 1, newTitledPane);
+						Image image=new Image("file:resources/icons/recycleBin.png");
+						ImageView imageview = new ImageView();
+						imageview.setFitHeight(25);
+						imageview.setFitWidth(25);
+						imageview.setImage(image);
+						JFXButton btn=new JFXButton();
+						btn.setGraphic(imageview);
+						btn.setId(addYearTF.getText());
+						btn.setOnMouseClicked(mouseClicked ->{
+							manageYearRemoving(btn);
+						});
+						buttonVBox.getChildren().add(btn);
+						System.out.println(newTitledPane.getText());
 						newTitledPane.setOnMouseClicked(click -> {
+							closeOtherTitledPanes(newTitledPane);	
 							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
-							populateTableView(salaryList);
+							populateTableView(salaryList);							
 						});
 						addYearTF.setText(null);
 					}
@@ -288,6 +273,45 @@ public class SalaryController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	@FXML public void handleTitledPane(MouseEvent e){
+		TitledPane tp=(TitledPane) e.getSource();
+		closeOtherTitledPanes(tp);
+		
+	}
+	public void closeOtherTitledPanes(TitledPane tp){
+		ObservableList<Node> nodes=lateralVBox.getChildren();
+		for (Node node : nodes) {
+			if(node instanceof TitledPane){
+				TitledPane titledPane=(TitledPane) node;
+				if(!titledPane.getText().equals(tp.getText())){
+					titledPane.setExpanded(false);
+				}
+				else
+					titledPane.setExpanded(true);
+			}
+		}
+	}
+	@FXML
+	public void removeYear(MouseEvent e){
+		JFXButton button=(JFXButton) e.getSource();
+		manageYearRemoving(button);
+	
+	}
+
+	private void manageYearRemoving(JFXButton button) {
+		ObservableList<Node> nodes=lateralVBox.getChildren();
+		for (Node node : nodes) {
+			if(node instanceof TitledPane){
+				TitledPane titledPane=(TitledPane) node;
+				if(titledPane.getText().equals(button.getId().replace("recycleBin", ""))){
+					lateralVBox.getChildren().remove(titledPane);
+					buttonVBox.getChildren().remove(button);
+					break;
+				}
+			}
+		}
+	}
+
 	//	public void showSalaryDetails(){
 	//		if(titledPane2017.isFocused()){
 	//			if(titledPane2017.isExpanded()){
