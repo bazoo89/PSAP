@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -60,13 +61,15 @@ public class UserController implements Initializable {
 	}
 
 	public void loginOrRegister() {
+		Calendar calendar = GregorianCalendar.getInstance();
 		File folder = null;
 		name = name_textField.getText().toUpperCase();
 		lastname = lastname_textField.getText().toUpperCase();
 		String firstLetterName = name.substring(0, 1);
 		String userFolder = (firstLetterName.toLowerCase() + lastname.toLowerCase());
-		fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name).toLowerCase();
+		fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name + "_" + calendar.get(Calendar.YEAR)).toLowerCase();
 		searchUser(name, lastname);
+
 		// REGISTER
 		if (loggedUser.equals(new_user) || loggedUser.equals(first_user)) {
 			try {
@@ -75,6 +78,7 @@ public class UserController implements Initializable {
 				TempSavedInformation.getInstance().setUserFolder(folder);
 				userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
 				userFile.createNewFile();
+				// TODO metodo da richiamare quando si clicca sul titledPane dell'anno
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
 				Person person = new Person(name, lastname, fileName);
 
@@ -98,7 +102,6 @@ public class UserController implements Initializable {
 		}
 		// LOGIN
 		else {
-			// TODO
 			folder = new File("resources/Files/" + userFolder);
 			TempSavedInformation.getInstance().setUserFolder(folder);
 			userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");

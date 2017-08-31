@@ -123,7 +123,6 @@ public class ToolsForManageFile {
 			Unmarshaller um = context.createUnmarshaller();
 			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
 			List<Hour> hoursList = wrapper.getHour();
-			List<Month> monthList = wrapper.getMonth();
 			String monthDate = date.substring(4, 6);
 			if (monthDate.startsWith("0")) {
 				monthDate = monthDate.replace("0", "");
@@ -140,31 +139,6 @@ public class ToolsForManageFile {
 					Marshaller m = context.createMarshaller();
 					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 					m.marshal(wrapper, dataFile);
-
-					// TODO per il mese andare a scrivere solo quando si clicca sul + nella tableview, iterando su tutti i giorni del mese
-
-					//					for (Month month : monthList) {
-					//						if (month.getId().equals(monthDate)) {
-					//							double holidayUsedtemp = Double.parseDouble(month.getHolidaysUsedTemp());
-					//							double parUsedTemp = Double.parseDouble(month.getParUsedTemp());
-					//							double sickUsedTemp = Double.parseDouble(month.getSicknessUsedTemp());
-					//							if (!holHours.equals("")) {
-					//								holidayUsedtemp += Double.parseDouble(holHours);
-					//							}
-					//							if (!parHours.equals("")) {
-					//								parUsedTemp += Double.parseDouble(parHours);
-					//							}
-					//							if (!sickHours.equals("")) {
-					//								sickUsedTemp += Double.parseDouble(sickHours);
-					//							}
-					//							month.setHolidaysUsedTemp(String.valueOf(holidayUsedtemp));
-					//							month.setParUsedTemp(String.valueOf(parUsedTemp));
-					//							month.setSicknessUsedTemp(String.valueOf(sickUsedTemp));
-					//							Marshaller m = context.createMarshaller();
-					//							m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-					//							m.marshal(wrapper, dataFile);
-					//						}
-					//					}
 				}
 			}
 		} catch (Exception ex) {
@@ -460,54 +434,4 @@ public class ToolsForManageFile {
 		}
 		return hoursList;
 	}
-
-	//	public void updateHolidayIntoDatafile(File dataFile, String date, String type, String hour) {
-	//		try {
-	//			JAXBContext context = JAXBContext.newInstance(DataFile.class);
-	//			Unmarshaller um = context.createUnmarshaller();
-	//			DataFile wrapper = (DataFile) um.unmarshal(dataFile);
-	//			List<Hour> hoursList = wrapper.getHour();
-	//			List<Month> monthList = wrapper.getMonth();
-	//			String monthDate = date.substring(3, 6);
-	//			for (Hour currentHour : hoursList) {
-	//				if (currentHour.getId().equals(date)) {
-	//					switch (type) {
-	//					case Constants.Holidays:
-	//						currentHour.setHolidaysHoursUsed(hour);
-	//						break;
-	//					case Constants.PAR:
-	//						currentHour.setParHoursUsed(hour);
-	//						break;
-	//					case Constants.Sickness:
-	//						currentHour.setSicknessHoursUsed(hour);
-	//						break;
-	//					default:
-	//						break;
-	//					}
-	//					for (Month month : monthList) {
-	//						if (month.getId().equals(monthDate)) {
-	//							switch (type) {
-	//							case Constants.Holidays:
-	//								month.setHolidaysRes(hour);
-	//								break;
-	//							case Constants.PAR:
-	//								month.setParRes(hour);
-	//								break;
-	//							case Constants.Sickness:
-	//								month.setSicknessUsedTemp(hour);
-	//								break;
-	//							default:
-	//								break;
-	//							}
-	//						}
-	//					}
-	//					Marshaller m = context.createMarshaller();
-	//					m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-	//					m.marshal(wrapper, dataFile);
-	//				}
-	//			}
-	//		} catch (Exception ex) {
-	//			ex.printStackTrace();
-	//		}
-	//	}
 }

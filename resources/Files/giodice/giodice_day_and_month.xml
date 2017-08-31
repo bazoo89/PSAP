@@ -2172,39 +2172,39 @@
         </hour>
         <hour>
             <h_entry>09:00</h_entry>
-            <h_exit>12:15</h_exit>
-            <holidaysHoursUsed>2</holidaysHoursUsed>
+            <h_exit>20:15</h_exit>
+            <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170830</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
-            <sicknessHoursUsed>3</sicknessHoursUsed>
-            <workedHours>03:15</workedHours>
+            <sicknessHoursUsed>0.0</sicknessHoursUsed>
+            <workedHours>10:15</workedHours>
         </hour>
         <hour>
-            <h_entry>10:15</h_entry>
-            <h_exit>14:35</h_exit>
+            <h_entry>08:15</h_entry>
+            <h_exit>20:35</h_exit>
             <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170831</id_hour>
             <parHoursUsed>1.5</parHoursUsed>
             <sicknessHoursUsed>3.5</sicknessHoursUsed>
-            <workedHours>03:20</workedHours>
+            <workedHours>11:20</workedHours>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
+            <h_entry>09:05</h_entry>
+            <h_exit>14:40</h_exit>
             <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170901</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
-            <workedHours>0.0</workedHours>
+            <workedHours>04:35</workedHours>
         </hour>
         <hour>
-            <h_entry>00:00</h_entry>
-            <h_exit>00:00</h_exit>
+            <h_entry>08:10</h_entry>
+            <h_exit>13:05</h_exit>
             <holidaysHoursUsed>0.0</holidaysHoursUsed>
             <id_hour>20170902</id_hour>
             <parHoursUsed>0.0</parHoursUsed>
             <sicknessHoursUsed>0.0</sicknessHoursUsed>
-            <workedHours>0.0</workedHours>
+            <workedHours>3:55</workedHours>
         </hour>
         <hour>
             <h_entry>00:00</h_entry>
