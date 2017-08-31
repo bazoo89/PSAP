@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -24,6 +26,7 @@ import application.MainController;
 import file.entity.CustomButton;
 import file.entity.Hour;
 import file.entity.Month;
+import file.entity.TitledPaneYear;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -56,6 +59,26 @@ public class ToolsForManageFile {
 			personObservableList.add(person);
 			wrapper.setPersons(personObservableList);
 			// Marshalling and saving XML to the file.
+			m.marshal(wrapper, personFile);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void updatePersonToFile(String name, String lastname, String fileNameThisYear, File personFile) {
+		try {
+			JAXBContext context = JAXBContext.newInstance(Persons.class);
+			Unmarshaller um = context.createUnmarshaller();
+			Persons wrapper = (Persons) um.unmarshal(personFile);
+			// Wrapping our person data.
+			for (Person person : wrapper.getPersons()) {
+				if (person.getFirstName().equalsIgnoreCase(name) && person.getLastName().equalsIgnoreCase(lastname)) {
+					person.setDataFile(fileNameThisYear);
+				}
+			}
+			// Marshalling and saving XML to the file.
+			Marshaller m = context.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(wrapper, personFile);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -207,7 +230,14 @@ public class ToolsForManageFile {
 				}
 			}
 		} catch (Exception ex) {
+			System.out.println("You have deleted hours and month file for the current year!!!");
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			ex.printStackTrace();
+			System.exit(1);
 		}
 		return loadedSuccessfuly;
 	}
@@ -312,9 +342,17 @@ public class ToolsForManageFile {
 		return customButtons;
 	}
 
-	public void initCustomButtonPreferencesFile(File preferencesFile) {
-		ObservableList<CustomButton> customButtonsList = createAndGetCustomButtonTemplateXML();
+	public ObservableList<TitledPaneYear> createAndGetTitledPaneTemplateXML() {
+		ObservableList<TitledPaneYear> titledPanes = FXCollections.observableArrayList();
+		Calendar calendar = GregorianCalendar.getInstance();
+		TitledPaneYear currentTitledPaneYear = new TitledPaneYear(calendar.get(Calendar.YEAR));
+		titledPanes.add(currentTitledPaneYear);
+		return titledPanes;
+	}
 
+	public void initPreferencesFile(File preferencesFile) {
+		ObservableList<CustomButton> customButtonsList = createAndGetCustomButtonTemplateXML();
+		ObservableList<TitledPaneYear> titledPaneList = createAndGetTitledPaneTemplateXML();
 		try {
 			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
 			Marshaller m = context.createMarshaller();
@@ -322,6 +360,7 @@ public class ToolsForManageFile {
 			// Wrapping our person data.
 			PreferencesFile wrapper = new PreferencesFile();
 			wrapper.setCustomButtons(customButtonsList);
+			wrapper.setTitledPanesYears(titledPaneList);
 			// Marshalling and saving XML to the file.
 			m.marshal(wrapper, preferencesFile);
 		} catch (Exception ex) {
@@ -330,6 +369,7 @@ public class ToolsForManageFile {
 
 	}
 
+	/***** CUSTOM BUTTON *****/
 	public void saveCustomButtonPreferences(File dataFile, String customButtonValue) {
 		PreferencesFile wrapper = null;
 		try {
@@ -386,6 +426,8 @@ public class ToolsForManageFile {
 		return customButtonList;
 	}
 
+	/********** ********** **********/
+
 	public void updateSalaryTabToDataFile(File dataFile, String currentMonth, String newSalary) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(DataFile.class);
@@ -435,9 +477,63 @@ public class ToolsForManageFile {
 		return hoursList;
 	}
 
-	public ArrayList<Integer> getTitledPanesTextYears() {
-		ArrayList<Integer> returnValues=new ArrayList<>();
-		returnValues.add(2017);
-		return returnValues;
+	/***** TITLED PANE YEARS *****/
+
+	public ArrayList<TitledPaneYear> getTitledPanesTextYears(File dataFile) {
+		// TODO Deve leggere dal file di PREFERENCES
+		PreferencesFile wrapper = null;
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			return (ArrayList<TitledPaneYear>) wrapper.getTitledPanesYears();
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<TitledPaneYear>();
 	}
+
+	public void saveTitledPanesTextYears(File dataFile, int titledPaneYear) {
+		PreferencesFile wrapper = null;
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			ArrayList<TitledPaneYear> listTitledPane = (ArrayList<TitledPaneYear>) wrapper.getTitledPanesYears();
+			TitledPaneYear newYear = new TitledPaneYear(titledPaneYear);
+			listTitledPane.add(newYear);
+			Marshaller m = context.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			m.marshal(wrapper, dataFile);
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void deleteTitledPanesTextYears(File dataFile, int titledPaneYear) {
+		int indexYearFound = -1;
+		ArrayList<TitledPaneYear> listTitledPane = null;
+		try {
+			JAXBContext context = JAXBContext.newInstance(PreferencesFile.class);
+			Unmarshaller um = context.createUnmarshaller();
+			PreferencesFile wrapper = (PreferencesFile) um.unmarshal(dataFile);
+			listTitledPane = (ArrayList<TitledPaneYear>) wrapper.getTitledPanesYears();
+			for (TitledPaneYear titledPane : listTitledPane) {
+				if (titledPane.getId() == titledPaneYear) {
+					indexYearFound = listTitledPane.indexOf(titledPane);
+					break;
+				}
+			}
+			if (indexYearFound != -1) {
+				listTitledPane.remove(indexYearFound);
+			}
+			Marshaller m = context.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			m.marshal(wrapper, dataFile);
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	/********** ********** **********/
 }

@@ -2,6 +2,8 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import file.ToolsForManageFile;
 import javafx.application.Application;
@@ -21,23 +23,35 @@ public class Main extends Application {
 	//	private final String TITLE = "SAP&GO";
 	private String name = null;
 	private String lastname = null;
+	private String hourMonthFileName = null;
 	private File hourMonthFile = null;
 	private File preferencesFile = null;
+	private String defaultPartialFileNameDayMonth = "_day_and_month_";
+	private File personsFile = new File("resources/Files/Persons.xml");
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		Calendar calendar = GregorianCalendar.getInstance();
 		Main.primaryStage = primaryStage;
 		TempSavedInformation.getInstance().setIsLogged(new File("resources/Files/userLogged.info"));
 		File isLogged = TempSavedInformation.getInstance().getIsLogged();
+
+		// AUTOMATIC LOGIN
 		if (isLogged.exists() && !isLogged.isDirectory()) {
 			String loggedUser = ToolsForManageFile.getInstance().readAndGetUserLoggedInformation();
 			if (loggedUser.contains(":")) {
 				String[] loggedNameLastname = loggedUser.split(":");
 				name = loggedNameLastname[0];
 				lastname = loggedNameLastname[1];
-				hourMonthFile = new File(loggedNameLastname[2]);
+				hourMonthFileName = name.substring(0, 1).toLowerCase() + lastname.toLowerCase() + defaultPartialFileNameDayMonth + calendar.get(Calendar.YEAR);
+				hourMonthFile = new File("resources/Files/" + name.substring(0, 1).toLowerCase() + lastname.toLowerCase() + "/" + hourMonthFileName + ".xml");
+				if (!hourMonthFile.exists()) {
+					hourMonthFile.createNewFile();
+					ToolsForManageFile.getInstance().initDataFile(hourMonthFile, Calendar.getInstance().get(Calendar.YEAR));
+					ToolsForManageFile.getInstance().updatePersonToFile(name, lastname, hourMonthFileName, personsFile);
+				}
 				String nameFile = (name.substring(0, 1) + lastname).toLowerCase() + "_preferences.xml";
-				preferencesFile = new File(loggedNameLastname[2].substring(0, loggedNameLastname[2].lastIndexOf("/")) + "/" + nameFile);
+				preferencesFile = new File("resources/Files/" + name.substring(0, 1) + lastname + "/" + nameFile);
 				TempSavedInformation.getInstance().setName(name);
 				TempSavedInformation.getInstance().setLastname(lastname);
 				TempSavedInformation.getInstance().setHourMonthFile(hourMonthFile);
@@ -56,11 +70,8 @@ public class Main extends Application {
 				Main.primaryStage.initStyle(StageStyle.DECORATED);
 				Main.primaryStage.show();
 				MainController mainController = loader.getController();
-				boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB,
-						mainController.hh_exitCB, mainController.mm_exitCB, mainController.parLabel, mainController.freeDayLabel, mainController.sickLabel, mainController.workedHoursLabel);
-				//				if (loadedSuccessfully) {
-				//					mainController.countWorkedHours();
-				//				}
+				ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB, mainController.hh_exitCB,
+						mainController.mm_exitCB, mainController.parLabel, mainController.freeDayLabel, mainController.sickLabel, mainController.workedHoursLabel);
 				if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
 					String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
 					String userFolderPath = TempSavedInformation.getInstance().getUserFolder().getPath();
@@ -70,8 +81,9 @@ public class Main extends Application {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			File personsFile = new File("resources/Files/Persons.xml");
+		}
+		// FIRST REGISTRATION
+		else {
 			if (!personsFile.exists()) {
 				personsFile.createNewFile();
 			}
