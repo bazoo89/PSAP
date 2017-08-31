@@ -434,4 +434,10 @@ public class ToolsForManageFile {
 		}
 		return hoursList;
 	}
+
+	public ArrayList<Integer> getTitledPanesTextYears() {
+		ArrayList<Integer> returnValues=new ArrayList<>();
+		returnValues.add(2017);
+		return returnValues;
+	}
 }

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +15,6 @@
    <children>
       <AnchorPane prefHeight="756.0" prefWidth="821.0">
          <children>
-            <JFXTreeTableView fx:id="treeTableView" editable="true" layoutX="149.0" layoutY="54.0" prefHeight="700.0" prefWidth="700.0" />
             <ToolBar layoutX="-1.0" prefHeight="54.0" prefWidth="849.0">
               <items>
                   <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#goBack" prefHeight="40.0" prefWidth="40.0" text="GO BACK">
@@ -31,43 +28,20 @@
                   </JFXButton>
               </items>
             </ToolBar>
-            <ScrollPane layoutY="54.0" prefHeight="700.0" prefWidth="149.0">
+            <ScrollPane layoutY="54.0" prefHeight="700.0" prefWidth="848.0">
                <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="126.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="832.0">
                      <children>
-                        <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="90.0">
+                        <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="804.0">
                            <children>
-                              <TitledPane fx:id="titledPane2017" animated="false" expanded="true" onMouseClicked="#handleTitledPane" prefHeight="32.0" prefWidth="146.0" text="2017" />
-                              <TitledPane fx:id="titledPane2018" animated="false" expanded="false" onMouseClicked="#handleTitledPane" prefHeight="32.0" prefWidth="81.0" text="2018" />
-                              <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="84.0" promptText="add year">
+                              <TextField fx:id="addYearTF" maxWidth="100.0" minWidth="100.0" prefHeight="31.0" prefWidth="100.0" promptText="add year">
                                  <font>
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox fx:id="buttonVBox" layoutX="87.0" prefHeight="700.0" prefWidth="32.0">
-                           <children>
-                              <JFXButton fx:id="recycleBin2017" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#removeYear" prefHeight="31.0" prefWidth="10.0">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../resources/icons/recycleBin.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton fx:id="recycleBin2018" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#removeYear" prefHeight="31.0" prefWidth="10.0">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../resources/icons/recycleBin.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                           </children>
-                        </VBox>
+                        <VBox fx:id="buttonVBox" layoutX="790.0" prefHeight="700.0" prefWidth="41.0" />
                      </children>
                   </AnchorPane>
                </content>

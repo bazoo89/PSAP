@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -50,24 +52,15 @@ import utils.TempSavedInformation;
 
 public class SalaryController implements Initializable {
 	@FXML
-	public TitledPane titledPane2017;
-	@FXML
-	public TitledPane titledPane2018;
-	@FXML
 	public StackPane stackPane;
-	@FXML
-	public JFXTreeTableView<SalaryTab> treeTableView;
 	@FXML
 	public TextField addYearTF;
 	@FXML
 	public VBox lateralVBox;
 	@FXML
 	public VBox buttonVBox;
-	@FXML
-	public JFXButton recycleBin2017;
-	@FXML
-	public JFXButton recycleBin2018;
-	
+
+	public JFXTreeTableView<SalaryTab> treeTableView;
 	public JFXTreeTableColumn<SalaryTab, String> month;
 	public JFXTreeTableColumn<SalaryTab, String> amount;
 	public JFXTreeTableColumn<SalaryTab, String> resHol;
@@ -83,6 +76,68 @@ public class SalaryController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ArrayList<Integer> years= ToolsForManageFile.getInstance().getTitledPanesTextYears();
+		for (Integer year : years) {
+			treeTableView=new JFXTreeTableView<>();
+			TitledPane newTitledPane=new TitledPane();
+			newTitledPane.setText(year.toString());
+			lateralVBox.getChildren().add(newTitledPane);
+			Image image=new Image("file:resources/icons/recycleBin.png");
+			ImageView imageview = new ImageView();
+			imageview.setFitHeight(23);
+			imageview.setFitWidth(23);
+			imageview.setImage(image);
+			JFXButton recycleBinBtn=new JFXButton();
+			recycleBinBtn.setGraphic(imageview);
+			recycleBinBtn.setId(newTitledPane.getText());
+			recycleBinBtn.setOnMouseClicked(mouseClicked ->{
+				manageYearRemoving(recycleBinBtn);
+			});
+			checkRecycleBinBtnDisable(newTitledPane.getText(),recycleBinBtn);
+			newTitledPane.setContent(treeTableView);
+			ArrayList<Month> salaryList = createTableView();
+			populateTableView(salaryList);
+		}
+		
+		addYearTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().equals(KeyCode.ENTER)) {
+					if (addYearTF.getText() != null && addYearTF.getText().startsWith("20") && addYearTF.getText().matches("^\\d{4}$")) {
+						ObservableList<Node> nodes = lateralVBox.getChildren();
+						TitledPane newTitledPane = new TitledPane();
+						newTitledPane.setText(addYearTF.getText());
+						newTitledPane.setExpanded(true);
+//						closeOtherTitledPanes(newTitledPane);
+						newTitledPane.setAnimated(false);
+						int size = lateralVBox.getChildren().size();
+						lateralVBox.getChildren().add(size - 1, newTitledPane);
+						Image image=new Image("file:resources/icons/recycleBin.png");
+						ImageView imageview = new ImageView();
+						imageview.setFitHeight(23);
+						imageview.setFitWidth(23);
+						imageview.setImage(image);
+						JFXButton recycleBinBtn=new JFXButton();
+						checkRecycleBinBtnDisable(addYearTF.getText(),recycleBinBtn);
+						recycleBinBtn.setGraphic(imageview);
+						recycleBinBtn.setId(addYearTF.getText());
+						recycleBinBtn.setOnMouseClicked(mouseClicked ->{
+							manageYearRemoving(recycleBinBtn);
+						});
+						buttonVBox.getChildren().add(recycleBinBtn);
+						newTitledPane.setOnMouseClicked(click -> {
+//							closeOtherTitledPanes(newTitledPane);	
+							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
+							populateTableView(salaryList);							
+						});
+						addYearTF.setText(null);
+					}
+				}
+			}
+		});
+	}
+
+	private ArrayList<Month> createTableView() {
 		ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
 		month = new JFXTreeTableColumn<>("MONTH");
 		month.setPrefWidth(100);
@@ -218,43 +273,13 @@ public class SalaryController implements Initializable {
 		treeTableView.setRoot(root);
 		treeTableView.setShowRoot(false);
 		treeTableView.setFixedCellSize(53);
-		addYearTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent event) {
-				if (event.getCode().equals(KeyCode.ENTER)) {
-					if (addYearTF.getText() != null && addYearTF.getText().startsWith("20") && addYearTF.getText().matches("^\\d{4}$")) {
-						ObservableList<Node> nodes = lateralVBox.getChildren();
-						TitledPane newTitledPane = new TitledPane();
-						newTitledPane.setText(addYearTF.getText());
-						newTitledPane.setExpanded(true);
-						closeOtherTitledPanes(newTitledPane);
-						newTitledPane.setAnimated(false);
-						int size = lateralVBox.getChildren().size();
-						lateralVBox.getChildren().add(size - 1, newTitledPane);
-						Image image=new Image("file:resources/icons/recycleBin.png");
-						ImageView imageview = new ImageView();
-						imageview.setFitHeight(25);
-						imageview.setFitWidth(25);
-						imageview.setImage(image);
-						JFXButton btn=new JFXButton();
-						btn.setGraphic(imageview);
-						btn.setId(addYearTF.getText());
-						btn.setOnMouseClicked(mouseClicked ->{
-							manageYearRemoving(btn);
-						});
-						buttonVBox.getChildren().add(btn);
-						System.out.println(newTitledPane.getText());
-						newTitledPane.setOnMouseClicked(click -> {
-							closeOtherTitledPanes(newTitledPane);	
-							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
-							populateTableView(salaryList);							
-						});
-						addYearTF.setText(null);
-					}
-				}
-			}
-		});
-		populateTableView(salaryList);
+		return salaryList;
+	}
+
+	protected void checkRecycleBinBtnDisable(String year, JFXButton recycleBinBtn) {
+		if(GregorianCalendar.getInstance().get(Calendar.YEAR)==Integer.parseInt(year)){
+			recycleBinBtn.setDisable(true);
+		}
 	}
 
 	private void populateTableView(ArrayList<Month> salaryList) {
