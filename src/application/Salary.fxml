@@ -35,15 +35,37 @@
                <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="126.0">
                      <children>
-                        <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="131.0">
+                        <VBox fx:id="lateralVBox" prefHeight="702.0" prefWidth="90.0">
                            <children>
-                              <TitledPane fx:id="titledPane2017" animated="false" expanded="true" prefHeight="32.0" prefWidth="146.0" text="2017" />
-                              <TitledPane fx:id="titledPane2018" animated="false" expanded="false" prefHeight="32.0" prefWidth="81.0" text="2018" />
+                              <TitledPane fx:id="titledPane2017" animated="false" expanded="true" onMouseClicked="#handleTitledPane" prefHeight="32.0" prefWidth="146.0" text="2017" />
+                              <TitledPane fx:id="titledPane2018" animated="false" expanded="false" onMouseClicked="#handleTitledPane" prefHeight="32.0" prefWidth="81.0" text="2018" />
                               <TextField fx:id="addYearTF" prefHeight="31.0" prefWidth="84.0" promptText="add year">
                                  <font>
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </TextField>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="buttonVBox" layoutX="87.0" prefHeight="700.0" prefWidth="32.0">
+                           <children>
+                              <JFXButton fx:id="recycleBin2017" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#removeYear" prefHeight="31.0" prefWidth="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/icons/recycleBin.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="recycleBin2018" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#removeYear" prefHeight="31.0" prefWidth="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/icons/recycleBin.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
                            </children>
                         </VBox>
                      </children>
