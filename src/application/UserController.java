@@ -54,6 +54,7 @@ public class UserController implements Initializable {
 	private String fileName = null;
 	ObservableList<Person> personObservableList = null;
 	private String loggedUserPathFile = null;
+	private String fileNameThisYear = "";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +68,7 @@ public class UserController implements Initializable {
 		lastname = lastname_textField.getText().toUpperCase();
 		String firstLetterName = name.substring(0, 1);
 		String userFolder = (firstLetterName.toLowerCase() + lastname.toLowerCase());
-		fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name + "_" + calendar.get(Calendar.YEAR)).toLowerCase();
+		fileName = (firstLetterName.toLowerCase() + lastname.toLowerCase() + default_file_name).toLowerCase();
 		searchUser(name, lastname);
 
 		// REGISTER
@@ -76,11 +77,12 @@ public class UserController implements Initializable {
 				folder = new File("resources/Files/" + userFolder);
 				folder.mkdir();
 				TempSavedInformation.getInstance().setUserFolder(folder);
-				userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
+				fileNameThisYear = fileName + "_" + calendar.get(Calendar.YEAR);
+				userFile = new File("resources/Files/" + userFolder + "/" + fileNameThisYear + ".xml");
 				userFile.createNewFile();
 				// TODO metodo da richiamare quando si clicca sul titledPane dell'anno
 				ToolsForManageFile.getInstance().initDataFile(userFile, Calendar.getInstance().get(Calendar.YEAR));
-				Person person = new Person(name, lastname, fileName);
+				Person person = new Person(name, lastname, fileNameThisYear);
 
 				// First user
 				if (loggedUser.equals(first_user)) {
@@ -91,7 +93,7 @@ public class UserController implements Initializable {
 					ToolsForManageFile.getInstance().tempSaveActualPersons(person, personObservableList, personFile);
 					ToolsForManageFile.getInstance().writePersonToFile(person, personObservableList, personFile);
 				}
-				loggedUser = name + ":" + lastname + ":" + userFile.getPath().replace("\\", "/");
+				loggedUser = name + ":" + lastname;
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
@@ -104,7 +106,9 @@ public class UserController implements Initializable {
 		else {
 			folder = new File("resources/Files/" + userFolder);
 			TempSavedInformation.getInstance().setUserFolder(folder);
-			userFile = new File("resources/Files/" + userFolder + "/" + fileName + ".xml");
+			fileNameThisYear = fileName + "_" + calendar.get(Calendar.YEAR);
+			ToolsForManageFile.getInstance().updatePersonToFile(name, lastname, fileNameThisYear, personFile);
+			userFile = new File("resources/Files/" + userFolder + "/" + fileNameThisYear + ".xml");
 			TempSavedInformation.getInstance().setHourMonthFile(userFile);
 		}
 
@@ -126,7 +130,7 @@ public class UserController implements Initializable {
 				String nameFile = person.getDataFile() + ".xml";
 				String userFolder = (person.getFirstName().substring(0, 1) + person.getLastName()).toLowerCase();
 				loggedUserPathFile = "resources/Files/" + userFolder + "/" + nameFile;
-				loggedUser = name + ":" + surname + ":" + loggedUserPathFile;
+				loggedUser = name + ":" + surname;
 				return;
 			}
 		}
@@ -158,7 +162,7 @@ public class UserController implements Initializable {
 				File preferencesFile = new File(userFolderPath + "/" + nameFile.toLowerCase());
 				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
 				TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
-				ToolsForManageFile.getInstance().initCustomButtonPreferencesFile(preferencesFile);
+				ToolsForManageFile.getInstance().initPreferencesFile(preferencesFile);
 			}
 			MainController mainController = loader.getController();
 			boolean loadedSuccessfully = ToolsForManageFile.getInstance().loadHoursTabFromDataFile(TempSavedInformation.getInstance().getHourMonthFile(), mainController.calendar,

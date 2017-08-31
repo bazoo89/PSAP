@@ -19,10 +19,10 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import file.ToolsForManageFile;
 import file.entity.Month;
+import file.entity.TitledPaneYear;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,9 +56,7 @@ public class SalaryController implements Initializable {
 	@FXML
 	public TextField addYearTF;
 	@FXML
-	public VBox lateralVBox;
-	@FXML
-	public VBox buttonVBox;
+	public VBox titledPanesVBox;
 
 	public JFXTreeTableView<SalaryTab> treeTableView;
 	public JFXTreeTableColumn<SalaryTab, String> month;
@@ -68,72 +66,65 @@ public class SalaryController implements Initializable {
 	public JFXTreeTableColumn<SalaryTab, JFXButton> notes;
 	JFXDialog dialog = null;
 	public Month clickedMonth;
+	private HBox hBoxTitledPaneAndRecBin = null;
 
 	private Image summary = new Image("file:resources/icons/summary.png");
 	TreeItem<SalaryTab> root = null;
 
-	ObservableList<SalaryTab> salaries = FXCollections.observableArrayList();
+	ObservableList<SalaryTab> salaries;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ArrayList<Integer> years= ToolsForManageFile.getInstance().getTitledPanesTextYears();
-		for (Integer year : years) {
-			treeTableView=new JFXTreeTableView<>();
-			TitledPane newTitledPane=new TitledPane();
-			newTitledPane.setText(year.toString());
-			lateralVBox.getChildren().add(newTitledPane);
-			Image image=new Image("file:resources/icons/recycleBin.png");
-			ImageView imageview = new ImageView();
-			imageview.setFitHeight(23);
-			imageview.setFitWidth(23);
-			imageview.setImage(image);
-			JFXButton recycleBinBtn=new JFXButton();
-			recycleBinBtn.setGraphic(imageview);
-			recycleBinBtn.setId(newTitledPane.getText());
-			recycleBinBtn.setOnMouseClicked(mouseClicked ->{
-				manageYearRemoving(recycleBinBtn);
-			});
-			checkRecycleBinBtnDisable(newTitledPane.getText(),recycleBinBtn);
-			newTitledPane.setContent(treeTableView);
-			ArrayList<Month> salaryList = createTableView();
-			populateTableView(salaryList);
+		ArrayList<TitledPaneYear> listTitledPaneYears = ToolsForManageFile.getInstance().getTitledPanesTextYears(TempSavedInformation.getInstance().getPreferencesFile());
+		for (TitledPaneYear year : listTitledPaneYears) {
+			populateHBoxTitledPane(String.valueOf(year.getId()));
 		}
-		
+
 		addYearTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				if (event.getCode().equals(KeyCode.ENTER)) {
 					if (addYearTF.getText() != null && addYearTF.getText().startsWith("20") && addYearTF.getText().matches("^\\d{4}$")) {
-						ObservableList<Node> nodes = lateralVBox.getChildren();
-						TitledPane newTitledPane = new TitledPane();
-						newTitledPane.setText(addYearTF.getText());
-						newTitledPane.setExpanded(true);
-//						closeOtherTitledPanes(newTitledPane);
-						newTitledPane.setAnimated(false);
-						int size = lateralVBox.getChildren().size();
-						lateralVBox.getChildren().add(size - 1, newTitledPane);
-						Image image=new Image("file:resources/icons/recycleBin.png");
-						ImageView imageview = new ImageView();
-						imageview.setFitHeight(23);
-						imageview.setFitWidth(23);
-						imageview.setImage(image);
-						JFXButton recycleBinBtn=new JFXButton();
-						checkRecycleBinBtnDisable(addYearTF.getText(),recycleBinBtn);
-						recycleBinBtn.setGraphic(imageview);
-						recycleBinBtn.setId(addYearTF.getText());
-						recycleBinBtn.setOnMouseClicked(mouseClicked ->{
-							manageYearRemoving(recycleBinBtn);
-						});
-						buttonVBox.getChildren().add(recycleBinBtn);
-						newTitledPane.setOnMouseClicked(click -> {
-//							closeOtherTitledPanes(newTitledPane);	
-							ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
-							populateTableView(salaryList);							
-						});
+						//						ObservableList<Node> nodes = titledPanesVBox.getChildren();
+						populateHBoxTitledPane(addYearTF.getText());
+						ToolsForManageFile.getInstance().saveTitledPanesTextYears(TempSavedInformation.getInstance().getPreferencesFile(), Integer.parseInt(addYearTF.getText()));
 						addYearTF.setText(null);
 					}
 				}
 			}
+		});
+	}
+
+	public void populateHBoxTitledPane(String year) {
+		hBoxTitledPaneAndRecBin = new HBox();
+		treeTableView = new JFXTreeTableView<>();
+		salaries = FXCollections.observableArrayList();
+		TitledPane newTitledPane = new TitledPane();
+		newTitledPane.setText(year);
+		newTitledPane.setExpanded(true);
+		closeOtherTitledPanes(newTitledPane);
+		newTitledPane.setAnimated(false);
+		Image image = new Image("file:resources/icons/recycleBin.png");
+		ImageView imageview = new ImageView();
+		imageview.setFitHeight(23);
+		imageview.setFitWidth(23);
+		imageview.setImage(image);
+		JFXButton recycleBinBtn = new JFXButton();
+		checkRecycleBinBtnDisable(year, recycleBinBtn);
+		recycleBinBtn.setGraphic(imageview);
+		recycleBinBtn.setId(year);
+		recycleBinBtn.setOnMouseClicked(mouseClicked -> {
+			manageYearRemoving(recycleBinBtn);
+		});
+		newTitledPane.setContent(treeTableView);
+		hBoxTitledPaneAndRecBin.getChildren().addAll(newTitledPane, recycleBinBtn);
+		titledPanesVBox.getChildren().add(hBoxTitledPaneAndRecBin);
+		ArrayList<Month> salaryList = createTableView();
+		populateTableView(salaryList);
+		newTitledPane.setOnMouseClicked(click -> {
+			closeOtherTitledPanes(newTitledPane);
+			//			ArrayList<Month> salaryList = ToolsForManageFile.getInstance().getMonthsFromDataFile(TempSavedInformation.getInstance().getHourMonthFile());
+			//			populateTableView(salaryList);
 		});
 	}
 
@@ -277,7 +268,7 @@ public class SalaryController implements Initializable {
 	}
 
 	protected void checkRecycleBinBtnDisable(String year, JFXButton recycleBinBtn) {
-		if(GregorianCalendar.getInstance().get(Calendar.YEAR)==Integer.parseInt(year)){
+		if (GregorianCalendar.getInstance().get(Calendar.YEAR) == Integer.parseInt(year)) {
 			recycleBinBtn.setDisable(true);
 		}
 	}
@@ -298,39 +289,39 @@ public class SalaryController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	@FXML public void handleTitledPane(MouseEvent e){
-		TitledPane tp=(TitledPane) e.getSource();
+
+	@FXML
+	public void handleTitledPane(MouseEvent e) {
+		TitledPane tp = (TitledPane) e.getSource();
 		closeOtherTitledPanes(tp);
-		
 	}
-	public void closeOtherTitledPanes(TitledPane tp){
-		ObservableList<Node> nodes=lateralVBox.getChildren();
-		for (Node node : nodes) {
-			if(node instanceof TitledPane){
-				TitledPane titledPane=(TitledPane) node;
-				if(!titledPane.getText().equals(tp.getText())){
+
+	public void closeOtherTitledPanes(TitledPane tp) {
+		for (Node node : titledPanesVBox.getChildren()) {
+			if (node instanceof HBox) {
+				HBox hBox = (HBox) node;
+				TitledPane titledPane = (TitledPane) hBox.getChildren().get(0);
+				if (!titledPane.getText().equals(tp.getText())) {
 					titledPane.setExpanded(false);
 				}
-				else
-					titledPane.setExpanded(true);
 			}
 		}
 	}
+
 	@FXML
-	public void removeYear(MouseEvent e){
-		JFXButton button=(JFXButton) e.getSource();
+	public void removeYear(MouseEvent e) {
+		JFXButton button = (JFXButton) e.getSource();
 		manageYearRemoving(button);
-	
+
 	}
 
 	private void manageYearRemoving(JFXButton button) {
-		ObservableList<Node> nodes=lateralVBox.getChildren();
+		ObservableList<Node> nodes = titledPanesVBox.getChildren();
 		for (Node node : nodes) {
-			if(node instanceof TitledPane){
-				TitledPane titledPane=(TitledPane) node;
-				if(titledPane.getText().equals(button.getId().replace("recycleBin", ""))){
-					lateralVBox.getChildren().remove(titledPane);
-					buttonVBox.getChildren().remove(button);
+			if (node instanceof TitledPane) {
+				TitledPane titledPane = (TitledPane) node;
+				if (titledPane.getText().equals(button.getId().replace("recycleBin", ""))) {
+					titledPanesVBox.getChildren().remove(hBoxTitledPaneAndRecBin);
 					break;
 				}
 			}
