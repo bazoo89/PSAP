@@ -18,14 +18,5 @@
         <titledPane>
             <id>2017</id>
         </titledPane>
-        <titledPane>
-            <id>2018</id>
-        </titledPane>
-        <titledPane>
-            <id>2019</id>
-        </titledPane>
-        <titledPane>
-            <id>2020</id>
-        </titledPane>
     </titledPanes>
 </preferences>

@@ -101,9 +101,10 @@ public class SalaryController implements Initializable {
 		salaries = FXCollections.observableArrayList();
 		TitledPane newTitledPane = new TitledPane();
 		newTitledPane.setText(year);
-		newTitledPane.setExpanded(false);
 		if (Integer.parseInt(year) == GregorianCalendar.getInstance().get(Calendar.YEAR)) {
 			newTitledPane.setExpanded(true);
+		} else {
+			newTitledPane.setExpanded(false);
 		}
 		newTitledPane.setAnimated(false);
 		Image image = new Image("file:resources/icons/recycleBin.png");
