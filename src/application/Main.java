@@ -50,12 +50,12 @@ public class Main extends Application {
 					ToolsForManageFile.getInstance().initDataFile(hourMonthFile, Calendar.getInstance().get(Calendar.YEAR));
 					ToolsForManageFile.getInstance().updatePersonToFile(name, lastname, hourMonthFileName, personsFile);
 				}
-				String nameFile = (name.substring(0, 1) + lastname).toLowerCase() + "_preferences.xml";
-				preferencesFile = new File("resources/Files/" + name.substring(0, 1) + lastname + "/" + nameFile);
+//				String nameFile = (name.substring(0, 1) + lastname).toLowerCase() + "_preferences.xml";
+//				preferencesFile = new File("resources/Files/" + name.substring(0, 1) + lastname + "/" + nameFile);
 				TempSavedInformation.getInstance().setName(name);
 				TempSavedInformation.getInstance().setLastname(lastname);
 				TempSavedInformation.getInstance().setHourMonthFile(hourMonthFile);
-				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
+//				TempSavedInformation.getInstance().setPreferencesFile(preferencesFile);
 			}
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Main.fxml"));
@@ -73,9 +73,9 @@ public class Main extends Application {
 				ToolsForManageFile.getInstance().loadHoursTabFromDataFile(hourMonthFile, mainController.calendar, mainController.hh_entryCB, mainController.mm_entryCB, mainController.hh_exitCB,
 						mainController.mm_exitCB, mainController.parLabel, mainController.freeDayLabel, mainController.sickLabel, mainController.workedHoursLabel);
 				if (TempSavedInformation.getInstance().getPreferencesFile() == null || !TempSavedInformation.getInstance().getPreferencesFile().exists()) {
-					String nameFile = name.substring(0, 1) + lastname + "_preferences.xml";
-					String userFolderPath = TempSavedInformation.getInstance().getUserFolder().getPath();
-					TempSavedInformation.getInstance().setPreferencesFile(new File(userFolderPath + "/" + nameFile.toLowerCase()));
+					String nameFile = (name.substring(0, 1) + lastname).toLowerCase() + "_preferences.xml";
+					String folderName = "resources/Files/" + (name.substring(0, 1) + lastname).toLowerCase();
+					TempSavedInformation.getInstance().setPreferencesFile(new File(folderName + "/" + nameFile.toLowerCase()));
 					TempSavedInformation.getInstance().getPreferencesFile().createNewFile();
 				}
 			} catch (Exception e) {
